@@ -1,0 +1,133 @@
+#headingMenu{
+    font-size: 1rem;
+}
+
+.shift {
+  position: relative;
+  left: 30px;
+}
+
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px solid;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+
+.metadata-circle {
+  margin-left: 2px;
+  cursor:pointer;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  font-size: 10px;
+  color: #fff;
+  line-height: 12px;
+  text-align: center;
+  background: #be7079;
+  /* vertical-align: text-top; */
+}
+
+.form-check-label{
+  margin-right: 2px;
+  padding-left: 10px;
+}
+
+h4 {
+  font-size: 0.7em;
+  font-weight: bold;
+}
+
+.ol-attribution{
+  right: 50px;
+}
+
+.loading-panel{
+	position:relative;
+	top:-10px;
+	left:0px
+}
+
+.loading-counter{
+	position:absolute;
+	color:white;
+	z-index: 100001;
+	top:13px;
+	left:15px
+}
+.lds-ring {
+	/*background-color: lightskyblue;*/
+	z-index: 100000;
+	display: inline-block;
+	position: relative;
+	width: 8px;
+	height: 8px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  margin: 6px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.btn.layer-entry{
+  padding: 0 0 ;
+}
+
+.layer-entry {
+  background: white;
+  font-size: 0.84em;
+  line-height: 100%;
+  background-color: transparent;
+  color: #212529;
+}
+
+.layer-entry.visible {
+  background: #dae2ec;
+}
+
+/* Slider cursor; see styles.css for more details */
+input[type=range] {
+  width: 60px; 
+}
+:host > div > div > div > div > div > a > div > div > div.card.card-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: none;
+  font-size: 0.84em;
+  padding: 0 0 ;
+  background-color: transparent;
+}  
+:host >div > div > div > div > div > a > div > a { text-decoration:none; }
+
+:host >div > div > div > div > div > a > div > a > i.img-expandable { margin-left : 3px; margin-top : -1px; width: 13px; height: 15px;  transform: rotate(90deg); transition: transform 0.2s linear;  }
+
+:host >div > div > div > div > div > a > div > a.collapsed > i.img-expandable { margin-left : 3px; margin-top : -1px; width: 13px; height: 15px; transform: rotate(0deg); transition: transform 0.2s linear; }

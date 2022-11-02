@@ -1,0 +1,39 @@
+  #headingMapController{
+    font-size: 1rem;
+  }
+  .layerbar-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .layerbar-nav li {
+    line-height: 50px;
+    text-indent: 20px;
+  }
+
+  ul{
+    padding-left:0px;
+  }
+
+#baseLayerCombo{
+	border-style: none;
+	background-color: #eceeef;
+  color: #464a4c;
+  font-size: 12px;
+}
+
+/*Opacity slider 
+See styles.css for more information*/
+
+input[type=range] {
+  width:75%; 
+  padding: 0px 0px 0px 0px;
+}
+
+/* Partie sur le menu des couches */
+
+h4 {
+    font-size: 14px;
+    font-weight: bold;
+}

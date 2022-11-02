@@ -1,0 +1,155 @@
+ .table{
+   line-height: 18px;
+ }
+ 
+  #headingFeaturePanel{
+    font-size: 14pxvw;
+}
+
+
+.btn {
+  font-size: 14px;
+}
+
+  .btn-secondary {
+  font-size: 1vw;
+}
+
+  .btn-feature {
+  font-size: 1vw;
+  text-align: left;
+}
+
+  .categories{
+    color: black;
+  }
+
+  .d-flex{
+    font-size: 0.8vw;
+}
+
+  .badge-selected-layer{
+    background-color: #960606;
+  }
+
+  b {
+    font-size: 1.0rem;
+}
+
+/* Panneau masquable */
+
+  #featurepanel-wrapper {
+    margin-left: -500px;
+    left: 0;
+    top: 0vw;
+    width: 500px;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    z-index: 1000;
+    transition: all 0.5s ease-in 0s;
+    -webkit-transition: all 0.5s ease-in 0s;
+    -moz-transition: all 0.5s ease-in 0s;
+    -ms-transition: all 0.5s ease-in 0s;
+    -o-transition: all 0.5s ease-in 0s;
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+
+  .featurepanel-nav, #featureContainer {
+    background-color: rgba(255, 255, 255, 1);
+  }
+
+  .featurepanel-nav{
+    width:100%;
+  }
+
+  #featurepanel-wrapper.active {
+    left: 500px;
+    width: 500px;
+    transition: all 0.5s ease-out 0s;
+    -webkit-transition: all 0.5s ease-out 0s;
+    -moz-transition: all 0.5s ease-out 0s;
+    -ms-transition: all 0.5s ease-out 0s;
+    -o-transition: all 0.5s ease-out 0s;
+  }
+
+  .featurepanel-nav .toggle {
+    position:absolute;
+    right:0px;
+    margin: 5px 5px 0 0;
+    line-height: .5;
+  }
+
+.dropdown-menu{
+  width:100%;
+}
+.dropdown-menu .dropdown-item{
+  hyphens:auto;
+  white-space: normal;
+}
+
+/* .dropdown-menu .dropdown-header{
+  color:white;
+  background-color: #545b62;
+  border-color: #4e555b;
+} */
+
+.flex .logo{
+  text-align:center;
+  width:30%;
+  font-size:0.7em;
+  align-content:center;
+}
+
+.logo a{
+  padding:2px;
+}
+
+table{
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:10px;
+  width:95%;
+  hyphens:auto;
+}
+
+table td{
+  padding:0.55rem;
+}
+
+table .row1,table .row2{
+  width:50%;
+}
+
+#selectedLayer{
+  text-align: right;
+  padding:0px 8px 0px 5px;
+}
+
+.flex{
+  display:flex;
+  justify-content:space-between;
+  height:auto;
+}
+
+.flex .text{
+  width:65%;
+}
+
+#historique{
+  padding: .75rem;
+  text-align: center;
+}
+
+/* New rules if the width of the screen is under 500px */
+@media screen and (max-width: 500px)
+{
+  #featurepanel-wrapper {
+    margin-left: -100%;
+    width: 100%;
+  }
+  #featurepanel-wrapper.active {
+    left: 100%;
+    width: 100%;
+  }
+}

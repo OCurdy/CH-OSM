@@ -1,0 +1,282 @@
+/* You can add global styles to this file, and also import other style files */
+
+.centered_loading{
+    transform: scale(3, 3);
+}
+
+.lds-grid {
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    width: 64px;
+    height: 64px;
+  }
+  .lds-grid div {
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background:#CC1517;
+    animation: lds-grid 1.2s linear infinite;
+  }
+  .lds-grid div:nth-child(1) {
+    top: 6px;
+    left: 6px;
+    animation-delay: 0s;
+  }
+  .lds-grid div:nth-child(2) {
+    top: 6px;
+    left: 26px;
+    animation-delay: -0.4s;
+  }
+  .lds-grid div:nth-child(3) {
+    top: 6px;
+    left: 45px;
+    animation-delay: -0.8s;
+  }
+  .lds-grid div:nth-child(4) {
+    top: 26px;
+    left: 6px;
+    animation-delay: -0.4s;
+  }
+  .lds-grid div:nth-child(5) {
+    top: 26px;
+    left: 26px;
+    animation-delay: -0.8s;
+  }
+  .lds-grid div:nth-child(6) {
+    top: 26px;
+    left: 45px;
+    animation-delay: -1.2s;
+  }
+  .lds-grid div:nth-child(7) {
+    top: 45px;
+    left: 6px;
+    animation-delay: -0.8s;
+  }
+  .lds-grid div:nth-child(8) {
+    top: 45px;
+    left: 26px;
+    animation-delay: -1.2s;
+  }
+  .lds-grid div:nth-child(9) {
+    top: 45px;
+    left: 45px;
+    animation-delay: -1.6s;
+  }
+  @keyframes lds-grid {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  
+
+
+
+.btn-warning{
+
+    background-color: #941333;
+    border-color: #941333;
+}
+
+.btn-warning:hover{
+   background-color:#AA1438;
+   border-color: #AA1438; 
+}
+
+
+.btn-outline-warning {
+    color: #941333;
+    background-image: none;
+    background-color: transparent;
+    border-color: #941333;
+}
+
+.btn-outline-warning.active, .btn-outline-warning:active, .show>.btn-outline-warning.dropdown-toggle {
+    color: #fff;
+    background-color: #941333;
+    border-color: #941333;
+}
+
+
+.btn-outline-warning:hover {
+    color: #fff;
+    background-color: #941333;
+    border-color: #941333;
+}
+
+.ol-button.ol-active button{
+    background-color: rgba(60,136,0,0.7);
+}
+
+.ol-attribution.ol-uncollapsible{
+    height:1.3em;
+    z-index: 2;
+    
+}
+
+.tool-box-extraction {
+    top: 70px;
+    left:.5em;
+}
+
+.tool-export-png {
+    top:.5em;
+    right:35px;
+}
+
+.tool-export-nc {
+    top:.5em;
+    right:65px;
+}
+
+.export-png,.box-extraction,.export-nc {
+    cursor: pointer;
+}
+
+.ol-zoom {
+  left: 10px;
+	top: 60px;
+}
+
+app-changes-detailled-map .ol-zoom{
+  left: 10px;
+	top: 10px;
+}
+
+@media (max-width:800px) {
+  app-changes-map .ol-zoom{
+    display:none;
+  }
+}
+
+h3 {
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.categorie-title{
+  color: black;
+  font-size: 0.8em;
+}
+
+.categorie-title:hover{
+  text-decoration: underline;
+  cursor:pointer;
+  color: black;
+}
+
+/* Slider style */ 
+
+/*
+ * Make sure bg is transparent. If not set, bg is white for Chrome while
+ * actually transparent for Firefox and Edge.
+ */
+ input[type=range] {
+  background: transparent;
+}
+
+/*
+ * Compatibiility IE11
+ */
+ input[type=range] {
+  padding: 0px 10px 0px 0px; 
+}
+
+/*
+ * Styling of slider defined with this web page:
+ *     https://www.cssportal.com/style-input-range/
+ */
+
+input[type=range] {
+  height: 17px;
+  -webkit-appearance: none;
+  margin: 10px 0; 
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 3px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000;
+  background: #ADC8D9;
+  border-radius: 7px;
+  border: 0px solid #000000;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 0px 0px 0px #000000;
+  border: 1px solid #738E9C;
+  height: 10px;
+  width: 10px;
+  border-radius: 10px;
+  background: #F0F9FF;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -4px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #ADC8D9;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 3px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000;
+  background: #ADC8D9;
+  border-radius: 7px;
+  border: 0px solid #000000;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 0px 0px 0px #000000;
+  border: 1px solid #738E9C;
+  height: 10px;
+  width: 10px;
+  border-radius: 10px;
+  background: #F0F9FF;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 3px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #ADC8D9;
+  border: 0px solid #000000;
+  border-radius: 14px;
+  box-shadow: 0px 0px 0px #000000;
+}
+input[type=range]::-ms-fill-upper {
+  background: #ADC8D9;
+  border: 0px solid #000000;
+  border-radius: 14px;
+  box-shadow: 0px 0px 0px #000000;
+}
+input[type=range]::-ms-thumb {
+  margin-top: 1px;
+  box-shadow: 0px 0px 0px #000000;
+  border: 1px solid #738E9C;
+  height: 10px;
+  width: 10px;
+  border-radius: 10px;
+  background: #F0F9FF;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #ADC8D9;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #ADC8D9;
+}
