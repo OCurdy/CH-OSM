@@ -1,6 +1,7 @@
 
 <app-layer-attribute-table #featureAttributeTableComponent></app-layer-attribute-table>
-      
+
+
 <div class="card-header p-2 text-center" role="tab" id="headingMenu">
   <div data-toggle="collapse" href="#collapseLegend" aria-expanded="true" aria-controls="collapseLegend">
     <b>{{ 'button.topics' | translate }}</b>
@@ -26,17 +27,22 @@
                         [class.visible]="mapService.isVisible(feature.layername)"
                     >
                         <div>
+                            <div>
                             <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input position-static"  
+                                <input type="checkbox" class="form-check-input position-static"
                                 [checked]="categorie.id_categorie === 4 || (userContext.vLay.indexOf(feature.layername.replace(myRegex, '')) >= 0)"
                                 (click)="onSelect($event,feature)">
+                            
                                 {{feature.nom_court}}
+
                             </label>
+                            </div>
+                            
                             <div (click)="onInfo(feature)" class="metadata-circle" [title]="feature.md_url ? 'Fiche de métadonnées' : 'Aucune info pour cette couche'"><b>?</b></div>
                             
                             <span *ngIf="mapService.isInRange(feature.layername)==false" 
                                 style="cursor:pointer;margin: 3px;vertical-align: middle;"
-                                title="{{'button.topics' | translate}}"
+                                title="{{'pannel.visibiltylayertitle' | translate}}"
                                 data-container="body"
                                 data-toggle="popover"
                                 data-trigger="hover"
@@ -63,9 +69,10 @@
                                         (change)="changeOpacity($event,feature,ref.value);false"
                                     />
                                 
-                                    <span *ngIf="mapService.isInRange(feature.layername)" style="cursor:pointer;margin: 3px"
-                                        title="Table attributaire de la zone visualisée uniquement" 
+                                    <span *ngIf="mapService.isInRange(feature.layername)"
+                                        style="cursor:pointer;margin: 3px"
                                         (click)="openAttributeTable($event, feature)"
+                                        i18n-title title="{{ 'pannel.visibiltytabletitle' | translate }}" 
                                         data-container="body"
                                         data-toggle="popover"
                                         data-trigger="hover"
@@ -79,7 +86,7 @@
                                     <span *ngIf="feature.download_kml" 
                                         style="cursor:pointer;margin: 3px"
                                         (click)="onKmlDownload($event,feature)" 
-                                        title="Téléchargement KML" 
+                                        title="{{ 'pannel.kmldownloadtitle' | translate }}"
                                         data-container="body"
                                         data-toggle="popover"
                                         data-trigger="hover"
@@ -92,7 +99,7 @@
                                     <span *ngIf="feature.download_shp"
                                         style="cursor:pointer;margin: 3px"
                                         (click)="onShpDownload($event,feature)"
-                                        title="Téléchargement Shapefile" 
+                                        title="{{ 'pannel.shpdownloadtitle' | translate }}" 
                                         data-container="body"
                                         data-toggle="popover"
                                         data-trigger="hover"
@@ -105,7 +112,7 @@
                                     <span *ngIf="feature.sld_path"
                                         style="cursor:pointer;margin: 3px"
                                         (click)="onSldDownload($event,feature)"
-                                        title="Téléchargement du style" 
+                                        title="{{ 'pannel.styledownloadtitle' | translate }}"
                                         data-container="body"
                                         data-toggle="popover"
                                         data-trigger="hover"

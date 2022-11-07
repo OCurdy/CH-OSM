@@ -10,6 +10,8 @@ import { LayerAttributeTableComponent } from 'app/layer-attribute-table/layer-at
 import {TranslateService} from '@ngx-translate/core';
 
 
+
+
 declare var config: any;
 declare var $: any;
 declare var _paq: any;
@@ -19,14 +21,18 @@ const average = arr => arr.reduce((p, c) => p + c, 0) / arr.length;
 @Component({
   selector: 'app-layer-tree',
   templateUrl: './layer-tree.component.html',
-  styleUrls: ['./layer-tree.component.css']
+  styleUrls: ['./layer-tree.component.css'],
+  
+  
 })
+
 
 export class LayerTreeComponent implements OnInit {
 
   public selectedLayer: Layer;
+  public language: TranslateService;
+   
   
-
   layervariables = config.LAYERS;
 
   @ViewChild('featureAttributeTableComponent') featureAttributeTableComponent: LayerAttributeTableComponent;
@@ -43,12 +49,11 @@ export class LayerTreeComponent implements OnInit {
   constructor(
     private mapService: MapService,
     private translate: TranslateService,
-    public layerChangeService: LayerChangeService) {
-      
-  }
+    public layerChangeService: LayerChangeService) {  
+}
   
   
-
+  useLanguage(language:string){this.translate.use(language)};
   
   ngOnInit() {
     let self= this;
@@ -60,8 +65,6 @@ export class LayerTreeComponent implements OnInit {
    
   }
 
-  useLanguage(language:string){this.translate.use(language);}
-  
 
   ngAfterViewInit() {
     $("#collapse1").collapse('show');

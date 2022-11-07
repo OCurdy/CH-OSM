@@ -212,7 +212,7 @@ export class MapService {
       });
       options.attributions = [new ol.Attribution({
         html: '' +
-          '<a href="http://magosm.magellium.com/aide.html#ogc-services-tos">© Magellium pour les flux WMS/WFS</a>'
+          '<a href="http://ch-osm.geodatasolutions.ch/aide.html#ogc-services-tos">© GeoDataSolutions for the WMS/WFS flows</a>'
       })
       ];
       var wmts = new ol.source.WMTS(options);
@@ -262,7 +262,7 @@ export class MapService {
         params: { 'LAYERS': layername },
         attributions: [new ol.Attribution({
           html: '' +
-            '<a href="http://magosm.magellium.com/aide.html#ogc-services-tos">© Magellium pour les flux WMS/WFS</a>'
+          '<a href="http://ch-osm.geodatasolutions.ch/aide.html#ogc-services-tos">© GeoDataSolutions for the WMS/WFS flows</a>'
         })
         ]
       }));
@@ -320,7 +320,7 @@ export class MapService {
       options.urls[0] = environment.geoserver_baseurl + "/gwc/service/wmts?'";
       options.attributions = [new ol.Attribution({
         html: '' +
-          '<a href="http://magosm.magellium.com/aide.html#ogc-services-tos">© Magellium pour les flux WMS/WFS</a>'
+        '<a href="http://ch-osm.geodatasolutions.ch/aide.html#ogc-services-tos">© GeoDataSolutions for the WMS/WFS flows</a>'
       })
       ];
 

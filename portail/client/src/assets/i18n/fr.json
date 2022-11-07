@@ -1,18 +1,31 @@
 {
     "apiadresse.location": "Rechercher un lieu...",
 
+
     "main.bug": "Signaler une anomalie",
     "main.permalink": "Permalien",
     "button.topics": "Thématiques",
     "button.parameter": "Paramètres",
     "button.legend": "Légende",
+    
     "pannel.explanationtitle":"Comment démarrer?",
     "pannel.explanation": "Sélectionnez une ou plusieurs couches de données dans le menu de droite, zoomez sur une zone puis cliquez sur un objet pour obtenir des information",
+    "pannel.visibiltylayertitle": "Couche non visible à cette résolution",
+    "pannel.visibiltytabletitle": "Table attributaire de la zone visualisée uniquement",
+    "pannel.attrvalues": "Valeurs attributaires",
+    "pannel.kmldownloadtitle": "Téléchargement KML",
+    "pannel.zonekml": "Téléchargement de la zone visualisée uniquement",
+    "pannel.shpdownloadtitle": "Téléchargement Shapefile",
+    "pannel.zoneshp": "Téléchargement de la zone visualisée uniquement",
+    "pannel.styledownloadtitle": "Téléchargement du style",
+    "pannel.styledownload": "Téléchargement du style au format sld, les pictos ne sont pas inclus",
+    
+    "pannel.legend": "{{feature.nom_fr}} " ,
 
     "pannel.attributes":"Attributs",
     
     "panel.pois": "Points d'intérêt",
-    "pannel.hospitals": "Hôpitaux",
+    "pannel.hospitals": "Hôpital",
     "pannel.clinics": "Cliniques",
     "pannel.pharmacies": "Pharmacies",
     "pannel.social": "Structures sociales",

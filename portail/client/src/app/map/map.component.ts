@@ -26,6 +26,7 @@ const isUrl = function (str: string) {
   } 
 }
 
+
 const getUrlFromDataTransfer = function (dataTransfer: DataTransfer) {
   if (dataTransfer.types.indexOf('text/uri-list') !== -1) {
     return dataTransfer.getData('URL');
@@ -202,7 +203,7 @@ export class MapComponent implements OnInit {
   updateScale() {
     let scale = parseInt(this.currentScale);
     let strScale = scale.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-    document.getElementById('map-scale').innerHTML = 'Echelle : 1/' + strScale + '    ';
+    document.getElementById('map-scale').innerHTML = '1 /' + strScale + '    ';
   }
 
   updateZoomLevel(){
@@ -367,22 +368,25 @@ export class MapComponent implements OnInit {
 
   onCitySelected(city) {
 
-    if (city.geometry) {
+    if (city.attrs.x) {
       // on calcule le zoom pour l'adapter au résultat de la recherche en fonction du type d'objet trouvé :
       // type : (housenumber | street  | locality | municipality)
-      var zoomlevel = 14;
-      var type = city.properties.type;
-      if (type == 'housenumber') {
-        zoomlevel = 19;
-      } else if (type == 'street') {
-        zoomlevel = 16;
-      } else if (type == 'locality') {
-        zoomlevel = 16;
-      } else if (type == 'municipality') {
+      var zoomlevel = city.attrs.zoomlevel;
+      var coordinates = [city.attrs.lon,city.attrs.lat];
+      var rank = city.attrs.origin;
+      if (rank == 'Kantone') {
+        zoomlevel = 10;
+      } else if (rank == 'district') {
+        zoomlevel = 12;
+      } else if (rank == 'gg25') {
         zoomlevel = 14;
+      } else if (rank == 'address') {
+        zoomlevel = 18;
+      }else if (rank == 'gazetteer') {
+        zoomlevel = 19;
       };
       // On fait le zoom
-      this.zoomTo(city.geometry.coordinates, zoomlevel);
+      this.zoomTo(coordinates, zoomlevel);
     }
   }
 

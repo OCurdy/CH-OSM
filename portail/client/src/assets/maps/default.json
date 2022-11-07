@@ -1,5 +1,3 @@
-
-
 {
     "DEFAULTUSERCONTEXT":[
         {
@@ -16,13 +14,17 @@
 
     "LAYERS":[
     {
-        "categorie": "Points d'intérêt",
+        "categorie": "Points of Interest",
         "id_categorie": 1,
         "features": [
            
             {
                 "layername": "magosm:hospitals_point",
-                "nom_court": "pannel.hospital",
+                "nom_court": "Spitals · Hôpitaux · Ospedali · Hospitals",
+                "nom_en": "Hospitals",
+                "nom_fr": "Hôpitaux",
+                "nom_de": "Spitals",
+                "nom_it": "Ospedali",
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:amenity%3Dhospital",
                 "sld_path":"/styles/france_hospitals_point.sld",
                 "type":"WMS",
@@ -57,7 +59,7 @@
             },
             {
                 "layername": "magosm:clinics_point",
-                "nom_court": "Cliniques",
+                "nom_court": "Klinischen · Cliniques · Clinici · Clinics",
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:amenity%3Dclinic",
                 "sld_path":"/styles/france_clinics_point.sld",
                 "type":"WMS",
@@ -96,7 +98,7 @@
             },
             {
                 "layername": "magosm:pharmacies_point",
-                "nom_court": "Pharmacies",
+                "nom_court": "Apotheken · Pharmacies · Farmacie · Pharmacies",
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:amenity%3Dpharmacy",
                 "sld_path":"/styles/france_pharmacies_point.sld",
                 "type":"WMS",
@@ -135,7 +137,7 @@
             },
             {
                 "layername": "magosm:social_facility_point",
-                "nom_court": "Structures sociales",
+                "nom_court": "Sozialeinrichtung · Structures sociales · Strutture sociali · Social facilities",
                 "md_url":"https://wiki.openstreetmap.org/wiki/Key:social_facility",
                 "sld_path":"/styles/france_social_facility_point_cluster.sld",
                 "type":"WMTS",
@@ -175,7 +177,7 @@
             },             
             {
                 "layername": "magosm:schools_point",
-                "nom_court": "Écoles",
+                "nom_court": "Schulen · Écoles · Scuole · Schools",
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:amenity%3Dschool",
                 "sld_path":"/styles/france_schools_point.sld",
                 "type":"WMS",
@@ -209,7 +211,7 @@
             },
             {
                 "layername": "magosm:police_point",
-                "nom_court": "Polices et gendarmeries",
+                "nom_court": "Polizei · Police · Polizia · Police",
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:amenity%3Dpolice",
                 "sld_path":"/styles/france_police_point.sld",
                 "type":"WMS",
@@ -248,7 +250,7 @@
             },
             {
                 "layername": "magosm:shops_point",
-                "nom_court": "Magasins",
+                "nom_court": "Geschäfte · Magasins · Negozi · Shops",
                 "md_url":"https://wiki.openstreetmap.org/wiki/Key:shop",
                 "sld_path":"/styles/france_shops_point.sld",
                 "type":"WMS",
@@ -290,12 +292,12 @@
     },
     {
         
-        "categorie": "Routes/Itinéraires",
+        "categorie": "Routes",
         "id_categorie": 2,
         "features": [
             {
                 "layername": "magosm:motorways_line",
-                "nom_court": "Autoroutes",
+                "nom_court": "Autobahnen · Autoroutes · Autostrade · Highways",
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:highway%3Dmotorway",
                 "sld_path":"/styles/france_motorways_line.sld",
                 "type":"WMS",
@@ -329,7 +331,7 @@
             },
             {
                 "layername": "magosm:highways_line",
-                "nom_court": "Réseau routier",
+                "nom_court": "Straßennetz · Réseau routier · Rete stradale · Highway network",
                 "md_url":"https://wiki.openstreetmap.org/wiki/Highways",
                 "sld_path":"/styles/france_highways_line.sld",
                 "type":"WMTS",
@@ -363,7 +365,7 @@
             },
             {
                 "layername": "magosm:highways_line_recently_modified",
-                "nom_court": "Réseau routier (Modifications récentes j-7)",
+                "nom_court": "Straßennetz (letzte Woche) · Réseau routier (dernière semaine) · Rete stradale (Ultima settimana)· Highway network (Last week)",
                 "md_url":"https://wiki.openstreetmap.org/wiki/Highways",
                 "sld_path":"/styles/france_highways_line.sld",
                 "type":"WMS",
@@ -397,7 +399,7 @@
             },
             {
                 "layername": "magosm:hiking_foot_routes_line",
-                "nom_court": "Itinéraires de randonnée",
+                "nom_court": "Wanderrouten · Itinéraires de randonnée · Percorsi escursionistici · Hiking routes",
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:route%3Dfoot",
                 "sld_path":"/styles/france_hiking_foot_routes_line.sld",
                 "type":"WMTS",
@@ -432,7 +434,7 @@
             },
             {
                 "layername": "magosm:bicycle_mtb_routes_line",
-                "nom_court": "Itinéraires cyclables",
+                "nom_court": "Radwege · Itinéraires cyclables · piste ciclabili · bicycle routes",
                 "md_url":"https://wiki.openstreetmap.org/wiki/Cycle_routes",
                 "sld_path":"/styles/france_bicycle_mtb_routes_line.sld",
                 "type":"WMTS",
@@ -464,7 +466,7 @@
             },
             {
                 "layername": "magosm:cycleways_line",
-                "nom_court": "Réseau cyclable",
+                "nom_court": "Radwege · Pistes cyclables · Piste ciclabili · cycleways",
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:highway%3Dcycleway",
                 "sld_path":"/styles/france_cycleways_line.sld",
                 "type":"WMTS",
@@ -484,7 +486,7 @@
             {
 
                 "layername": "magosm:bus_routes_line",
-                "nom_court": "Itinéraires de bus",
+                "nom_court": "Buslinien · Lignes de bus · Linee di autobus · Bus routes",
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:route%3Dbus",
                 "sld_path":"/styles/france_bus_routes_line.sld",
                 "type":"WMS",
@@ -522,7 +524,7 @@
             },
             {
                 "layername": "magosm:tram_ltr_routes_line",
-                "nom_court": "Itinéraires de tramways",
+                "nom_court": "Straßenbahnlinien · Lignes de tramways · Linee di tram · Tram routes",
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:route%3Dtram",
                 "sld_path":"/styles/france_tram_ltr_routes_line.sld",
                 "type":"WMS",
@@ -560,7 +562,7 @@
             },
             {
                 "layername": "magosm:subway_routes_line",
-                "nom_court": "Itinéraires de métro",
+                "nom_court": "U-Bahnlinien · Lignes de métro · Linee della metropolitana · Underground routes",
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:route%3Dsubway",
                 "sld_path":"/styles/france_subway_routes_line.sld",
                 "type":"WMS",
@@ -598,7 +600,7 @@
             },
             {
                 "layername": "magosm:train_routes_line",
-                "nom_court": "Itinéraires de train",
+                "nom_court": "Bahnlinien · Lignes ferroviaires · Linee ferroviarie · Train routes",
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:route%3Dtrain",
                 "sld_path":"/styles/france_train_routes_line.sld",
                 "type":"WMS",
@@ -635,7 +637,7 @@
             },
             {
                 "layername": "magosm:railways_line",
-                "nom_court": "Voies ferrées",
+                "nom_court": "Eisenbahnen · Voies ferrées · Ferrovie · Railways",
                 "md_url":"https://wiki.openstreetmap.org/wiki/Railways",
                 "sld_path":"/styles/france_railway_line.sld",
                 "type":"WMTS",
@@ -671,12 +673,12 @@
         ]
     },
     {
-        "categorie": "Bâti/Occupation du sol",
+        "categorie": "Buildings footprint/Landuse",
         "id_categorie": 3,
         "features": [
             {
                 "layername": "magosm:buildings_polygon",
-                "nom_court": "Bâtiments",
+                "nom_court": "Gebäude · Bâtiments · Edifici · Buildings",
                 "md_url":"https://wiki.openstreetmap.org/wiki/Buildings",
                 "sld_path":"/styles/france_buildings.sld",
                 "type":"WMTS",
@@ -719,7 +721,7 @@
             },
             {
                 "layername": "magosm:proposed",
-                "nom_court": "Propositions de constructions",
+                "nom_court": "Konstruktionsvorschlag · Propositions de constructions · Proposte di costruzione · Construction proposals",
                 "md_url":"",
                 "sld_path":"/styles/france_proposed.sld",
                 "type":"WMTS",
@@ -754,7 +756,7 @@
             },
             {
                 "layername": "magosm:constructions",
-                "nom_court": "Constructions en cours",
+                "nom_court": "Anlagen im Bau · Constructions en cours · Costruzioni in corso · Constructions in progress",
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:building%3Dconstruction",
                 "sld_path":"/styles/france_constructions.sld",
                 "type":"WMTS",
@@ -789,7 +791,7 @@
             },
             {
                 "layername": "magosm:landuses_naturals_polygon",
-                "nom_court": "Occupation du sol",
+                "nom_court": "Bodenbedeckung · Occupation du sol · Occupazione del suolo · Landuses",
                 "maxScaleDenominator":1000000,
                 "md_url":"https://wiki.openstreetmap.org/wiki/Key:landuse",
                 "sld_path":"/styles/france_landuses_naturals.sld",
@@ -827,7 +829,7 @@
             },
             {
                 "layername": "magosm:pnr_polygon",
-                "nom_court": "Parcs Naturels Régionaux",
+                "nom_court": "Regionalen Naturparks · Parcs Naturels Régionaux · Parchi naturali regionali · Regional Nature Parks",
                 "md_url": "https://wiki.openstreetmap.org/wiki/Tag:boundary%3Dprotected_area",
                 "sld_path":"/styles/france_pnr_polygon.sld",
                 "type":"WMTS",
@@ -858,12 +860,12 @@
         ]
     },
      		{
-        "categorie": "Télécommunications",
+        "categorie": "Telecom",
         "id_categorie": 31,
         "features": [
             {
                 "layername": "magosm:telecom_exchange_point",
-                "nom_court": "Noeuds de raccordement",
+                "nom_court": "Angeschlossenen Knoten · Noeuds de raccordement · Snodo di raccordo · Exchange point",
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:telecom%3Dexchange",
                 "sld_path":"/styles/france_telecom_exchange_point.sld",
                 "type":"WMTS",
@@ -900,7 +902,7 @@
             },
             {
                 "layername": "magosm:telecom_fibre_connection_point",
-                "nom_court": "Points de mutualisation Fibre",
+                "nom_court": "Verteilerpunkte Faser · Points de mutualisation Fibre · Punti di distribuzione Fibra · Connection point Fibre",
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:telecom:medium%3Dfibre",
                 "sld_path":"/styles/france_telecom_fibre_connection_point.sld",
                 "type":"WMTS",
@@ -937,7 +939,7 @@
             },
 			{
                 "layername": "magosm:telecom_copper_connection_point",
-                "nom_court": "Sous-répartiteurs cuivre",
+                "nom_court": "Unter den Verteilern Kupfer · Sous-répartiteurs cuivre · Armadio di distribuzione rame · Connection point copper",
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:telecom:medium%3Dcopper",
                 "sld_path":"/styles/france_telecom_copper_connection_point.sld",
                 "type":"WMTS",

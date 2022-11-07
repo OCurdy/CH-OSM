@@ -56,7 +56,7 @@ export class ApiAdresseComponent implements OnInit {
   }
 
   myValueFormatter(data: any): string {
-    return `${data["attrs"]["label"]}`;
+    return `${data["attrs"]["detail"]}`;
   }
 
   ngOnInit() {
