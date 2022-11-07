@@ -177,7 +177,7 @@ export class MapComponent implements OnInit {
     for (var i = layers.length - 1; i >= 0; i--) {
       var categorie = layers[i];
       for (var j = categorie.features.length - 1; j >= 0; j--) {
-        //console.log(categorie.features[j]);
+        console.log(categorie.features[j]);
         categorie.features[j].opacity = 100;
         if (categorie.features[j].type == "WMS") {
           this.mapService.addWMSLayer(categorie.features[j], false);

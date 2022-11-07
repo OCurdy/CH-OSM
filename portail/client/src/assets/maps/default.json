@@ -14,17 +14,13 @@
 
     "LAYERS":[
     {
-        "categorie": "Points of Interest",
+        "categorie": "pois",
         "id_categorie": 1,
         "features": [
            
             {
                 "layername": "magosm:hospitals_point",
                 "nom_court": "Spitals · Hôpitaux · Ospedali · Hospitals",
-                "nom_en": "Hospitals",
-                "nom_fr": "Hôpitaux",
-                "nom_de": "Spitals",
-                "nom_it": "Ospedali",
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:amenity%3Dhospital",
                 "sld_path":"/styles/france_hospitals_point.sld",
                 "type":"WMS",
@@ -292,7 +288,7 @@
     },
     {
         
-        "categorie": "Routes",
+        "categorie": "routes",
         "id_categorie": 2,
         "features": [
             {
@@ -673,7 +669,7 @@
         ]
     },
     {
-        "categorie": "Buildings footprint/Landuse",
+        "categorie": "landuse",
         "id_categorie": 3,
         "features": [
             {
@@ -860,7 +856,7 @@
         ]
     },
      		{
-        "categorie": "Telecom",
+        "categorie": "telecom",
         "id_categorie": 31,
         "features": [
             {
@@ -977,7 +973,7 @@
         ]
     },
     {
-        "categorie": "Mes couches",
+        "categorie": "myLayers",
         "help": "Pour ajouter une couche, faîtes un glissé/déposé d'un fichier ShapeFile (ou de son URL) dans la carte.",
         "id_categorie": 4,
         "features": []

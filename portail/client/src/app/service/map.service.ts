@@ -152,8 +152,7 @@ export class MapService {
   }
 
   getLayersById(id: string): any {
-
-    return this.layers[id];
+        return this.layers[id];
   }
   cleanSelection() {
     this.selectedFeatureSource.clear();
@@ -252,7 +251,7 @@ export class MapService {
   }
   addWMSLayer(layerconfig: any, show: boolean = false) {
     let id = layerconfig.layername;
-    //console.log(id);
+    console.log("addwmslayer: "+id) ;
     let layername = layerconfig.layername;
     if (this.layers[id] == null) {
 
