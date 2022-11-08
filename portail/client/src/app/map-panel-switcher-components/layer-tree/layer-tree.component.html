@@ -38,16 +38,17 @@
                             </label>
                             
                             
-                            <div (click)="onInfo(feature)" class="metadata-circle" [title]="feature.md_url ? 'Fiche de métadonnées' : 'Aucune info pour cette couche'"><b>?</b></div>
+                            <div (click)="onInfo(feature)" class="metadata-circle" [title]="feature.md_url ? 'Metadata' : 'N/A'"><b>?</b></div>
                             
                             <span *ngIf="mapService.isInRange(feature.layername)==false" 
                                 style="cursor:pointer;margin: 3px;vertical-align: middle;"
-                                [title]=" 'panel.visibiltylayertitle' | translate "
+                                title="{{'panel.visibiltylayertitle' | translate }}"
                                 data-container="body"
                                 data-toggle="popover"
                                 data-trigger="hover"
                                 data-html="true"
-                                data-content="<div class='alert alert-warning'><i class='fa fa-warning' aria-hidden='true'></i> la couche n'est pas visible à cette résolution</div>"
+                                data-parent="true"
+                                attr.data-content="<div class='alert alert-warning'><i class='fa fa-warning' aria-hidden='true'></i> {{ 'panel.visibiltylayer' | translate }} </div>"
                                 data-placement="top"
                             >
                                 <i class="fa fa-eye-slash" aria-hidden="true" style="font-size: 18px;"></i>
@@ -61,6 +62,7 @@
                                     <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
                                 </span>
                             </a>
+
                             <div class="collapse" id="{{feature.nom_court_trim}}Collapse" style="align-items: center;">
                                 <div class="card card-body">                                                            
                                     <input #ref
@@ -72,12 +74,12 @@
                                     <span *ngIf="mapService.isInRange(feature.layername)"
                                         style="cursor:pointer;margin: 3px"
                                         (click)="openAttributeTable($event, feature)"
-                                        i18n-title title="{{ 'panel.visibiltytabletitle' | translate }}" 
+                                        attr.title="{{ 'panel.visibiltytabletitle' | translate }}" 
                                         data-container="body"
                                         data-toggle="popover"
                                         data-trigger="hover"
                                         data-html="true"
-                                        data-content="<div class='alert alert-warning'><i class='fa fa-warning' aria-hidden='true'></i> Valeurs attributaires </div>"
+                                        attr.data-content="<div class='alert alert-warning'><i class='fa fa-warning' aria-hidden='true'></i> {{ 'panel.attrvalues' | translate }} </div>"
                                         data-placement="top"
                                         >
                                         <i class="fa fa-th" aria-hidden="true" ></i> {{ 'panel.attributes' | translate }}
@@ -91,7 +93,7 @@
                                         data-toggle="popover"
                                         data-trigger="hover"
                                         data-html="true"
-                                        data-content="<div class='alert alert-warning'><i class='fa fa-warning' aria-hidden='true'></i> Téléchargement de la zone visualisée uniquement</div>"
+                                        attr.data-content="<div class='alert alert-warning'><i class='fa fa-warning' aria-hidden='true'></i> {{ 'panel.zonekml' | translate }}</div>"
                                         data-placement="top"
                                     >
                                         <i class="fa fa-download" aria-hidden="true"></i> kml
@@ -104,7 +106,7 @@
                                         data-toggle="popover"
                                         data-trigger="hover"
                                         data-html="true"
-                                        data-content="<div class='alert alert-warning'><i class='fa fa-warning' aria-hidden='true'></i>Téléchargement de la zone visualisée uniquement</div>"
+                                        attr.data-content="<div class='alert alert-warning'><i class='fa fa-warning' aria-hidden='true'></i>{{ 'panel.zoneshp' | translate }}</div>"
                                         data-placement="top"
                                     >
                                         <i class="fa fa-download" aria-hidden="true"></i> shp
@@ -117,7 +119,7 @@
                                         data-toggle="popover"
                                         data-trigger="hover"
                                         data-html="true"
-                                        data-content="<div class='alert alert-warning'><i class='fa fa-warning' aria-hidden='true'></i>Téléchargement du style au format sld, les pictos ne sont pas inclus</div>"
+                                        attr.data-content="<div class='alert alert-warning'><i class='fa fa-warning' aria-hidden='true'></i>{{ 'panel.styledownload' | translate }}</div>"
                                         data-placement="top"
                                     >
                                         <i class="fa fa-download" aria-hidden="true"></i> sld

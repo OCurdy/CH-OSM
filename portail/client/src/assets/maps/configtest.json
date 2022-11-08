@@ -29,10 +29,6 @@
             {
                 "layername": "magosm:hospitals_point",
                 "nom_court": "Hospitals",
-                "nom_fr": "Hopitaux",
-                "nom_en": "Hospitals",
-                "nom_de": "Spitals",
-                "nom_it": "Ospedali",
                 "md_url":"http://open.isogeo.com/s/6da366a3991f4d42aa9d2a8f58a73af1/pHUOzxi2EayRSGnbHCbdZOXzQGN80/r/2da9b1d7a43343769519d4e7f01c5608",
                 "sld_url":"http://magosm.magellium.com/geoserver/styles/france_hospitals_point.sld",
                 "type":"WMS",

@@ -32,10 +32,13 @@
   </tr>
 </tbody></table>
 
-<div class="card row" id="panel-switcher-wrapper" style="overflow-y:auto;overflow-x:hidden;" [title]="'panel.explanationtitle' | translate"
-  data-container="app-main"
+<div class="card row" id="panel-switcher-wrapper" style="overflow-y:auto;overflow-x:hidden;" [attr.title]=" 'panel.explanationtitle' | translate "
+  data-container="body"
   data-toggle="popover"
-  data-content="Sélectionnez une ou plusieurs couches de données dans le menu de droite, zoomez sur une zone puis cliquez sur un objet pour obtenir des informations"
+  data-html="true"
+  translate="panel.explanation"
+
+  attr.data-content="<div>{{'panel.explanation' | translate}}</div>"
   data-placement="right"
 >
   <div class="panel-switcher-nav" role="tab">

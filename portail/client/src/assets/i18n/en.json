@@ -3,13 +3,14 @@
 
     "main.bug":"Report a bug to Gitlab",
     "main.permalink":"Permalink",
+
     "button.topics":"Themes",
     "button.parameter":"Parameters",
     "button.legend":"Legend",
 
 
     "panel.explanationtitle":"How to start?",
-    "panel.explanation": "Select one or more data layers from the right menu, zoom to an area and then click on an object for information",
+    "panel.explanation": "Select one or more data layers from the right menu, zoom to an area and then click on an object for information!",
     "panel.visibiltylayertitle": "Layer not visible at this resolution",
     "panel.visibiltylayer": "The layer is not visible at this resolution",
     "panel.visibiltytabletitle": "Attribute table of the displayed area only",
@@ -123,5 +124,13 @@
     "change_config.heatmap":"Heatmap",
     "feature.website":"Website",
     "feature.email":"E-mail address",
-    "feature.noinfo":"No information to display for the object"
+    "feature.noinfo":"No information to display for the object",
+
+    "attribute.nodata":"No data",
+    "attribute.nberpage":"Number of items per page",
+    "attribute.gopage":"Go to page :",
+    "attribute.previouspage":"Previous page :",
+    "attribute.nextpage":"Next page :",
+    "attribute.on":"of",
+    "attribute.elements":"elements"
     }

@@ -1,5 +1,6 @@
 {
     "apiadresse.location":"ricerca di un luogo...",
+
     "main.bug":"Segnalare un'anomalia",
     "main.permalink":"Permalink",
 
@@ -9,9 +10,21 @@
     
     "panel.attributes":"Attributi",
 
+    "panel.explanationtitle":"Come posso iniziare?",
+    "panel.explanation": "Seleziona uno o più livelli di dati dal menu a destra, ingrandisci un'area e fai clic su un oggetto per ottenere informazioni!",
+    "panel.visibiltylayertitle": "Livello non visibile a questa risoluzione",
+    "panel.visibiltytabletitle": "Tabella attributiva dell'area visualizzata solo",
+    "panel.attrvalues": "Valori attributivi",
+    "panel.kmldownloadtitle": "Download KML",
+    "panel.zonekml": "Solo download dell'area visualizzata",
+    "panel.shpdownloadtitle": "Download Shapefile",
+    "panel.zoneshp": "Solo download dell'area visualizzata",
+    "panel.styledownloadtitle": "Download dello stile",
+    "panel.styledownload": "Download lo stile in formato sld, i pictos non sono inclusi",
+
     "pois":"Punto di interesse",
 
-    "magosm:hospitals_point":"Hôpitaux",
+    "magosm:hospitals_point":"Ospedali",
     "magosm:clinics_point":"Cliniche",
     "magosm:pharmacies_point":"Farmacie",
     "magosm:social_facility_point":"Strutture sociali",
@@ -19,7 +32,7 @@
     "magosm:shops_point":"Negozi",
     "magosm:schools_point":"Scuole",
 
-    "routes":"Routes & Itinerari",
+    "routes":"Rotte & Itinerari",
 
     "magosm:motorways_line":"Autostrade",
     "magosm:highways_line":"Rete stradale",
@@ -53,7 +66,7 @@
     "panel.parameters":"Impostazioni della scheda",
     "panel.basemap":"mappa di sfondo",
     "panel.transparency":"trasparenza",
-    "change.info":"informazioni sull'oggetto",
+    "change.info":"Informazioni sull'oggetto",
     "change.elements":"elementi vicini",
     "change.interval":"nessun cambiamento nell'intervallo considerato",
     "change.user":"Ultimo utente",
@@ -101,5 +114,14 @@
     "change_config.heatmap":"carta di calore",
     "feature.website":"sito web",
     "feature.email":"indirizzo e-mail",
-    "feature.noinfo":"nessuna informazione da visualizzare per l'oggetto"
+    "feature.noinfo":"nessuna informazione da visualizzare per l'oggetto",
+
+
+    "attribute.nodata":"Nessun dato",
+    "attribute.nberpage":"Numero di elementi per pagina",
+    "attribute.gopage":"Andare alla pagina :",
+    "attribute.previouspage":"Pagina precedente :",
+    "attribute.nextpage":"Pagina successiva :",
+    "attribute.on":"di",
+    "attribute.elements":"elementi"
 }

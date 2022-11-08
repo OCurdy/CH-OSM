@@ -195,13 +195,13 @@ export class PaginationService {
     }
     
     public actualizeRangePage(){
-        this.rangePage.nativeElement.innerText = "Pas de données";
+        this.rangePage.nativeElement.innerText = "N/A";
         if (this.data && this.data.length>0){
             let fisrtRangeElement = this.getPageIndex() * parseInt(this.numberPerPage.nativeElement.value) ;
             let lastRangeElement = fisrtRangeElement+1 +  + parseInt( this.numberPerPage.nativeElement.value); 
             lastRangeElement = (lastRangeElement > this.getTotalElement() ? this.getTotalElement():lastRangeElement);
             
-            this.rangePage.nativeElement.innerText = (fisrtRangeElement+1) + " - " + lastRangeElement +" sur " + this.getTotalElement() +" éléments" ;
+            this.rangePage.nativeElement.innerText = (fisrtRangeElement+1) + " - " + lastRangeElement +" | Total: " + this.getTotalElement() ;
         } 
     }
 

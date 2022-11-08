@@ -1,7 +1,7 @@
 {
     "apiadresse.location": "Rechercher un lieu...",
 
-
+   
     "main.bug": "Signaler une anomalie",
     "main.permalink": "Permalien",
     "button.topics": "Thématiques",
@@ -13,7 +13,7 @@
     "panel.explanationtitle":"Comment démarrer?",
     "panel.explanation": "Sélectionnez une ou plusieurs couches de données dans le menu de droite, zoomez sur une zone puis cliquez sur un objet pour obtenir des information!",
     "panel.visibiltylayertitle": "Couche non visible à cette résolution",
-    "panel.visibiltytabletitle": "Table attributaire de la zone visualisée uniquement",
+    "panel.visibiltytable": "Table attributaire de la zone visualisée uniquement",
     "panel.attrvalues": "Valeurs attributaires",
     "panel.kmldownloadtitle": "Téléchargement KML",
     "panel.zonekml": "Téléchargement de la zone visualisée uniquement",
@@ -62,7 +62,7 @@
    
     "myLayers":"Mes Couches",
   
-
+    
 
     "panel.parameters":"Paramètres de la carte",
     "panel.basemap":"Fond cartographique",
@@ -123,8 +123,13 @@
 
     "feature.website":"Site web",
     "feature.email":"Adresse e-mail",
-    "feature.noinfo":"Aucune information à afficher pour l'objet"
+    "feature.noinfo":"Aucune information à afficher pour l'objet",
 
-
-    
+    "attribute.nodata":"Pas de données",
+    "attribute.nberpage":"Nombre d'élément par page",
+    "attribute.gopage":"Aller à la page :",
+    "attribute.previouspage":"Page précédente :",
+    "attribute.nextpage":"Page suivante :",
+    "attribute.on":"sur",
+    "attribute.elements":"éléments"
 }

@@ -1,4 +1,5 @@
 {"apiadresse.location":"Suche nach einem Ort...",
+
 "main.bug":"Eine Anomalie melden",
 "main.permalink":"Permalink",
 "button.topics":"Thematischen",
@@ -6,6 +7,17 @@
 "button.legend":"Legende",
 "panel.attributes":"Attribute",
 
+"panel.explanationtitle":"Wie fange ich an?",
+"panel.explanation": "Wählen Sie eine oder mehrere Datenebenen im rechten Menü aus, zoomen Sie in ein Feld und klicken Sie dann auf ein Objekt, um Informationen zu erhalten!",
+"panel.visibiltylayertitle": "Schicht nicht sichtbar bei dieser Auflösung",
+"panel.visibiltytabletitle": "Nur Attributtabelle des angezeigten Bereichs",
+"panel.attrvalues": "Attributive Werte",
+"panel.kmldownloadtitle": "Download KML",
+"panel.zonekml": "Nur der angezeigte Bereich herunterladen",
+"panel.shpdownloadtitle": "Download Shapefile",
+"panel.zoneshp": "Nur der angezeigte Bereich herunterladen",
+"panel.styledownloadtitle": "Download des Stils",
+"panel.styledownload": "Download des Stils im Sld-Format, Piktogramme sind nicht enthalten",
 
 "pois":"Sehenswürdigkeit",
 
@@ -99,5 +111,15 @@
 "change_config.heatmap":"Wärmekarte",
 "feature.website":"Web-Seiten",
 "feature.email":"E-Mail-Adresse",
-"feature.noinfo":"keine Informationen für das Objekt anzeigen"
+"feature.noinfo":"keine Informationen für das Objekt anzeigen",
+
+"attribute.nodata":"Keine Daten",
+"attribute.nberpage":"Anzahl der Elemente pro Seite",
+"attribute.gopage":"Gehe zu Seite :",
+"attribute.previouspage":"Vorherige Seite :",
+"attribute.nextpage":"Nächsten Seite :",
+"attribute.on":"von",
+"attribute.elements":"Elemente"
+
+
 }

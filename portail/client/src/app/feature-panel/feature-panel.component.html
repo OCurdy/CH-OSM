@@ -16,7 +16,7 @@
             <div id="features_nearby_list" class="dropdown">
               <button class="btn btn-secondary btn-lg btn-block btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
               (click)="dropdownMenuSelected()" style="font-size:0.8em;">
-                <a>{{selectedFeatures.length-1}} élément(s) à proximité</a> <!-- -1 because the selectedFeature is in the selectedFeatureS -->
+                <a>{{selectedFeatures.length-1}} {{ 'change.elements' | translate }}</a> <!-- -1 because the selectedFeature is in the selectedFeatureS -->
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <span *ngIf="mapService.getNumberOfVisibleLayers()>1;else onlyOneLayer;">

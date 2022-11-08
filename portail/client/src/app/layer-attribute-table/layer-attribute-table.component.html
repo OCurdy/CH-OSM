@@ -52,7 +52,7 @@
                 </table>  
               </div>   
               <ng-template #noDataBlock>
-                Pas de données
+                {{ 'attribute.nodata' | translate }}
               </ng-template>
               <div id="loadingWFS" *ngIf="loadingWFS">
                 <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
@@ -66,13 +66,13 @@
           <div class="pull-left">
             <ul class="pagination">
               <li class="page-item pageSize disabled">
-                <label for="pet-select">Nombre d'élément par page</label>
+                <label for="pet-select">{{ 'attribute.nberpage' | translate }}</label>
                 <select #pageSize (change)="onChangePageSize()">
                   <option *ngFor="let pageSize of paginationService.getPageSizeArray()" value={{pageSize}}>{{pageSize}}</option>
                 </select>
               </li>
             <li class="page-item disabled">
-              <label for="pet-select">Aller à la page : </label>
+              <label for="pet-select">{{ 'attribute.gopage' | translate }} </label>
               <input #pageSizeInput type="text" (keydown)="handlePageSizeInputKeyDown($event)">
             </li>  
             <li class="page-item" >
@@ -83,7 +83,7 @@
         <div class="pull-right">
           <ul class="pagination">
             <li class="page-item disabled">
-              <a class="page-link" #previousPage href="#" tabindex="-1" aria-disabled="true" disabled (click)="onChangePreviousPage()">Page précédente</a>
+              <a class="page-link" #previousPage href="#" tabindex="-1" aria-disabled="true" disabled (click)="onChangePreviousPage()">{{ 'attribute.previouspage' | translate }}</a>
             </li>
             <li class="page-item disabled" ><a class="page-link active" #pageItem1 (click)="onChangePageIndex($event)" href="#">1</a></li>
             <li class="page-item disabled"><a class="page-link" #pageItem2 (click)="onChangePageIndex($event)" href="#">2</a></li>
@@ -95,7 +95,7 @@
               <li class="page-item"><a class="page-link" #pageLastItem (click)="onChangeLastPage()" href="#">{{paginationService.getLastPageIndex()}}</a></li>
             </ng-container>
             <li class="page-item disabled">
-              <a class="page-link" #nextPage href="#" (click)="onChangeNextPage()" >Page suivante</a>
+              <a class="page-link" #nextPage href="#" (click)="onChangeNextPage()" >{{ 'attribute.nextpage' | translate }}</a>
             </li>
           </ul>
         </div>

@@ -136,7 +136,7 @@
                 "nom_court": "Sozialeinrichtung · Structures sociales · Strutture sociali · Social facilities",
                 "md_url":"https://wiki.openstreetmap.org/wiki/Key:social_facility",
                 "sld_path":"/styles/france_social_facility_point_cluster.sld",
-                "type":"WMTS",
+                "type":"WMS",
                 "download_kml":true,
                 "download_shp":true,
                 "feature_main_info": [ 

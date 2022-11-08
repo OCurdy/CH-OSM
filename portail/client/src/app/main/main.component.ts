@@ -7,6 +7,7 @@ import { UserContextService } from '../service/user-context.service';
 import { UserContext } from '../model/UserContext';
 import { HttpClient } from '@angular/common/http';
 import { ConfigService } from 'app/service/config.service';
+import {TranslateService} from '@ngx-translate/core';
 
 declare var $: any;
 declare var ol: any;
@@ -49,7 +50,8 @@ export class MainComponent {
     private http: HttpClient,
     public layerChangeService: LayerChangeService,
     public userContextService: UserContextService,
-    public configService: ConfigService
+    public configService: ConfigService,
+    private translate:TranslateService,
 ) {
     this.loadConfigAndUserContext();
     this.layerChangeService.getAnnounceLayerChangeEventEmitter().subscribe(
@@ -112,6 +114,7 @@ export class MainComponent {
   onFeatureInfo(featureInfo){
     this.selectedFeature=featureInfo;
   }  
+  useLanguage(language:string){this.translate.use(language);}
 }
 
   

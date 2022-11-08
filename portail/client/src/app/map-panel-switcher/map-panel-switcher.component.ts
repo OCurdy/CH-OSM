@@ -58,6 +58,7 @@ export class MapPanelSwitcherComponent implements OnInit {
     });
    
     this.setPanelToShow('layerTree');
+    
   }
 
 
@@ -78,6 +79,7 @@ export class MapPanelSwitcherComponent implements OnInit {
         if((oldPanel == newPanel)){//si on clique sur l'option actuellement visible : on ferme le panneau
           this.closePanel();
         }
+        
       }
     
 
@@ -90,5 +92,8 @@ export class MapPanelSwitcherComponent implements OnInit {
   }
 
 
-  useLanguage(language:string){this.translate.use(language);}
+  useLanguage(language:string){this.translate.use(language);
+    }
+
+  
 }
