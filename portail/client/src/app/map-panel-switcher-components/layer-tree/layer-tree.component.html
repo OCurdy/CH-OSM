@@ -42,13 +42,13 @@
                             
                             <span *ngIf="mapService.isInRange(feature.layername)==false" 
                                 style="cursor:pointer;margin: 3px;vertical-align: middle;"
-                                title="{{'panel.visibiltylayertitle' | translate }}"
+                                title="Layer visibility"
                                 data-container="body"
                                 data-toggle="popover"
                                 data-trigger="hover"
                                 data-html="true"
                                 data-parent="true"
-                                attr.data-content="<div class='alert alert-warning'><i class='fa fa-warning' aria-hidden='true'></i> {{ 'panel.visibiltylayer' | translate }} </div>"
+                                attr.data-content="<div class='alert alert-warning'><i class='fa fa-warning' aria-hidden='true'></i> {{ 'panel.visibiltylayer' | translate }}</div>"
                                 data-placement="top"
                             >
                                 <i class="fa fa-eye-slash" aria-hidden="true" style="font-size: 18px;"></i>
@@ -71,15 +71,15 @@
                                         (change)="changeOpacity($event,feature,ref.value);false"
                                     />
                                 
-                                    <span *ngIf="mapService.isInRange(feature.layername)"
+                                    <span 
                                         style="cursor:pointer;margin: 3px"
                                         (click)="openAttributeTable($event, feature)"
-                                        attr.title="{{ 'panel.visibiltytabletitle' | translate }}" 
+                                        title="Attribute table" 
                                         data-container="body"
                                         data-toggle="popover"
                                         data-trigger="hover"
                                         data-html="true"
-                                        attr.data-content="<div class='alert alert-warning'><i class='fa fa-warning' aria-hidden='true'></i> {{ 'panel.attrvalues' | translate }} </div>"
+                                        attr.data-content="<div class='alert alert-warning'><i class='fa fa-warning' aria-hidden='true'></i> {{ 'panel.visibiltytable' | translate }} </div>"
                                         data-placement="top"
                                         >
                                         <i class="fa fa-th" aria-hidden="true" ></i> {{ 'panel.attributes' | translate }}
@@ -88,7 +88,7 @@
                                     <span *ngIf="feature.download_kml" 
                                         style="cursor:pointer;margin: 3px"
                                         (click)="onKmlDownload($event,feature)" 
-                                        title="{{ 'panel.kmldownloadtitle' | translate }}"
+                                        title="Download KML"
                                         data-container="body"
                                         data-toggle="popover"
                                         data-trigger="hover"
@@ -101,7 +101,7 @@
                                     <span *ngIf="feature.download_shp"
                                         style="cursor:pointer;margin: 3px"
                                         (click)="onShpDownload($event,feature)"
-                                        title="{{ 'panel.shpdownloadtitle' | translate }}" 
+                                        title="Download SHP" 
                                         data-container="body"
                                         data-toggle="popover"
                                         data-trigger="hover"
@@ -114,7 +114,7 @@
                                     <span *ngIf="feature.sld_path"
                                         style="cursor:pointer;margin: 3px"
                                         (click)="onSldDownload($event,feature)"
-                                        title="{{ 'panel.styledownloadtitle' | translate }}"
+                                        title="Download SLD"
                                         data-container="body"
                                         data-toggle="popover"
                                         data-trigger="hover"

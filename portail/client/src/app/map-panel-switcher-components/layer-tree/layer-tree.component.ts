@@ -7,7 +7,7 @@ import { UserContext } from '../../model/UserContext';
 import { environment } from '../../../environments/environment';
 import { LayerAndCategory } from 'app/model/LayerAndCategory';
 import { LayerAttributeTableComponent } from 'app/layer-attribute-table/layer-attribute-table.component';
-import {TranslateService} from '@ngx-translate/core';
+
 
 
 
@@ -30,7 +30,7 @@ const average = arr => arr.reduce((p, c) => p + c, 0) / arr.length;
 export class LayerTreeComponent implements OnInit {
 
   public selectedLayer: Layer;
-  public language: TranslateService;
+  
    
   
   layervariables = config.LAYERS;
@@ -48,12 +48,11 @@ export class LayerTreeComponent implements OnInit {
 
   constructor(
     private mapService: MapService,
-    private translate: TranslateService,
     public layerChangeService: LayerChangeService) {  
 }
   
   
-  useLanguage(language:string){this.translate.use(language)};
+
   
   ngOnInit() {
     let self= this;

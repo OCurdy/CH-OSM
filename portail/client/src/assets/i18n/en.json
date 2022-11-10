@@ -14,6 +14,7 @@
     "panel.visibiltylayertitle": "Layer not visible at this resolution",
     "panel.visibiltylayer": "The layer is not visible at this resolution",
     "panel.visibiltytabletitle": "Attribute table of the displayed area only",
+    "panel.visibiltytable": "Attribute table of the displayed area only",
     "panel.attrvalues": "Attribute values",
     "panel.kmldownloadtitle": "KML download",
     "panel.zonekml": "Downloading the viewing area only",
@@ -132,5 +133,9 @@
     "attribute.previouspage":"Previous page :",
     "attribute.nextpage":"Next page :",
     "attribute.on":"of",
-    "attribute.elements":"elements"
+    "attribute.elements":"elements",
+
+    "alert.display":"Unable to display layer at this level.",
+    "alert.display2":"Zoom to the level",
+    "alert.display3":"to see the layer"
     }

@@ -9,6 +9,7 @@ import { LayerChangeService } from '../service/layer-change.service';
 import { UserContext } from '../model/UserContext';
 import { environment } from '../../environments/environment';
 import { LayerAndCategory } from 'app/model/LayerAndCategory';
+import {TranslateService} from '@ngx-translate/core';
 
 declare var proj4: any;
 declare var $: any;
@@ -85,6 +86,7 @@ export class MapComponent implements OnInit {
   @ViewChild(ApiAdresseComponent) public apiadresse: ApiAdresseComponent;
 
   constructor(
+    private translate:TranslateService,
     public mapService: MapService,
     private http: HttpClient,
     public router: Router,
@@ -211,6 +213,10 @@ export class MapComponent implements OnInit {
     //console.log(zoom)
     document.getElementById('map-zoom-level').innerHTML = '<center>' + Math.round(zoom) +'</center>';
   }
+  //use language selected
+
+  useLanguage(language:string){this.translate.use(language);
+  }
 
 
   updateState(newSelectedLayer) {//fonction appelée lorsque l'utilisateur choisi un nouvel indicateur
@@ -223,7 +229,7 @@ export class MapComponent implements OnInit {
       if (newSelectedLayer.maxScaleDenominator) {
         if (this.mapService.getScale() > newSelectedLayer.maxScaleDenominator && !layer.getVisible()) {
           var minZoom = this.mapService.getZoomFromScale(newSelectedLayer.maxScaleDenominator);
-          alert("Impossible d'afficher la couche à ce niveau.\nZoomez jusqu'au niveau " + minZoom + " (échelle du 1/" + newSelectedLayer.maxScaleDenominator +"ème) pour voir la couche.")
+          alert(this.translate.instant('alert.display')+"\n"+this.translate.instant('alert.display2') + minZoom + " ( 1/" + newSelectedLayer.maxScaleDenominator +"). "+this.translate.instant('alert.display2'))
         }
       }
       layer.setVisible(!layer.getVisible());

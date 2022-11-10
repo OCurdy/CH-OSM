@@ -37,6 +37,11 @@ export class MapPanelSwitcherComponent implements OnInit {
     public cdr: ChangeDetectorRef
   ) { 
   }
+  //use language selected
+
+  useLanguage(language:string){this.translate.use(language);
+  }
+  
 
   ngOnInit() {
     var self = this;
@@ -47,6 +52,8 @@ export class MapPanelSwitcherComponent implements OnInit {
       $('#panel-switcher-wrapper').popover('hide');
       e.preventDefault();
       self.closePanel();
+      
+      
     });
     $(".btn-panel-switcher").click(function(e) {
       e.preventDefault();
@@ -91,9 +98,6 @@ export class MapPanelSwitcherComponent implements OnInit {
     $("#panel-switcher-wrapper").toggleClass("active");
   }
 
-
-  useLanguage(language:string){this.translate.use(language);
-    }
 
   
 }

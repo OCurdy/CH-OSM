@@ -1,5 +1,5 @@
 {
-    "apiadresse.location":"ricerca di un luogo...",
+    "apiadresse.location":"Ricerca di un luogo...",
 
     "main.bug":"Segnalare un'anomalia",
     "main.permalink":"Permalink",
@@ -13,7 +13,9 @@
     "panel.explanationtitle":"Come posso iniziare?",
     "panel.explanation": "Seleziona uno o più livelli di dati dal menu a destra, ingrandisci un'area e fai clic su un oggetto per ottenere informazioni!",
     "panel.visibiltylayertitle": "Livello non visibile a questa risoluzione",
+    "panel.visibiltylayer": "Il livello non è visibile a questa risoluzione",
     "panel.visibiltytabletitle": "Tabella attributiva dell'area visualizzata solo",
+    "panel.visibiltytable": "Tabella degli attributi solo dell'area visualizzata",
     "panel.attrvalues": "Valori attributivi",
     "panel.kmldownloadtitle": "Download KML",
     "panel.zonekml": "Solo download dell'area visualizzata",
@@ -123,5 +125,9 @@
     "attribute.previouspage":"Pagina precedente :",
     "attribute.nextpage":"Pagina successiva :",
     "attribute.on":"di",
-    "attribute.elements":"elementi"
+    "attribute.elements":"elementi",
+
+    "alert.display":"Impossibile visualizzare il strato a questo livello.",
+    "alert.display2":"Ingrandisci fino al livello",
+    "alert.display3":"per vedere il strato"
 }

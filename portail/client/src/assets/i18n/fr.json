@@ -13,6 +13,7 @@
     "panel.explanationtitle":"Comment démarrer?",
     "panel.explanation": "Sélectionnez une ou plusieurs couches de données dans le menu de droite, zoomez sur une zone puis cliquez sur un objet pour obtenir des information!",
     "panel.visibiltylayertitle": "Couche non visible à cette résolution",
+    "panel.visibiltylayer": " La couche n'est pas visible à cette résolution",
     "panel.visibiltytable": "Table attributaire de la zone visualisée uniquement",
     "panel.attrvalues": "Valeurs attributaires",
     "panel.kmldownloadtitle": "Téléchargement KML",
@@ -131,5 +132,9 @@
     "attribute.previouspage":"Page précédente :",
     "attribute.nextpage":"Page suivante :",
     "attribute.on":"sur",
-    "attribute.elements":"éléments"
+    "attribute.elements":"éléments",
+
+    "alert.display":"Impossible d'afficher la couche à ce niveau.",
+    "alert.display2":"Zoomez jusqu'au niveau",
+    "alert.display3":"pour voir la couche"
 }

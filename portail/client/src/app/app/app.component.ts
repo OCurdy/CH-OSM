@@ -20,7 +20,7 @@ export class AppComponent {
   * FROM https://stackoverflow.com/questions/38644314/changing-the-page-title-using-the-angular-2-new-router
    */
   constructor(titleService:Title, router:Router, activatedRoute:ActivatedRoute, private translate: TranslateService) {
-    translate.setDefaultLang('en');
+    translate.setDefaultLang('fr');
     router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         const title = this.getTitle(router.routerState, router.routerState.root).join('-');
