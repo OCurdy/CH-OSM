@@ -86,6 +86,19 @@ export class LayerTreeComponent implements OnInit {
       }
     }
   }
+  onGeopkgDownload(event, variable: Layer): void {
+    event.stopPropagation();
+    this.mapService.geopkgExport(variable);
+  }
+
+  onJsonDownload(event, variable: Layer): void {
+    event.stopPropagation();
+    this.mapService.jsonExport(variable);
+  }
+  onCsvDownload(event, variable: Layer): void {
+    event.stopPropagation();
+    this.mapService.csvExport(variable);
+  }
 
   onKmlDownload(event, variable: Layer): void {
     event.stopPropagation();

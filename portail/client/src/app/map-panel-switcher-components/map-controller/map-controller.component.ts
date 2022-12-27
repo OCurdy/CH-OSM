@@ -25,7 +25,7 @@ export class MapControllerComponent implements AfterViewInit {
       }
     );
   }
-
+  
   ngOnInit() {
     //récupère le baseLayer du userContext
     $('option[value='+this.userContext.bLay+']').attr('selected', 'selected');

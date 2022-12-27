@@ -24,6 +24,9 @@
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:amenity%3Dhospital",
                 "sld_path":"/styles/france_hospitals_point.sld",
                 "type":"WMS",
+                "download_gpkg":true,
+                "download_csv":true,
+                "download_json":true,
                 "download_kml":true,
                 "download_shp":true,
                 "feature_main_info": [ 
@@ -59,6 +62,9 @@
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:amenity%3Dclinic",
                 "sld_path":"/styles/france_clinics_point.sld",
                 "type":"WMS",
+                "download_gpkg":true,
+                "download_csv":true,
+                "download_json":true,
                 "download_kml":true,
                 "download_shp":true,
                 "feature_main_info": [
@@ -98,6 +104,9 @@
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:amenity%3Dpharmacy",
                 "sld_path":"/styles/france_pharmacies_point.sld",
                 "type":"WMS",
+                "download_gpkg":true,
+                "download_csv":true,
+                "download_json":true,
                 "download_kml":true,
                 "download_shp":true,
                 "feature_main_info": [
@@ -137,6 +146,9 @@
                 "md_url":"https://wiki.openstreetmap.org/wiki/Key:social_facility",
                 "sld_path":"/styles/france_social_facility_point_cluster.sld",
                 "type":"WMS",
+                "download_gpkg":true,
+                "download_csv":true,
+                "download_json":true,
                 "download_kml":true,
                 "download_shp":true,
                 "feature_main_info": [ 
@@ -177,6 +189,9 @@
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:amenity%3Dschool",
                 "sld_path":"/styles/france_schools_point.sld",
                 "type":"WMS",
+                "download_gpkg":true,
+                "download_csv":true,
+                "download_json":true,
                 "download_kml":true,
                 "download_shp":true,
                 "feature_main_info": [
@@ -211,6 +226,9 @@
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:amenity%3Dpolice",
                 "sld_path":"/styles/france_police_point.sld",
                 "type":"WMS",
+                "download_gpkg":true,
+                "download_csv":true,
+                "download_json":true,
                 "download_kml":true,
                 "download_shp":true,
                 "feature_main_info": [
@@ -250,6 +268,9 @@
                 "md_url":"https://wiki.openstreetmap.org/wiki/Key:shop",
                 "sld_path":"/styles/france_shops_point.sld",
                 "type":"WMS",
+                "download_gpkg":true,
+                "download_csv":true,
+                "download_json":true,
                 "download_kml":true,
                 "download_shp":true,
                 "feature_main_info": [
@@ -297,6 +318,9 @@
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:highway%3Dmotorway",
                 "sld_path":"/styles/france_motorways_line.sld",
                 "type":"WMS",
+                "download_gpkg":true,
+                "download_csv":true,
+                "download_json":true,
                 "download_kml":true,
                 "download_shp":true,
                 "feature_main_info": [
@@ -331,6 +355,9 @@
                 "md_url":"https://wiki.openstreetmap.org/wiki/Highways",
                 "sld_path":"/styles/france_highways_line.sld",
                 "type":"WMTS",
+                "download_gpkg":true,
+                "download_csv":true,
+                "download_json":true,
                 "download_kml":true,
                 "download_shp":true,
                 "feature_main_info": [
@@ -365,6 +392,9 @@
                 "md_url":"https://wiki.openstreetmap.org/wiki/Highways",
                 "sld_path":"/styles/france_highways_line.sld",
                 "type":"WMS",
+                "download_gpkg":true,
+                "download_csv":true,
+                "download_json":true,
                 "download_kml":true,
                 "download_shp":true,
                 "feature_main_info": [
@@ -399,6 +429,9 @@
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:route%3Dfoot",
                 "sld_path":"/styles/france_hiking_foot_routes_line.sld",
                 "type":"WMTS",
+                "download_gpkg":true,
+                "download_csv":true,
+                "download_json":true,
                 "download_kml":true,
                 "download_shp":true,
                 "feature_main_info": [
@@ -434,6 +467,9 @@
                 "md_url":"https://wiki.openstreetmap.org/wiki/Cycle_routes",
                 "sld_path":"/styles/france_bicycle_mtb_routes_line.sld",
                 "type":"WMTS",
+                "download_gpkg":true,
+                "download_csv":true,
+                "download_json":true,
                 "download_kml":true,
                 "download_shp":true,
                 "feature_main_info": [
@@ -467,6 +503,9 @@
                 "sld_path":"/styles/france_cycleways_line.sld",
                 "type":"WMTS",
                 "maxScaleDenominator":300000,
+                "download_gpkg":true,
+                "download_csv":true,
+                "download_json":true,
                 "download_kml":true,
                 "download_shp":true,
                 "feature_main_info": [
@@ -486,6 +525,9 @@
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:route%3Dbus",
                 "sld_path":"/styles/france_bus_routes_line.sld",
                 "type":"WMS",
+                "download_gpkg":true,
+                "download_csv":true,
+                "download_json":true,
                 "download_kml":true,
                 "download_shp":true,
                 "feature_main_info":[
@@ -524,6 +566,9 @@
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:route%3Dtram",
                 "sld_path":"/styles/france_tram_ltr_routes_line.sld",
                 "type":"WMS",
+                "download_gpkg":true,
+                "download_csv":true,
+                "download_json":true,
                 "download_kml":true,
                 "download_shp":true,
                 "feature_main_info":[
@@ -562,6 +607,9 @@
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:route%3Dsubway",
                 "sld_path":"/styles/france_subway_routes_line.sld",
                 "type":"WMS",
+                "download_gpkg":true,
+                "download_csv":true,
+                "download_json":true,
                 "download_kml":true,
                 "download_shp":true,
                 "feature_main_info":[
@@ -600,6 +648,9 @@
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:route%3Dtrain",
                 "sld_path":"/styles/france_train_routes_line.sld",
                 "type":"WMS",
+                "download_gpkg":true,
+                "download_csv":true,
+                "download_json":true,
                 "download_kml":true,
                 "download_shp":true,
                 "feature_main_info":[
@@ -638,6 +689,9 @@
                 "sld_path":"/styles/france_railway_line.sld",
                 "type":"WMTS",
                 "maxScaleDenominator":1000000,
+                "download_gpkg":true,
+                "download_csv":true,
+                "download_json":true,
                 "download_kml":true,
                 "download_shp":true,
                 "feature_main_info": [
@@ -679,6 +733,9 @@
                 "sld_path":"/styles/france_buildings.sld",
                 "type":"WMTS",
                 "maxScaleDenominator":250000,
+                "download_gpkg":true,
+                "download_csv":true,
+                "download_json":true,
                 "download_kml":true,
                 "download_shp":true,
                 "feature_main_info":[
@@ -721,6 +778,9 @@
                 "md_url":"",
                 "sld_path":"/styles/france_proposed.sld",
                 "type":"WMTS",
+                "download_gpkg":true,
+                "download_csv":true,
+                "download_json":true,
                 "download_kml":true,
                 "download_shp":true,
                 "feature_main_info":[
@@ -756,6 +816,9 @@
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:building%3Dconstruction",
                 "sld_path":"/styles/france_constructions.sld",
                 "type":"WMTS",
+                "download_gpkg":true,
+                "download_csv":true,
+                "download_json":true,
                 "download_kml":true,
                 "download_shp":true,
                 "feature_main_info":[
@@ -792,6 +855,9 @@
                 "md_url":"https://wiki.openstreetmap.org/wiki/Key:landuse",
                 "sld_path":"/styles/france_landuses_naturals.sld",
                 "type":"WMTS",
+                "download_gpkg":true,
+                "download_csv":true,
+                "download_json":true,
                 "download_kml":true,
                 "download_shp":true,
                 "feature_main_info":[
@@ -829,6 +895,9 @@
                 "md_url": "https://wiki.openstreetmap.org/wiki/Tag:boundary%3Dprotected_area",
                 "sld_path":"/styles/france_pnr_polygon.sld",
                 "type":"WMTS",
+                "download_gpkg":true,
+                "download_csv":true,
+                "download_json":true,
                 "download_kml":true,
                 "download_shp":true,
                 "feature_main_info": [
@@ -865,6 +934,9 @@
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:telecom%3Dexchange",
                 "sld_path":"/styles/france_telecom_exchange_point.sld",
                 "type":"WMTS",
+                "download_gpkg":true,
+                "download_csv":true,
+                "download_json":true,
                 "download_kml":true,
                 "download_shp":true,
                 "feature_main_info":[
@@ -902,6 +974,9 @@
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:telecom:medium%3Dfibre",
                 "sld_path":"/styles/france_telecom_fibre_connection_point.sld",
                 "type":"WMTS",
+                "download_gpkg":true,
+                "download_csv":true,
+                "download_json":true,
                 "download_kml":true,
                 "download_shp":true,
                 "feature_main_info":[
@@ -939,6 +1014,9 @@
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:telecom:medium%3Dcopper",
                 "sld_path":"/styles/france_telecom_copper_connection_point.sld",
                 "type":"WMTS",
+                "download_gpkg":true,
+                "download_csv":true,
+                "download_json":true,
                 "download_kml":true,
                 "download_shp":true,
                 "feature_main_info":[

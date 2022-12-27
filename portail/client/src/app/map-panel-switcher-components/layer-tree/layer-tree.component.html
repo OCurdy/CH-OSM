@@ -62,7 +62,7 @@
                                     <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
                                 </span>
                             </a>
-
+                           
                             <div class="collapse" id="{{feature.nom_court_trim}}Collapse" style="align-items: center;">
                                 <div class="card card-body">                                                            
                                     <input #ref
@@ -70,7 +70,7 @@
                                         value ="{{feature.opacity}}"
                                         (change)="changeOpacity($event,feature,ref.value);false"
                                     />
-                                
+
                                     <span 
                                         style="cursor:pointer;margin: 3px"
                                         (click)="openAttributeTable($event, feature)"
@@ -82,7 +82,51 @@
                                         attr.data-content="<div class='alert alert-warning'><i class='fa fa-warning' aria-hidden='true'></i> {{ 'panel.visibiltytable' | translate }} </div>"
                                         data-placement="top"
                                         >
-                                        <i class="fa fa-th" aria-hidden="true" ></i> {{ 'panel.attributes' | translate }}
+                                        <i class="fa fa-table" aria-hidden="true" ></i> {{ 'panel.attributes' | translate }}
+                                    </span>
+
+                                    <span *ngIf="feature.download_json"
+                                    style="cursor:pointer;margin: 3px"
+                                    (click)="onJsonDownload($event,feature)" 
+                                    title="View GEOJSON"
+                                    data-container="body"
+                                    data-toggle="popover"
+                                    data-trigger="hover"
+                                    data-html="true"
+                                    attr.data-content="<div class='alert alert-warning'><i class='fa fa-warning' aria-hidden='true'></i> {{ 'panel.zonekml' | translate }}</div>"
+                                    data-placement="top"
+                                    >
+                                    <i class="fa fa-code" aria-hidden="true"></i> geojson
+                                    </span>
+                                </div>
+                                <div class="card card-body" style="width: 18rem;">
+
+                                    <span *ngIf="feature.download_gpkg" 
+                                        style="cursor:pointer;margin: 3px"
+                                        (click)="onGeopkgDownload($event,feature)" 
+                                        title="Download GPKG"
+                                        data-container="body"
+                                        data-toggle="popover"
+                                        data-trigger="hover"
+                                        data-html="true"
+                                        attr.data-content="<div class='alert alert-warning'><i class='fa fa-warning' aria-hidden='true'></i> {{ 'panel.zonekml' | translate }}</div>"
+                                        data-placement="top"
+                                    >
+                                        <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i> gpkg
+                                    </span>
+
+                                    <span *ngIf="feature.download_csv" 
+                                        style="cursor:pointer;margin: 3px"
+                                        (click)="onCsvDownload($event,feature)" 
+                                        title="Download CSV"
+                                        data-container="body"
+                                        data-toggle="popover"
+                                        data-trigger="hover"
+                                        data-html="true"
+                                        attr.data-content="<div class='alert alert-warning'><i class='fa fa-warning' aria-hidden='true'></i> {{ 'panel.zonekml' | translate }}</div>"
+                                        data-placement="top"
+                                    >
+                                        <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i> csv
                                     </span>
 
                                     <span *ngIf="feature.download_kml" 
@@ -96,7 +140,7 @@
                                         attr.data-content="<div class='alert alert-warning'><i class='fa fa-warning' aria-hidden='true'></i> {{ 'panel.zonekml' | translate }}</div>"
                                         data-placement="top"
                                     >
-                                        <i class="fa fa-download" aria-hidden="true"></i> kml
+                                        <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i> kml
                                     </span>
                                     <span *ngIf="feature.download_shp"
                                         style="cursor:pointer;margin: 3px"
@@ -109,7 +153,7 @@
                                         attr.data-content="<div class='alert alert-warning'><i class='fa fa-warning' aria-hidden='true'></i>{{ 'panel.zoneshp' | translate }}</div>"
                                         data-placement="top"
                                     >
-                                        <i class="fa fa-download" aria-hidden="true"></i> shp
+                                        <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i> shp
                                     </span>
                                     <span *ngIf="feature.sld_path"
                                         style="cursor:pointer;margin: 3px"
@@ -122,7 +166,7 @@
                                         attr.data-content="<div class='alert alert-warning'><i class='fa fa-warning' aria-hidden='true'></i>{{ 'panel.styledownload' | translate }}</div>"
                                         data-placement="top"
                                     >
-                                        <i class="fa fa-download" aria-hidden="true"></i> sld
+                                        <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i> sld
                                     </span>
 
                                 </div>

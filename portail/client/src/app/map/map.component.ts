@@ -151,7 +151,9 @@ export class MapComponent implements OnInit {
     this.map.on('moveend', this.onZoom.bind(this)); 
 
 
-    this.mapService.addLayer('world', 'assets/data/countries_ecem.geojson');
+    this.mapService.addLayer('communes', 'assets/data/communes.geojson');
+    this.mapService.addLayer('cantons', 'assets/data/cantons.geojson');
+
     var parser = new ol.format.WMTSCapabilities();
     let self = this;
     this.http.get(environment.geoserver_baseurl + '/gwc/service/wmts?REQUEST=GetCapabilities', {responseType: 'text'})

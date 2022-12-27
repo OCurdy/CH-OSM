@@ -38,13 +38,13 @@
   data-toggle="popover"
   data-html="true"
   translate="true"
-  attr.data-content="<div>{{'panel.explanation' | translate}}</div>"
+  data-content="<img src='assets/images/helper.gif' height='100' width='200'>"
   data-placement="right"
 >
   <div class="panel-switcher-nav" role="tab">
     <!-- To close the panel switcher -->
     <a id="panel-switcher-close" href="#" class="btn btn-outline-secondary btn-sm pull-right toggle">
-      <b class="glyphicon glyphicon-remove">X</b>
+      <i class="fa fa-times" aria-hidden="true"></i>
     </a>
     <app-layer-tree [hidden]="panelToShow != 'layerTree'" [userContext]="userContext" id="layerTree"></app-layer-tree>
     <app-map-controller *ngIf="panelToShow == 'carte'" [userContext]="userContext"></app-map-controller>

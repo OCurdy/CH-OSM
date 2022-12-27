@@ -9,7 +9,12 @@
         <sld:Name>france_buildings_polygon</sld:Name>
         <sld:Rule>
           <sld:Name>Batiments</sld:Name>
-          <sld:Title>Batiments</sld:Title>
+          <sld:Title>Batiments
+            <sld:Localized lang="de">Gebäude</sld:Localized>
+            <sld:Localized lang="fr">Bâtiments</sld:Localized>
+            <sld:Localized lang="it">Edifici</sld:Localized>
+            <sld:Localized lang="en">Buildings</sld:Localized>
+          </sld:Title>
           <sld:MaxScaleDenominator>150000</sld:MaxScaleDenominator>
           <sld:PolygonSymbolizer uom="http://www.opengeospatial.org/se/units/pixel">
             <sld:Fill>

@@ -64,6 +64,8 @@
    
     "myLayers":"Miei Livelli",
 
+    "communes": "Comuni",
+    "cantons": "Cantoni",
 
     "panel.parameters":"Impostazioni della scheda",
     "panel.basemap":"mappa di sfondo",

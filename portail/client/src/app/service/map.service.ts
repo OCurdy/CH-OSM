@@ -10,6 +10,10 @@ import { Color } from 'app/model/ChangesClasses/Color';
 import { environment } from '../../environments/environment';
 import { LayerAndCategory } from 'app/model/LayerAndCategory';
 import { Layer } from 'app/model/Layer';
+import { saveAs } from 'file-saver';
+import { ajaxGetJSON } from 'rxjs/internal-compatibility';
+import { JsonPipe } from '@angular/common';
+import { getUrlScheme } from '@angular/compiler';
 
 declare var ol: any;
 declare var _paq: any;
@@ -261,7 +265,7 @@ export class MapService {
         params: { 'LAYERS': layername },
         attributions: [new ol.Attribution({
           html: '' +
-          '<a href="http://ch-osm.geodatasolutions.ch/aide.html#ogc-services-tos">© GeoDataSolutions for the WMS/WFS flows</a>'
+          '<a href="https://ch-osm.geodatasolutions.ch/service/#ocg">© GeoDataSolutions for the WMS/WFS flows</a>'
         })
         ]
       }));
@@ -319,7 +323,7 @@ export class MapService {
       options.urls[0] = environment.geoserver_baseurl + "/gwc/service/wmts?'";
       options.attributions = [new ol.Attribution({
         html: '' +
-        '<a href="http://ch-osm.geodatasolutions.ch/aide.html#ogc-services-tos">© GeoDataSolutions for the WMS/WFS flows</a>'
+        '<a href="https://ch-osm.geodatasolutions.ch/service/#ocg">© GeoDataSolutions for the WMS/WFS flows</a>'
       })
       ];
 
@@ -403,6 +407,84 @@ export class MapService {
     window.open(url, "_blank");
   }
 
+  csvExport(layer) {
+    var size = /** @type {ol.Size} */ (this.map.getSize());
+    var extent = this.map.getView().calculateExtent(size);
+
+    var targetDPI = 150;
+    var siszeFactor = targetDPI / 90;
+    console.log(extent);
+    let bbox = extent[0] + "," + extent[1] + "," + extent[2] + "," + extent[3];
+    //alert("L'export concerne uniquement la zone visualisée");
+    let currentScale = this.getScaleFromResolution(this.map.getView().getResolution(), this.map.getView().getProjection().getUnits(), true);
+    /*if (currentScale > 500000) {
+      alert("l'export n'est possible qu'a partir du de l'échelle 1/500 000")
+      return;
+    }*/
+
+    //let url = environment.geoserver_baseurl + "/wms?service=wms&request=GetMap&version=1.1.1&format=application/vnd.google-earth.kml+xml&layers=" + layer.layername /*+ "&styles=" + layer.selectedStyle.style*/ + "&height=2048&width=2048&transparent=false&srs=EPSG:3857&format_options=AUTOFIT:true;KMATTR:true;KMPLACEMARK:false;KMSCORE:40;MODE:download;SUPEROVERLAY:false&bbox=" + bbox;
+    //let url = environment.geoserver_baseurl + "/wfs?request=GetFeature&version=2.0.0&count=500000&outputFormat=gpkg&typeName=" + layer.layername + "&srsName=EPSG:3857&bbox=" + bbox;
+    let url = environment.geoserver_baseurl + "/wfs?request=GetFeature&version=2.0.0&count=500000&outputFormat=csv&format_options=csvseparator:semicolon&typeName=" + layer.layername + "&srsName=EPSG:3857&bbox=" + bbox;
+    //let url = environment.geoserver_baseurl + "/wms/kml?layers="+layer.layername;
+
+    //piwik
+    _paq.push(['trackEvent', 'CSV_download', layer.layername])
+
+    window.open(url, "_blank");
+  };
+
+  geopkgExport(layer){
+    var size = /** @type {ol.Size} */ (this.map.getSize());
+    var extent = this.map.getView().calculateExtent(size);
+
+    var targetDPI = 150;
+    var siszeFactor = targetDPI / 90;
+    console.log(extent);
+    let bbox = extent[0] + "," + extent[1] + "," + extent[2] + "," + extent[3];
+    //alert("L'export concerne uniquement la zone visualisée");
+    let currentScale = this.getScaleFromResolution(this.map.getView().getResolution(), this.map.getView().getProjection().getUnits(), true);
+    /*if (currentScale > 500000) {
+      alert("l'export n'est possible qu'a partir du de l'échelle 1/500 000")
+      return;
+    }*/
+    var filename=layer.layername;
+    //let url = environment.geoserver_baseurl + "/wms?service=wms&request=GetMap&version=1.1.1&format=application/vnd.google-earth.kml+xml&layers=" + layer.layername /*+ "&styles=" + layer.selectedStyle.style*/ + "&height=2048&width=2048&transparent=false&srs=EPSG:3857&format_options=AUTOFIT:true;KMATTR:true;KMPLACEMARK:false;KMSCORE:40;MODE:download;SUPEROVERLAY:false&bbox=" + bbox;
+    //let url = environment.geoserver_baseurl + "/wfs?request=GetFeature&version=2.0.0&count=500000&outputFormat=gpkg&typeName=" + layer.layername + "&srsName=EPSG:3857&bbox=" + bbox;
+    var url = environment.geoserver_baseurl + "/wfs?request=GetFeature&version=2.0.0&count=500000&outputFormat=geopkg&typeName=" + layer.layername + "&srsName=EPSG:3857&bbox=" + bbox;
+    //let url = environment.geoserver_baseurl + "/wms/kml?layers="+layer.layername;
+    
+    //piwik
+    _paq.push(['trackEvent', 'Geopkg_download', layer.layername])
+    window.open(url, "_blank");
+  };
+
+  jsonExport(layer) {
+    var size = /** @type {ol.Size} */ (this.map.getSize());
+    var extent = this.map.getView().calculateExtent(size);
+
+    var targetDPI = 150;
+    var siszeFactor = targetDPI / 90;
+    console.log(extent);
+    let bbox = extent[0] + "," + extent[1] + "," + extent[2] + "," + extent[3];
+    //alert("L'export concerne uniquement la zone visualisée");
+    let currentScale = this.getScaleFromResolution(this.map.getView().getResolution(), this.map.getView().getProjection().getUnits(), true);
+    /*if (currentScale > 500000) {
+      alert("l'export n'est possible qu'a partir du de l'échelle 1/500 000")
+      return;
+    }*/
+    var filename=layer.layername;
+    //let url = environment.geoserver_baseurl + "/wms?service=wms&request=GetMap&version=1.1.1&format=application/vnd.google-earth.kml+xml&layers=" + layer.layername /*+ "&styles=" + layer.selectedStyle.style*/ + "&height=2048&width=2048&transparent=false&srs=EPSG:3857&format_options=AUTOFIT:true;KMATTR:true;KMPLACEMARK:false;KMSCORE:40;MODE:download;SUPEROVERLAY:false&bbox=" + bbox;
+    //let url = environment.geoserver_baseurl + "/wfs?request=GetFeature&version=2.0.0&count=500000&outputFormat=gpkg&typeName=" + layer.layername + "&srsName=EPSG:3857&bbox=" + bbox;
+    var url = environment.geoserver_baseurl + "/wfs?request=GetFeature&version=2.0.0&count=500000&outputFormat=application/json&typeName=" + layer.layername + "&srsName=EPSG:3857&bbox=" + bbox;
+    //let url = environment.geoserver_baseurl + "/wms/kml?layers="+layer.layername;
+    
+    //piwik
+    _paq.push(['trackEvent', 'Json_download', layer.layername])
+    window.open(url, "_blank");
+    //var filedownload = new Blob ([JSON.stringify(ajaxGetJSON(url))], {type:'application/json'});
+    //saveAs(filedownload, filename);
+  };
+
   getBoundingBox() {
     let format = new ol.format.WKT();
     let extent = ol.geom.Polygon.fromExtent(this.map.getView().calculateExtent());
@@ -480,7 +562,7 @@ export class MapService {
   getLayerOfOneFeature(feature){
     for (let i in this.config.LAYERS){
       for (let j in this.config.LAYERS[i].features){
-        if (feature.getId().startsWith(this.config.LAYERS[i].features[j].layername.replace('magosm:',""))){
+        if (feature.getId().startsWith(this.config.LAYERS[i].features[j].layername.replace('ch-osm:',""))){
           return this.config.LAYERS[i].features[j];
         }
       }

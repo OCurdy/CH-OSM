@@ -10,7 +10,7 @@
 
     "panel.attributes":"Attributs",
     
-    "panel.explanationtitle":"Comment démarrer?",
+    "panel.explanationtitle":"Select, Zoom & Click",
     "panel.explanation": "Sélectionnez une ou plusieurs couches de données dans le menu de droite, zoomez sur une zone puis cliquez sur un objet pour obtenir des information!",
     "panel.visibiltylayertitle": "Couche non visible à cette résolution",
     "panel.visibiltylayer": " La couche n'est pas visible à cette résolution",
@@ -63,7 +63,8 @@
    
     "myLayers":"Mes Couches",
   
-    
+    "communes": "Communes",
+    "cantons": "Cantons",
 
     "panel.parameters":"Paramètres de la carte",
     "panel.basemap":"Fond cartographique",
