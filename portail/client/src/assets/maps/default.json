@@ -463,7 +463,7 @@
             },
             {
                 "layername": "magosm:bicycle_mtb_routes_line",
-                "nom_court": "Radwege · Itinéraires cyclables · piste ciclabili · bicycle routes",
+                "nom_court": "Radwege · Itinéraires cyclables · piste ciclabili · Bicycle routes",
                 "md_url":"https://wiki.openstreetmap.org/wiki/Cycle_routes",
                 "sld_path":"/styles/france_bicycle_mtb_routes_line.sld",
                 "type":"WMTS",
@@ -498,7 +498,7 @@
             },
             {
                 "layername": "magosm:cycleways_line",
-                "nom_court": "Radwege · Pistes cyclables · Piste ciclabili · cycleways",
+                "nom_court": "Radwege · Pistes cyclables · Piste ciclabili · Cycleways",
                 "md_url":"https://wiki.openstreetmap.org/wiki/Tag:highway%3Dcycleway",
                 "sld_path":"/styles/france_cycleways_line.sld",
                 "type":"WMTS",
@@ -891,7 +891,7 @@
             },
             {
                 "layername": "magosm:pnr_polygon",
-                "nom_court": "Regionalen Naturparks · Parcs Naturels Régionaux · Parchi naturali regionali · Regional Nature Parks",
+                "nom_court": "Regionalen Naturparks · Parcs Naturels Régionaux · Parchi Naturali Regionali · Regional Nature Parks",
                 "md_url": "https://wiki.openstreetmap.org/wiki/Tag:boundary%3Dprotected_area",
                 "sld_path":"/styles/france_pnr_polygon.sld",
                 "type":"WMTS",
