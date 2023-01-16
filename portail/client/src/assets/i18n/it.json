@@ -81,7 +81,7 @@
     "change.key":"chiave",
     "change.value":"valore",
     "change.metadata":"Meta-data",
-    "change.historic":"storia dell'oggetto osm",
+    "change.historic":"storia dell'oggetto OSM",
     "change_config.search":"ricerca di modifiche",
     "change_config.time":"periodo",
     "change_config.topic":"Tema tematico",

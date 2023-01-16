@@ -79,7 +79,7 @@
 "change.key":"Schlüssel",
 "change.value":"Wert",
 "change.metadata":"Metadaten",
-"change.historic":"Geschichte des Osm-Objekts",
+"change.historic":"Geschichte des OSM-Objekts",
 "change_config.search":"Suche nach Änderungen",
 "change_config.time":"Zeitraum",
 "change_config.topic":"Thematisches Thema",
