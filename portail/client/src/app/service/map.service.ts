@@ -562,7 +562,7 @@ export class MapService {
   getLayerOfOneFeature(feature){
     for (let i in this.config.LAYERS){
       for (let j in this.config.LAYERS[i].features){
-        if (feature.getId().startsWith(this.config.LAYERS[i].features[j].layername.replace('ch-osm:',""))){
+        if (feature.getId().startsWith(this.config.LAYERS[i].features[j].layername.replace('magosm:',""))){
           return this.config.LAYERS[i].features[j];
         }
       }
