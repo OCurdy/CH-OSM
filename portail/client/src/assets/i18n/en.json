@@ -16,12 +16,14 @@
     "panel.visibiltytabletitle": "Attribute table of the displayed area only",
     "panel.visibiltytable": "Attribute table of the displayed area only",
     "panel.attrvalues": "Attribute values",
-    "panel.kmldownloadtitle": "KML download",
+    "panel.csvdownloadtitle" : "Download CSV",
+    "panel.kmldownloadtitle": "Download KML",
     "panel.zonekml": "Downloading the viewing area only",
-    "panel.shpdownloadtitle": "Shapefile download",
+    "panel.shpdownloadtitle": "Download Shapefile",
     "panel.zoneshp": "Downloading the viewing area only",
-    "panel.styledownloadtitle": "Style download",
+    "panel.styledownloadtitle": "Download Style",
     "panel.styledownload": "Download style in sld format, pictograms are not included",
+    "panel.geojsondownloadtitle": "View GeoJSON",
 
     
     "panel.attributes":"Attributes",

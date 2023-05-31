@@ -215,7 +215,7 @@ export class MapService {
       });
       options.attributions = [new ol.Attribution({
         html: '' +
-          '<a href="http://ch-osm.geodatasolutions.ch/aide.html#ogc-services-tos">© GeoDataSolutions for the WMS/WFS flows</a>'
+          '<a href="https://ch-osm.geodatasolutions.ch/#about">© GeoDataSolutions for the WMS/WFS </a>'
       })
       ];
       var wmts = new ol.source.WMTS(options);
@@ -265,7 +265,7 @@ export class MapService {
         params: { 'LAYERS': layername },
         attributions: [new ol.Attribution({
           html: '' +
-          '<a href="https://ch-osm.geodatasolutions.ch/service/#ocg">© GeoDataSolutions for the WMS/WFS flows</a>'
+          '<a href="https://ch-osm.geodatasolutions.ch/#about">© GeoDataSolutions for the WMS/WFS </a>'
         })
         ]
       }));
@@ -323,7 +323,7 @@ export class MapService {
       options.urls[0] = environment.geoserver_baseurl + "/gwc/service/wmts?'";
       options.attributions = [new ol.Attribution({
         html: '' +
-        '<a href="https://ch-osm.geodatasolutions.ch/service/#ocg">© GeoDataSolutions for the WMS/WFS flows</a>'
+        '<a href="https://ch-osm.geodatasolutions.ch/#about">© GeoDataSolutions for the WMS/WFS </a>'
       })
       ];
 
@@ -726,7 +726,7 @@ export class MapService {
     }
 
     var newFeature = (new ol.format.GeoJSON()).readFeature(the_geom);
-    // var geom =newFeature.getGeometry()
+    //var geom =newFeature.getGeometry();
     // newFeature.setGeometry(geom.simplify(5));
     newFeature.set('changeType', changeType);
     newFeature.set('osmId', change.osmId);
@@ -745,7 +745,7 @@ export class MapService {
         source: new ol.source.Vector({attributions: [
           new ol.Attribution({
             html: '' +
-                '<a href="http://magosm.magellium.com/">© Magellium pour les changements</a>'
+                '<a href="http://ch-osm.geodatasolutions.ch/">© GeoDataSolutions for the changes</a>'
           })
         ]
         }),
@@ -770,12 +770,12 @@ export class MapService {
       source : new ol.source.Vector({attributions: [
         new ol.Attribution({
           html: '' +
-              '<a href="http://magosm.magellium.com/">© Magellium pour les changements</a>'
+              '<a href="http://ch-osm.geodatasolutions.ch/">© GeoDataSolutions for the changes</a>'
           })
         ]
       }),
       zIndex: 2,
-      title : 'Carte de chaleur',
+      title : 'Heat Map',
       minResolution : this.map.getView().getResolutionForZoom(12),
       radius : 2,
       blur : 10,
@@ -978,18 +978,18 @@ export class MapService {
   // Centre sur la géom liée à la ligne du bouton cliqué
   centerItemGeom(geom) {
 
-      let polygone : Array<Number> = [];
-      if (geom && geom.length > 2 ) {
-        geom.forEach((element, index) => {
-          if (index % 2 == 0){            
-            polygone.push( ol.proj.transform([geom[index], geom[index+1]], 'EPSG:3857', config.PROJECTION_CODE));
-          }
-        });
-        let polygon = new ol.geom.Polygon([polygone]);
-        this.map.getView().fit(polygon, {});
-        this.map.getView().setZoom(19);
-    } else {
-      alert("Cet objet ne contient pas de géométrie permettant le centrage sur la carte.");
-    }
+    let polygone : Array<Number> = [];
+    if (geom && geom.length > 2 ) {
+      geom.forEach((element, index) => {
+        if (index % 2 == 0){            
+          polygone.push( ol.proj.transform([geom[index], geom[index+1]], 'EPSG:3857', config.PROJECTION_CODE));
+        }
+      });
+      let polygon = new ol.geom.Polygon([polygone]);
+      this.map.getView().fit(polygon, {});
+      this.map.getView().setZoom(19);
+  } else {
+    alert("Cet objet ne contient pas de géométrie permettant le centrage sur la carte.");
   }
+}
 }

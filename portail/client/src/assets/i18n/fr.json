@@ -15,6 +15,7 @@
     "panel.visibiltylayertitle": "Couche non visible à cette résolution",
     "panel.visibiltylayer": " La couche n'est pas visible à cette résolution",
     "panel.visibiltytable": "Table attributaire de la zone visualisée uniquement",
+    "panel.csvdownloadtitle" : "Téléchargement CSV",
     "panel.attrvalues": "Valeurs attributaires",
     "panel.kmldownloadtitle": "Téléchargement KML",
     "panel.zonekml": "Téléchargement de la zone visualisée uniquement",
@@ -22,6 +23,7 @@
     "panel.zoneshp": "Téléchargement de la zone visualisée uniquement",
     "panel.styledownloadtitle": "Téléchargement du style",
     "panel.styledownload": "Téléchargement du style au format sld, les pictos ne sont pas inclus",
+    "panel.geojsondownloadtitle": "Visulalisation du GeoJSON",
     
     "pois":"Points d'intérêts",
 

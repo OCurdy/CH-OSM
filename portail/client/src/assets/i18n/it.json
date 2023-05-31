@@ -17,12 +17,15 @@
     "panel.visibiltytabletitle": "Tabella attributiva dell'area visualizzata solo",
     "panel.visibiltytable": "Tabella degli attributi solo dell'area visualizzata",
     "panel.attrvalues": "Valori attributivi",
+    "panel.csvdownloadtitle" : "Download CSV",
     "panel.kmldownloadtitle": "Download KML",
     "panel.zonekml": "Solo download dell'area visualizzata",
     "panel.shpdownloadtitle": "Download Shapefile",
     "panel.zoneshp": "Solo download dell'area visualizzata",
     "panel.styledownloadtitle": "Download dello stile",
     "panel.styledownload": "Download lo stile in formato sld, i pictos non sono inclusi",
+    "panel.geojsondownloadtitle": "Visulizzazione del GeoJSON",
+    
 
     "pois":"Punto di interesse",
 

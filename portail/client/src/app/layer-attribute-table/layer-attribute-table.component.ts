@@ -192,8 +192,9 @@ export class LayerAttributeTableComponent implements OnInit {
 
 
   // evenement levé sur le clique du bouton "Centrer", 
-  // fait appel au service de carte pour centrer la carte sur la géométrie d el'item concidéré
+  // fait appel au service de carte pour centrer la carte sur la géométrie de l'item concidéré
   centerGeom($event, geom) {
+    console.log("Valeur de geom :", geom);
     this.mapService.centerItemGeom(geom);
   }
 

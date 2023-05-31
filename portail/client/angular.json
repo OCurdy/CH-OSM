@@ -157,7 +157,7 @@
       }
     }
   },
-  "defaultProject": "magOSM",
+  "defaultProject": "CH-OSM",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
