@@ -76,7 +76,7 @@ export class PaginationService {
         // on relance la requête de chargement du tableau
         this.pageIndex = this.pageIndex > this.getLastPageIndex()-1 ? (this.getLastPageIndex()-1 > 0 ? this.getLastPageIndex()-1 : 0) : this.pageIndex;
         this.actualizePagination();
-        console.log(" => Allez à la page : " + (this.getPageIndex()));
+        console.log(" => Go to page : " + (this.getPageIndex()));
         this.setHighLight();
     }
 

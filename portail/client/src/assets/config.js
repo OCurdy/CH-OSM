@@ -11,7 +11,7 @@
 //     DEFAULTUSERCONTEXT:[
 //         {
 //             z: 6,
-//             lon: 2.2, 
+//             lon: 2.2,
 //             lat: 46.8,
 //             bLay: 'OSM',
 //             vLay: 'none',

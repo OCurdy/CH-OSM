@@ -10,10 +10,7 @@ import { Color } from 'app/model/ChangesClasses/Color';
 import { environment } from '../../environments/environment';
 import { LayerAndCategory } from 'app/model/LayerAndCategory';
 import { Layer } from 'app/model/Layer';
-import { saveAs } from 'file-saver';
-import { ajaxGetJSON } from 'rxjs/internal-compatibility';
-import { JsonPipe } from '@angular/common';
-import { getUrlScheme } from '@angular/compiler';
+import { Polygon } from 'openlayers';
 
 declare var ol: any;
 declare var _paq: any;
@@ -982,14 +979,14 @@ export class MapService {
     if (geom && geom.length > 2 ) {
       geom.forEach((element, index) => {
         if (index % 2 == 0){            
-          polygone.push( ol.proj.transform([geom[index], geom[index+1]], 'EPSG:3857', config.PROJECTION_CODE));
+          polygone.push( ol.proj.transform([geom[index], geom[index+1]], 'EPSG:4326'));
         }
       });
       let polygon = new ol.geom.Polygon([polygone]);
       this.map.getView().fit(polygon, {});
       this.map.getView().setZoom(19);
   } else {
-    alert("Cet objet ne contient pas de géométrie permettant le centrage sur la carte.");
+    alert("This object does not contain any geometry enabling it to be centred on the map.");
   }
 }
 }
