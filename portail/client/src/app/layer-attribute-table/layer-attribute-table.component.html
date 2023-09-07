@@ -39,7 +39,7 @@
                     <tr id="bodyTable" *ngFor="let layerAttributeValue of layerAttributeValuesTable; let layerAttributeIndex = index" >
                       <ng-container *ngFor="let layerAttributeKey of layerAttributeKeyTable; let layerAttributeKeyIndex = index">
                         <td class="action" *ngIf="layerAttributeKeyIndex==0"  >
-                          <button class="centerButtonTable" (click)="centerGeom($event, layerAttributeValue.properties['bbox'])">
+                          <button class="centerButtonTable" (click)="centerGeom($event, layerAttributeValue['bbox'])">
                             <img id="centerMap" class="centerButton" src="./assets/images/localisation.svg" title="Centrer sur la carte" />
                           </button>
                         </td>

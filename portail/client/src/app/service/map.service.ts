@@ -979,7 +979,7 @@ export class MapService {
     if (geom && geom.length > 2 ) {
       geom.forEach((element, index) => {
         if (index % 2 == 0){            
-          polygone.push( ol.proj.transform([geom[index], geom[index+1]], 'EPSG:4326'));
+          polygone.push( ol.proj.transform([geom[index], geom[index+1]], 'EPSG:3857', config.PROJECTION_CODE));
         }
       });
       let polygon = new ol.geom.Polygon([polygone]);
