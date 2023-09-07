@@ -196,9 +196,9 @@ export class LayerAttributeTableComponent implements OnInit {
 
 
   
-  centerGeom($event: any, coordinates: number[]) {
-    console.log("Valeur de geom :", coordinates);
-    this.mapService.centerItemGeom(coordinates);
+  centerGeom($event: any, geom: number[]) {
+    console.log("Valeur de geom :", geom);
+    this.mapService.centerItemGeom(geom);
 }
 
   sort(layerAttributeKey : string){
