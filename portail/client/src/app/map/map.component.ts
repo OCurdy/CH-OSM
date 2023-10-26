@@ -106,20 +106,23 @@ export class MapComponent implements OnInit {
 
   ngAfterViewInit() {
   }
+ 
 
   initMap() {
     //proj4.defs(MainmapComponent.PROJECTION_CODE, "+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m   +no_defs");
+    proj4.defs("EPSG:2056", "+proj=somerc +lat_0=46.95240555555556 +lon_0=7.439583333333333 +k_0=1 +x_0=2600000 +y_0=1200000 +ellps=bessel +towgs84=674.374,15.056,405.346,0,0,0,0 +units=m +no_defs");
 
 
-    var mousePositionControl = new ol.control.MousePosition({
+   this.mousePositionControl = new ol.control.MousePosition({
       coordinateFormat: function (coords) {
-        return ol.coordinate.format(coords, 'Lat : {y}° Lon : {x}° (WGS84)', 4)
+        return 'E: ' + formatSwissNumber(coords[0]) + ' N: ' + formatSwissNumber(coords[1]);      
       },
-      projection: 'EPSG:4326',
+      projection: 'EPSG:2056',
       className: 'custom-mouse-position',
       target: document.getElementById('mouse-position'),
       undefinedHTML: '&nbsp;'
-    });
+   });
+   
 
     let center: number[] = [this.userContext.lon, this.userContext.lat];
     this.view = new ol.View({
@@ -137,7 +140,7 @@ export class MapComponent implements OnInit {
           collapsible: false
         })
       }).extend([
-        mousePositionControl,
+        this.mousePositionControl,
         new ol.control.ScaleLine()
       ]),
       target: 'map',
