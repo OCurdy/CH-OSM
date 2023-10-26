@@ -25,7 +25,7 @@ export class MapService {
 
   public map: any;
   public ol: any;
-  public layers: Object = {};
+  public layers: Object = {}; 
 
   private selectedFeatureSource: any;
   private selectedFeatureStyle: any;
@@ -36,9 +36,12 @@ export class MapService {
   loadingCounter = 0;
   //fonds de carte
   private OSMLayer: any;
+  private swisstopoLayer: any;
+  private swissimageLayer: any;
   private baseLayer: any;
   private baseLayerName: string;
-  private opacityRange = 30;
+  public activeBaseLayer: string;
+  private opacityRange = 60;
 
   //Suivi de changements
   public changesStyles = new Map();
@@ -86,6 +89,38 @@ export class MapService {
     this.wmtsResult = wmtsResult
   }
 
+  initializeSwisstopoLayer() {
+    this.swisstopoLayer = new ol.layer.Tile({
+      visible: false,
+      zIndex: 0,
+      source: new ol.source.TileWMS({
+        url: 'https://wms.geo.admin.ch/',
+        params: {
+          'LAYERS': 'ch.swisstopo.pixelkarte-farbe',
+          'TILED': true
+        },
+        serverType: 'geoserver',
+      }),
+      isBaseLayer: true
+    });
+  }
+  initializeSwissimageLayer() {
+    this.swissimageLayer = new ol.layer.Tile({
+      visible: false,
+      zIndex: 0,
+      source: new ol.source.TileWMS({
+        url: 'https://wms.geo.admin.ch/',
+        params: {
+          'LAYERS': 'ch.swisstopo.swissimage',
+          'TILED': true
+        },
+        serverType: 'geoserver',
+      }),
+      isBaseLayer: true
+    });
+  }
+
+
   setBaseLayers() {
     //initialisation des sources et des layers de fond de carte OSM
     this.OSMLayer = new ol.layer.Tile({
@@ -94,8 +129,12 @@ export class MapService {
       visible: true,
       zIndex: 0
     });
+    this.initializeSwisstopoLayer();
+    this.initializeSwissimageLayer();
     this.baseLayer = this.OSMLayer;
     this.map.addLayer(this.OSMLayer);
+    this.map.addLayer(this.swisstopoLayer);
+    this.map.addLayer(this.swissimageLayer);
   };
 
   getCategorieAndLayerByStringAttribute(attributeName: string, attributeValue: String):LayerAndCategory {
@@ -132,19 +171,40 @@ export class MapService {
     return this.announceOpacityChangeEvent;
   }
 
+  toggleOverlayLayer(layerName: string, isChecked: boolean) {
+    let targetLayer = this.getLayersById(layerName);
+
+    if (targetLayer) {
+        targetLayer.setVisible(isChecked);
+    } else {
+        console.error(`Layer with ID "${layerName}" not found.`);
+    }
+  }
+
   changeBaseLayer(baseLayerName) {
     this.baseLayerName = baseLayerName;
     this.baseLayer.setVisible(false);
+
     if (baseLayerName === 'OSM') {
       this.baseLayer = this.OSMLayer;
+    }
+    else if (baseLayerName === 'swisstopo'){
+      this.baseLayer = this.swisstopoLayer;
+    }
+    else if (baseLayerName === 'swissimage') {
+      this.baseLayer = this.swissimageLayer;
     }
     else {
       this.baseLayer = this.getLayersById(baseLayerName)
     }
     this.baseLayer.setOpacity(this.opacityRange / 100);
     this.baseLayer.setVisible(true);
-    this.baseLayer.setVisible(true);
   }
+
+  get currentBaseLayerName() {
+    return this.baseLayerName;
+  }
+  
 
   setLegendAttributes(key, value) {
     if (key = "legendUrls") {
@@ -516,7 +576,7 @@ export class MapService {
 
     for (var i = 0; i < layers.length; i++) {
       var layer = layers[i];
-      if (layer instanceof ol.layer.Tile && layer.getSource() instanceof ol.source.TileWMS && layer.getVisible()) {
+      if (layer instanceof ol.layer.Tile && layer.getSource() instanceof ol.source.TileWMS && layer.getVisible() &&!layer.get('isBaseLayer')) {
 
         id_layers += separator + (layer.getSource()).getParams()['LAYERS'] + '';//<ol.source.TileWMS>
         separator = ",";
