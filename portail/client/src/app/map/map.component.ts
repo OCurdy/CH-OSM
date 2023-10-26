@@ -27,6 +27,11 @@ const isUrl = function (str: string) {
   } 
 }
 
+function formatSwissNumber(num: number): string {
+  const parts = num.toFixed(1).toString().split(".");
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, "'");
+  return parts.join(".");
+}
 
 const getUrlFromDataTransfer = function (dataTransfer: DataTransfer) {
   if (dataTransfer.types.indexOf('text/uri-list') !== -1) {
@@ -81,6 +86,8 @@ export class MapComponent implements OnInit {
   private currentScale: any;
   private updatedScale: any;
 
+  //Selection de système de coordonées
+  private mousePositionControl: any;
 
   //Variables utiles au composant de géolocalisation
   @ViewChild(ApiAdresseComponent) public apiadresse: ApiAdresseComponent;
@@ -170,8 +177,6 @@ export class MapComponent implements OnInit {
         console.log(error);
       });
 
-
-
     this.currentResolution = this.view.getResolution();
     this.currentScale = this.mapService.getScaleFromResolution(this.view.getResolution(), this.map.getView().getProjection().getUnits(), true);
     this.updateScale();
@@ -198,6 +203,22 @@ export class MapComponent implements OnInit {
     }
     
   }
+
+  changeCoordinateSystem(event) {
+    const newProjection = event.target.value;
+ 
+    if (newProjection === "EPSG:2056") {
+       this.mousePositionControl.setProjection(newProjection);
+       this.mousePositionControl.setCoordinateFormat(coords => 
+          'E: ' + formatSwissNumber(coords[0]) + ' N: ' + formatSwissNumber(coords[1])
+       );
+    } else if (newProjection === "EPSG:4326") {
+       this.mousePositionControl.setProjection(newProjection);
+       this.mousePositionControl.setCoordinateFormat(coords => 
+          'Lat: ' + coords[1].toFixed(4) + '° Lon: ' + coords[0].toFixed(4) + '°'
+       );
+    }
+ }
 
   onZoom(event) {
     this.currentScale = this.mapService.getScaleFromResolution(this.view.getResolution(), this.map.getView().getProjection().getUnits(), true);
