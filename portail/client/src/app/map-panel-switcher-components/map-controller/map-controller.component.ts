@@ -44,6 +44,14 @@ export class MapControllerComponent implements AfterViewInit {
     (<HTMLElement>document.getElementById('layer-selector')).style.height= inputRangeHeightRef+'px';
   }
 
+  toggleLayer(event: any) {
+    const layerName = event.target.value;
+    const isChecked = event.target.checked;
+
+    this.mapService.toggleOverlayLayer(layerName, isChecked);
+}
+
+
   changeBaseLayer(newBaseLayer){
     this.mapService.changeBaseLayer(newBaseLayer);
   }

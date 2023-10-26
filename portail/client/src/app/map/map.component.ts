@@ -160,8 +160,8 @@ export class MapComponent implements OnInit {
     this.map.on('click', this.onClick.bind(this));
     this.map.on('moveend', this.onZoom.bind(this)); 
 
-
-    this.mapService.addLayer('cantons', 'assets/data/cantons.geojson');
+    this.mapService.addLayer('cantons', 'assets/data/cantons.geojson', false);
+    this.mapService.addLayer('communes', 'assets/data/communes.geojson', false);
 
     var parser = new ol.format.WMTSCapabilities();
     let self = this;

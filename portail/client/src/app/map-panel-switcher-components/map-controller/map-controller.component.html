@@ -6,10 +6,41 @@
     <span id="layer-selector">
     <li class="card-header p-2"><h4>{{ 'panel.basemap' | translate }}</h4></li>
     <li>
-        <select id="baseLayerCombo" (change)="changeBaseLayer($event.target.value)">
-          <option value="cantons">{{ 'cantons' | translate }}</option>
-          <option value="OSM">OpenStreetMap</option>
-        </select>
+      <div class="checkbox-option">
+        <input type="checkbox" id="cantonsCheckbox" name="overlayLayer" value="cantons" (change)="toggleLayer($event)">
+        <label for="cantonsCheckbox">
+          {{ 'cantons' | translate }}
+        </label>
+      </div>
+      <div class="checkbox-option">
+        <input type="checkbox" id="communesCheckbox" name="overlayLayer" value="communes" (change)="toggleLayer($event)">
+        <label for="communesCheckbox">
+          {{ 'communes' | translate }}
+        </label>
+      </div>   
+      <div class="radio-option">
+        <input type="radio" id="osmRadio" name="baseLayer" value="OSM" checked (change)="changeBaseLayer($event.target.value)">
+        <label for="osmRadio">
+            <img src="\assets\images\osm-thumbnail.png" alt="OSM" width="50" height="50">
+            OpenStreetMap
+        </label>
+    </div>
+    
+    <div class="radio-option">
+        <input type="radio" id="swisstopoRadio" name="baseLayer" value="swisstopo" (change)="changeBaseLayer($event.target.value)">
+        <label for="swisstopoRadio">
+            <img src="\assets\images\swisstopo-thumbnail.png" alt="Swisstopo" width="50" height="50">
+            Swisstopo
+        </label>
+    </div>
+    
+    <div class="radio-option">
+        <input type="radio" id="swissimageRadio" name="baseLayer" value="swissimage" (change)="changeBaseLayer($event.target.value)">
+        <label for="swissimageRadio">
+            <img src="\assets\images\swissimage-thumbnail.png" alt="Swissimage" width="50" height="50">
+            Orthophoto
+        </label>
+    </div> 
     </li>
     </span>  
     
