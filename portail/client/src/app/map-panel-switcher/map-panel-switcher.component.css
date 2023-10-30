@@ -8,9 +8,9 @@
 
 
 .btn-primary {
-  color: #fff;
+  color: #ffff;
   background-color: #CC1517;
-  border-color: #CC1517;
+  border-color: rgb(203, 21, 24);
 }
 
 /* panneau masquable */
@@ -42,7 +42,6 @@
   -moz-transition: all 0.5s ease-in 0s;
   -ms-transition: all 0.5s ease-in 0s;
   -o-transition: all 0.5s ease-in 0s;
-  background-color: rgba(255,255,255,.4);
   border-radius: 4px;
   padding: 2px;
 }
@@ -82,7 +81,7 @@
 }
 
 .panel-switcher-nav li a {
-  color: #999999;
+  color: #CC1517;
   display: block;
   text-decoration: none;
 }
@@ -136,4 +135,13 @@
   .panel-switcher-opts.active{
     top: 60px;
   }
+}
+
+.panel-switcher-opts .btn:active{
+  border-color: #ffffff;
+}
+
+.panel-switcher-opts .btn:active, .panel-switcher-opts .btn:focus {
+  border-color: #ffffff;
+  outline: none; /* Si vous souhaitez également supprimer le contour par défaut du navigateur */
 }
