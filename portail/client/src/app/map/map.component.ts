@@ -161,8 +161,29 @@ export class MapComponent implements OnInit {
     this.map.on('click', this.onClick.bind(this));
     this.map.on('moveend', this.onZoom.bind(this)); 
 
-    this.mapService.addLayer('cantons', 'assets/data/cantons.geojson', false);
-    this.mapService.addLayer('communes', 'assets/data/communes.geojson', false);
+    var cantonStyle = new ol.style.Style({
+      stroke: new ol.style.Stroke({
+        color: '#cc1517',
+        backgroundcolor: '#cc1517',
+        width: 2       
+      })
+    });
+    var communeStyle = new ol.style.Style({
+      stroke: new ol.style.Stroke({
+        color: '#cc1517',
+        width: 1
+      })
+    });
+    var gdgeStyle = new ol.style.Style({
+      stroke: new ol.style.Stroke({
+        color: '#00000',
+        width: 1
+      })
+    });
+
+    this.mapService.addLayer('communes', 'assets/data/communes.geojson', false, communeStyle);
+    this.mapService.addLayer('grandgeneve', 'assets/data/grand_geneve.geojson', false, gdgeStyle);
+    this.mapService.addLayer('cantons', 'assets/data/cantons.geojson', false, cantonStyle);
 
     var parser = new ol.format.WMTSCapabilities();
     let self = this;

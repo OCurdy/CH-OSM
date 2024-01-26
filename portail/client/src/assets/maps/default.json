@@ -10,7 +10,7 @@
         }
     ],
 
-    "PROJECTION_CODE":"EPSG:2056",
+    "PROJECTION_CODE":"EPSG:3857",
 
     "LAYERS":[
     {
@@ -893,7 +893,7 @@
                 "layername": "magosm:pnr_polygon",
                 "nom_court": "Regionalen Naturparks · Parcs Naturels Régionaux · Parchi Naturali Regionali · Regional Nature Parks",
                 "md_url": "https://wiki.openstreetmap.org/wiki/Tag:boundary%3Dprotected_area",
-                "sld_path":"/styles/france_pnr_polygon",
+                "sld_path":"/styles/france_pnr_polygon.sld",
                 "type":"WMTS",
                 "download_gpkg":true,
                 "download_csv":true,

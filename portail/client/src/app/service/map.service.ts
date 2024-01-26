@@ -10,7 +10,6 @@ import { Color } from 'app/model/ChangesClasses/Color';
 import { environment } from '../../environments/environment';
 import { LayerAndCategory } from 'app/model/LayerAndCategory';
 import { Layer } from 'app/model/Layer';
-import { Polygon } from 'openlayers';
 
 declare var ol: any;
 declare var _paq: any;
@@ -35,7 +34,8 @@ export class MapService {
 
   loadingCounter = 0;
   //fonds de carte
-  private OSMLayer: any;
+  //private OSMLayer: any;
+  private jawgLayer: any;
   private swisstopoLayer: any;
   private swissimageLayer: any;
   private baseLayer: any;
@@ -95,6 +95,7 @@ export class MapService {
       zIndex: 0,
       source: new ol.source.TileWMS({
         url: 'https://wms.geo.admin.ch/',
+        attributions: '<a href="https://www.swisstopo.admin.ch" target="_blank">© swisstopo</a>',
         params: {
           'LAYERS': 'ch.swisstopo.pixelkarte-farbe',
           'TILED': true
@@ -110,6 +111,7 @@ export class MapService {
       zIndex: 0,
       source: new ol.source.TileWMS({
         url: 'https://wms.geo.admin.ch/',
+        attributions: '<a href="https://www.swisstopo.admin.ch" target="_blank">© swisstopo</a>',
         params: {
           'LAYERS': 'ch.swisstopo.swissimage',
           'TILED': true
@@ -123,16 +125,33 @@ export class MapService {
 
   setBaseLayers() {
     //initialisation des sources et des layers de fond de carte OSM
+    /*
     this.OSMLayer = new ol.layer.Tile({
       title: 'OSM',
       source: new ol.source.OSM(),
       visible: true,
       zIndex: 0
     });
+*/
+    // Création de la source de tuiles Jawg
+    const jawgSource = new ol.source.XYZ({
+      url: 'https://tile.jawg.io/81517e9c-ab54-41ec-bc94-d3715eef40fd/{z}/{x}/{y}.png?access-token=EM344nctCsmQkQoad4IaudRbsGhrP94g1FMZkWyB6hMZWMR70mFYyaQjjQlMC9MX',
+      attributions: '&#160&#160&#160<a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap</a> contributors'+
+      '&#160&#160&#160<a href="https://www.jawg.io/en/terms/" target="_blank">© JawgMaps</a>&#160&#160&#160',
+    })
+    this.jawgLayer = new ol.layer.Tile({
+      title: 'Jawg',
+      source: jawgSource,
+      visible: true,
+    });
+
+    this.map 
     this.initializeSwisstopoLayer();
     this.initializeSwissimageLayer();
-    this.baseLayer = this.OSMLayer;
-    this.map.addLayer(this.OSMLayer);
+    this.baseLayer = this.jawgLayer;
+    //this.baseLayer = this.OSMLayer;
+    this.map.addLayer(this.jawgLayer);
+    //this.map.addLayer(this.OSMLayer);
     this.map.addLayer(this.swisstopoLayer);
     this.map.addLayer(this.swissimageLayer);
   };
@@ -184,10 +203,14 @@ export class MapService {
   changeBaseLayer(baseLayerName) {
     this.baseLayerName = baseLayerName;
     this.baseLayer.setVisible(false);
-
+/*
     if (baseLayerName === 'OSM') {
       this.baseLayer = this.OSMLayer;
     }
+    */
+    if (baseLayerName === 'OSM') {
+      this.baseLayer = this.jawgLayer;
+    }   
     else if (baseLayerName === 'swisstopo'){
       this.baseLayer = this.swisstopoLayer;
     }
@@ -272,7 +295,7 @@ export class MapService {
       });
       options.attributions = [new ol.Attribution({
         html: '' +
-          '<a href="https://ch-osm.geodatasolutions.ch/#about">© GeoDataSolutions for the WMS/WFS </a>'
+          '<a href="https://ch-osm.geodatasolutions.ch/#about" target="_blank">© GeoDataSolutions for the WMS/WFS </a>'
       })
       ];
       var wmts = new ol.source.WMTS(options);
@@ -322,7 +345,7 @@ export class MapService {
         params: { 'LAYERS': layername },
         attributions: [new ol.Attribution({
           html: '' +
-          '<a href="https://ch-osm.geodatasolutions.ch/#about">© GeoDataSolutions for the WMS/WFS </a>'
+          '<a href="https://ch-osm.geodatasolutions.ch/#about" target="_blank">© GeoDataSolutions for the WMS/WFS </a>'
         })
         ]
       }));
@@ -439,6 +462,7 @@ export class MapService {
 
     return this.getScaleFromResolution(this.map.getView().getResolution(), this.map.getView().getProjection().getUnits(), true);
   }
+
   shpExport(layer) {
     var size = /** @type {ol.Size} */ (this.map.getSize());
     var extent = this.map.getView().calculateExtent(size);
@@ -507,7 +531,7 @@ export class MapService {
     var filename=layer.layername;
     //let url = environment.geoserver_baseurl + "/wms?service=wms&request=GetMap&version=1.1.1&format=application/vnd.google-earth.kml+xml&layers=" + layer.layername /*+ "&styles=" + layer.selectedStyle.style*/ + "&height=2048&width=2048&transparent=false&srs=EPSG:3857&format_options=AUTOFIT:true;KMATTR:true;KMPLACEMARK:false;KMSCORE:40;MODE:download;SUPEROVERLAY:false&bbox=" + bbox;
     //let url = environment.geoserver_baseurl + "/wfs?request=GetFeature&version=2.0.0&count=500000&outputFormat=gpkg&typeName=" + layer.layername + "&srsName=EPSG:3857&bbox=" + bbox;
-    var url = environment.geoserver_baseurl + "/wfs?request=GetFeature&version=2.0.0&count=500000&outputFormat=geopkg&typeName=" + layer.layername + "&srsName=EPSG:3857&bbox=" + bbox;
+    var url = environment.geoserver_baseurl + "/wfs?request=GetFeature&version=2.0.0&count=500000&outputFormat=geopkg&typeName=" + layer.layername + "&srsName=EPSG:2056&bbox=" + bbox;
     //let url = environment.geoserver_baseurl + "/wms/kml?layers="+layer.layername;
     
     //piwik
@@ -649,7 +673,7 @@ export class MapService {
     return false;
 
   }
-  addLayer(id: string, url: string, show: boolean = false) {
+  addLayer(id: string, url: string, show: boolean = false, style = null) {
     if (this.layers[id] == null) {
       var vectorSource = new ol.source.Vector({
         //projection : 'EPSG:3857',
@@ -660,8 +684,11 @@ export class MapService {
         }),
         url: url
       });
+      // Création de la couche vectorielle
       this.layers[id] = new ol.layer.Vector({
-        source: vectorSource
+        source: vectorSource,
+        // Appliquer le style ici si fourni
+        style: style ? style : undefined
       });
 
       var listenerKey = vectorSource.on('change', (function (e) {
@@ -1039,7 +1066,7 @@ export class MapService {
     if (geom && geom.length > 2 ) {
       geom.forEach((element, index) => {
         if (index % 2 == 0){            
-          polygone.push( ol.proj.transform([geom[index], geom[index+1]], 'EPSG:3857', config.PROJECTION_CODE));
+          polygone.push( ol.proj.transform([geom[index], geom[index+1]], 'EPSG:2056', config.PROJECTION_CODE));
         }
       });
       let polygon = new ol.geom.Polygon([polygone]);

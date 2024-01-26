@@ -69,7 +69,7 @@ export class WFSRequest {
        
         let extent = this.mapService.getBoundingBoxCorner();
         
-        url += "&bbox=" + extent.join(',') + ',EPSG:2056'
+        url += "&bbox=" + extent.join(',') + ',EPSG:3857'
 
         // sorter column
         if (this.sorterColumn && this.sorterDirection){

@@ -1,5 +1,17 @@
+app-map-controller {
+  display: block; /* ou autre selon le rendu désiré */
+  max-width: 100%; /* pour s'assurer qu'il ne dépasse pas du menu */
+  /* autres styles si nécessaire */
+}
+
 .btn {
   font-size: 14px;
+}
+
+.btn-group {
+  display: flex; /* Utilise flexbox */
+  flex-direction: row; /* Organise les éléments horizontalement */
+  align-items: flex-start; /* Alignement vertical en haut */
 }
 
 .btn-feature {
@@ -11,9 +23,38 @@
   color: #ffff;
   background-color: #CC1517;
   border-color: rgb(203, 21, 24);
+  border-radius: 4px !important;
 }
 
 /* panneau masquable */
+#mapControllerCollapse {
+  position: absolute;
+  flex: auto; 
+  top: 0; /* Aligner en haut par rapport au parent '.btn-group' */
+  left: 100%; /* Décaler vers la gauche à la largeur du bouton */
+  transform: translateX(-115%); /* Décaler vers la gauche à la largeur de lui-même */
+  width: 300px;
+
+}
+
+#mapControllerCollapse {
+  /* Vos styles existants */
+  display: none; /* Cache le collapse par défaut */
+}
+
+#mapControllerCollapse.show {
+  display: block; /* Affiche le collapse lorsque la classe 'show' est ajoutée */
+}
+
+
+#legendCollapse {
+  position: absolute;
+  flex: auto; 
+  top: 0; /* Aligner en haut par rapport au parent '.btn-group' */
+  left: 100%; /* Décaler vers la gauche à la largeur du bouton */
+  transform: translateX(-150%); /* Décaler vers la gauche à la largeur de lui-même */
+  width: 300px; /* ou la largeur que vous voulez */
+}
 
 
 #panel-switcher-wrapper {
@@ -42,7 +83,7 @@
   -moz-transition: all 0.5s ease-in 0s;
   -ms-transition: all 0.5s ease-in 0s;
   -o-transition: all 0.5s ease-in 0s;
-  border-radius: 4px;
+
   padding: 2px;
 }
 
@@ -54,11 +95,23 @@
   -ms-transition: all 0.5s ease-out 0s;
   -o-transition: all 0.5s ease-out 0s;
 }
-/* Same colors as the zoom button (on the left) */
-.panel-switcher-opts .btn{
+.panel-switcher-opts .btn {
+  margin: 5px;
   color: #fff;
-  background-color: rgba(204, 21, 23, 0.5);
+  background-color: rgba(204, 21, 23);
   border: none;
+  margin-right: 5px; 
+  font-size: 16px; 
+  width: auto;
+  max-width: 270px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  height: 40px; 
+  display: flex;  
+  align-items: center;  
+  justify-content: center;  
+  float: left;  
 }
 
 .panel-switcher-opts .btn:hover{
@@ -73,6 +126,15 @@
   list-style: none;
   margin: 0;
   padding: 0; 
+}
+
+.panel-switcher-opts .dropdown-menu {
+  width: auto;
+  max-width: 270px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  margin-right: 12px;
 }
 
 .panel-switcher-nav li {
@@ -97,8 +159,8 @@
 }
 
 .btn-panel-switcher {
-  width: 110px;
-  height: 25px;
+  width: 40px;
+  height: 40px;
 }
 
 #panel-switcher-wrapper.active {
@@ -135,13 +197,4 @@
   .panel-switcher-opts.active{
     top: 60px;
   }
-}
-
-.panel-switcher-opts .btn:active{
-  border-color: #ffffff;
-}
-
-.panel-switcher-opts .btn:active, .panel-switcher-opts .btn:focus {
-  border-color: #ffffff;
-  outline: none; /* Si vous souhaitez également supprimer le contour par défaut du navigateur */
 }
