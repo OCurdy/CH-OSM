@@ -65,11 +65,11 @@ export class WFSRequest {
         } else{
             url += '&maxfeatures=5000&count=10';
         } 
-        url +='&typename=' + this.currentLayer.layername + '&outputFormat=' + outputformat + '&srsname=EPSG:3857';
+        url +='&typename=' + this.currentLayer.layername + '&outputFormat=' + outputformat + '&srsname=EPSG:2056';
        
         let extent = this.mapService.getBoundingBoxCorner();
         
-        url += "&bbox=" + extent.join(',') + ',EPSG:3857'
+        url += "&bbox=" + extent.join(',') + ',EPSG:2056'
 
         // sorter column
         if (this.sorterColumn && this.sorterDirection){

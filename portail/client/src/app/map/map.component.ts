@@ -9,13 +9,14 @@ import { LayerChangeService } from '../service/layer-change.service';
 import { UserContext } from '../model/UserContext';
 import { environment } from '../../environments/environment';
 import { LayerAndCategory } from 'app/model/LayerAndCategory';
-import {TranslateService} from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
 
 declare var proj4: any;
 declare var $: any;
 declare var ol: any;
 declare var config: any;
 declare var _paq: any;
+declare var shapefile: any;
 
 const isUrl = function (str: string) {
     // If str is not a valid URL, "new URL(str)" throw an exception.
@@ -27,6 +28,11 @@ const isUrl = function (str: string) {
   } 
 }
 
+function formatSwissNumber(num: number): string {
+  const parts = num.toFixed(1).toString().split(".");
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, "'");
+  return parts.join(".");
+}
 
 const getUrlFromDataTransfer = function (dataTransfer: DataTransfer) {
   if (dataTransfer.types.indexOf('text/uri-list') !== -1) {
@@ -81,6 +87,8 @@ export class MapComponent implements OnInit {
   private currentScale: any;
   private updatedScale: any;
 
+  //Selection de système de coordonées
+  private mousePositionControl: any;
 
   //Variables utiles au composant de géolocalisation
   @ViewChild(ApiAdresseComponent) public apiadresse: ApiAdresseComponent;
@@ -106,20 +114,23 @@ export class MapComponent implements OnInit {
 
   ngAfterViewInit() {
   }
+ 
 
   initMap() {
     //proj4.defs(MainmapComponent.PROJECTION_CODE, "+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m   +no_defs");
+    proj4.defs(config.PROJECTION_CODE, "+proj=somerc +lat_0=46.95240555555556 +lon_0=7.439583333333333 +k_0=1 +x_0=2600000 +y_0=1200000 +ellps=bessel +towgs84=674.374,15.056,405.346,0,0,0,0 +units=m +no_defs");
 
 
-    var mousePositionControl = new ol.control.MousePosition({
+   this.mousePositionControl = new ol.control.MousePosition({
       coordinateFormat: function (coords) {
-        return ol.coordinate.format(coords, 'Lat : {y}° Lon : {x}° (WGS84)', 4)
+        return 'E: ' + formatSwissNumber(coords[0])+ ' / ' + ' N: ' + formatSwissNumber(coords[1]);      
       },
-      projection: 'EPSG:4326',
+      projection: config.PROJECTION_CODE,
       className: 'custom-mouse-position',
       target: document.getElementById('mouse-position'),
       undefinedHTML: '&nbsp;'
-    });
+   });
+   
 
     let center: number[] = [this.userContext.lon, this.userContext.lat];
     this.view = new ol.View({
@@ -137,7 +148,7 @@ export class MapComponent implements OnInit {
           collapsible: false
         })
       }).extend([
-        mousePositionControl,
+        this.mousePositionControl,
         new ol.control.ScaleLine()
       ]),
       target: 'map',
@@ -150,8 +161,29 @@ export class MapComponent implements OnInit {
     this.map.on('click', this.onClick.bind(this));
     this.map.on('moveend', this.onZoom.bind(this)); 
 
+    var cantonStyle = new ol.style.Style({
+      stroke: new ol.style.Stroke({
+        color: '#cc1517',
+        backgroundcolor: '#cc1517',
+        width: 2       
+      })
+    });
+    var communeStyle = new ol.style.Style({
+      stroke: new ol.style.Stroke({
+        color: '#cc1517',
+        width: 1
+      })
+    });
+    var gdgeStyle = new ol.style.Style({
+      stroke: new ol.style.Stroke({
+        color: '#00000',
+        width: 1
+      })
+    });
 
-    this.mapService.addLayer('cantons', 'assets/data/cantons.geojson');
+    this.mapService.addLayer('communes', 'assets/data/communes.geojson', false, communeStyle);
+    this.mapService.addLayer('grandgeneve', 'assets/data/grand_geneve.geojson', false, gdgeStyle);
+    this.mapService.addLayer('cantons', 'assets/data/cantons.geojson', false, cantonStyle);
 
     var parser = new ol.format.WMTSCapabilities();
     let self = this;
@@ -166,8 +198,6 @@ export class MapComponent implements OnInit {
       error => {
         console.log(error);
       });
-
-
 
     this.currentResolution = this.view.getResolution();
     this.currentScale = this.mapService.getScaleFromResolution(this.view.getResolution(), this.map.getView().getProjection().getUnits(), true);
@@ -195,6 +225,22 @@ export class MapComponent implements OnInit {
     }
     
   }
+
+  changeCoordinateSystem(event) {
+    const newProjection = event.target.value;
+ 
+    if (newProjection === "EPSG:2056") {
+       this.mousePositionControl.setProjection(newProjection);
+       this.mousePositionControl.setCoordinateFormat(coords => 
+          'E: ' + formatSwissNumber(coords[0]) + ' N: ' + formatSwissNumber(coords[1])
+       );
+    } else if (newProjection === "EPSG:4326") {
+       this.mousePositionControl.setProjection(newProjection);
+       this.mousePositionControl.setCoordinateFormat(coords => 
+          'Lat: ' + coords[1].toFixed(4) + '° Lon: ' + coords[0].toFixed(4) + '°'
+       );
+    }
+ }
 
   onZoom(event) {
     this.currentScale = this.mapService.getScaleFromResolution(this.view.getResolution(), this.map.getView().getProjection().getUnits(), true);
@@ -292,7 +338,7 @@ export class MapComponent implements OnInit {
       crossOrigin: 'anonymous',
       params: ({ 'LAYERS': id_layers })
     })).getGetFeatureInfoUrl(
-      event.coordinate, viewResolution, 'EPSG:3857',
+      event.coordinate, viewResolution, 'EPSG:2056',
       { 'INFO_FORMAT': 'text/xml', 'QUERY_LAYERS': id_layers, 'BUFFER': '10', 'FEATURE_COUNT': '10' }
       );
 
@@ -329,8 +375,8 @@ export class MapComponent implements OnInit {
         var format = new ol.format.WKT();
         
         var feature = format.readFeature(wkt_geom.split(';')[1], {
-          dataProjection: 'EPSG:3857',
-          featureProjection: 'EPSG:3857'
+          dataProjection: 'EPSG:2056',
+          featureProjection: 'EPSG:2056'
         });
         this.mapService.addToSelection(feature);
       }

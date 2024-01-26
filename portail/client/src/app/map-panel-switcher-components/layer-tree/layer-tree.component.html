@@ -9,15 +9,17 @@
 </div>
 <div role="tablist" aria-multiselectable="true">
     <div *ngFor="let categorie of layervariables" class="card">
-        <div class="card-header" role="tab" id="categorie{{categorie.id_categorie}}">
-            <h6 class="mb-0">
+        <div class="card-header" role="tab" id="categorie{{categorie.id_categorie}}" (click)="toggleIcon(categorie.id_categorie)">
+            <h5 class="mb-0">
                 <a class="categorie-title collapsed" data-toggle="collapse" data-parent="#menuaccordion" [attr.href]="'#collapse'+categorie.id_categorie"
                     [title]="categorie.help || categorie.categorie"
-                    [attr.aria-controls]="'#collapse'+categorie.id_categorie" aria-expanded="false"
-                >
-                    {{ categorie.categorie | translate }}
+                    [attr.aria-controls]="'#collapse'+categorie.id_categorie" (click)="toggleIcon(categorie.id_categorie)" aria-expanded="false">               
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 12 12" style="margin-right: 10px;">
+                        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+                    </svg>
+                      {{ categorie.categorie | translate }}
                 </a>
-            </h6>
+            </h5>
         </div>
         <div class="collapse collapse-close" [attr.id]="'collapse'+categorie.id_categorie" role="tabpanel" [attr.aria-labelledby]="'categorie'+categorie.id_categorie">
             <div class="list-group">
@@ -100,7 +102,6 @@
                                     </span>
                                 </div>
                                 <div class="card card-body" style="width: 18rem;">
-<!-- A INTEGRER APRES AVOIR INSTALLÉ LE PLUGIN SUR GEOSERVER!
                                     <span *ngIf="feature.download_gpkg" 
                                         style="cursor:pointer;margin: 3px"
                                         (click)="onGeopkgDownload($event,feature)" 
@@ -114,7 +115,6 @@
                                     >
                                         <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i> gpkg
                                     </span>
--->
                                     <span *ngIf="feature.download_csv" 
                                         style="cursor:pointer;margin: 3px"
                                         (click)="onCsvDownload($event,feature)" 
@@ -155,7 +155,7 @@
                                     >
                                         <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i> shp
                                     </span>
-                                    <span *ngIf="feature.sld_path"
+<!--                                     <span *ngIf="feature.sld_path"
                                         style="cursor:pointer;margin: 3px"
                                         (click)="onSldDownload($event,feature)"
                                         title="Download SLD"
@@ -167,7 +167,7 @@
                                         data-placement="top"
                                     >
                                         <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i> sld
-                                    </span>
+                                    </span> -->
 
                                 </div>
                             </div>

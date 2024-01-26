@@ -82,7 +82,7 @@
                         </div>
                         <div class="logo">
                             <a target="_blank" href="https://wiki.openstreetmap.org/wiki/Key:{{formatKey(k)}}" title="Rechercher {{formatKey(k)}} sur le Wiki d'OpenStreetMap">Wiki OSM</a>
-                            <a target="_blank" href="https://taginfo.openstreetmap.fr/keys/{{formatKey(k)}}#overview"title="Rechercher {{formatKey(k)}} sur TagInfo"><img src="assets/images/taginfo_30_11px.png"></a>
+                            <a target="_blank" href="https://taginfo.openstreetmap.org/keys/{{formatKey(k)}}#overview"title="Rechercher {{formatKey(k)}} sur TagInfo"><img src="assets/images/taginfo_30_11px.png"></a>
                             <a target="_blank" href="http://overpass-turbo.eu/?key={{formatKey(k)}}&template=key" title="Requête sur {{formatKey(k)}} avec Overpass Turbo"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAABJklEQVQoz13RP0oDYRCH4UcShdRbWWjSWWgOEEFLSWNj5SG2DHxa5RBaWOQM5gASraKdILugblaTEAvBP6BC0M4iWxhnuoHfDPO+QElkU3Dhy5ueYFOkpKiymlhfZiCXyWT6YjXlWbqmLZHratm1q6Url2irKRGJpRJBXaSiIlIXJBKxiIZLE4eqs4XF0aoDD/oaHHgytG/VkoWil6zac+VR4Nynb4lj29atWbNu27Ebnz6c82pq7N7YnWtdXdfuisnUKy+GYk0dqYkTJyZSHU2xoRd6Mi3LVuw4MzJyZseKZS2ZHkHmVF1ZRdPAQFNFWd2pTKChLxdULdqQSm1YVBXkszcjsaQAteXWra15UH9RH3n27Gge9V9ZYz++jeZl/df9Pq/7F7ojeX4atkuXAAAAAElFTkSuQmCC"></a> 
                         </div>
                         </div>
@@ -95,7 +95,7 @@
                           <div class="logo">
                             <span *ngIf="selectedFeature.get(k) != undefined && !(isValueIrrelevant(k))"> <!-- If the value is NonGeneric, we don't display the logos -->
                               <a target="_blank" href="https://wiki.openstreetmap.org/wiki/Tag:{{formatKey(k)}}%3D{{selectedFeature.get(k)}}" title="Rechercher {{formatKey(k)}}:{{selectedFeature.get(k)}} sur le Wiki d'OpenstreetMap">Wiki OSM</a>
-                              <a target="_blank" href="https://taginfo.openstreetmap.fr/tags/{{formatKey(k)}}={{selectedFeature.get(k)}}#overview" title="Rechercher {{formatKey(k)}}:{{selectedFeature.get(k)}} sur TagInfo"><img src="assets/images/taginfo_30_11px.png"></a>
+                              <a target="_blank" href="https://taginfo.openstreetmap.org/tags/{{formatKey(k)}}={{selectedFeature.get(k)}}#overview" title="Rechercher {{formatKey(k)}}:{{selectedFeature.get(k)}} sur TagInfo"><img src="assets/images/taginfo_30_11px.png"></a>
                               <a target="_blank" href="http://overpass-turbo.eu/?key={{formatKey(k)}}&value={{selectedFeature.get(k)}}&template=key-value" title="Requête sur {{formatKey(k)}}:{{selectedFeature.get(k)}} avec Overpass Turbo"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAABJklEQVQoz13RP0oDYRCH4UcShdRbWWjSWWgOEEFLSWNj5SG2DHxa5RBaWOQM5gASraKdILugblaTEAvBP6BC0M4iWxhnuoHfDPO+QElkU3Dhy5ueYFOkpKiymlhfZiCXyWT6YjXlWbqmLZHratm1q6Url2irKRGJpRJBXaSiIlIXJBKxiIZLE4eqs4XF0aoDD/oaHHgytG/VkoWil6zac+VR4Nynb4lj29atWbNu27Ebnz6c82pq7N7YnWtdXdfuisnUKy+GYk0dqYkTJyZSHU2xoRd6Mi3LVuw4MzJyZseKZS2ZHkHmVF1ZRdPAQFNFWd2pTKChLxdULdqQSm1YVBXkszcjsaQAteXWra15UH9RH3n27Gge9V9ZYz++jeZl/df9Pq/7F7ojeX4atkuXAAAAAElFTkSuQmCC"></a>
                             </span>
                           </div>

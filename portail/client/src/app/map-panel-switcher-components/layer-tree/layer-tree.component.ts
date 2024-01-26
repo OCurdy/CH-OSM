@@ -11,7 +11,6 @@ import { LayerAttributeTableComponent } from 'app/layer-attribute-table/layer-at
 
 
 
-
 declare var config: any;
 declare var $: any;
 declare var _paq: any;
@@ -30,7 +29,7 @@ const average = arr => arr.reduce((p, c) => p + c, 0) / arr.length;
 export class LayerTreeComponent implements OnInit {
 
   public selectedLayer: Layer;
-  
+
    
   
   layervariables = config.LAYERS;

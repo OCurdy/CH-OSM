@@ -53,12 +53,13 @@ h4 {
 	left:0px
 }
 
-.loading-counter{
-	position:absolute;
-	color:white;
-	z-index: 100001;
-	top:13px;
-	left:15px
+.loading-counter {
+  position: absolute;
+  color: #CC1417;
+  z-index: 100001;
+  top: 13px;
+  left: 11px;
+  text-align: center; 
 }
 .lds-ring {
 	/*background-color: lightskyblue;*/
@@ -75,10 +76,10 @@ h4 {
   width: 20px;
   height: 20px;
   margin: 6px;
-  border: 2px solid #fff;
+  border: 2px solid #CC1417;
   border-radius: 50%;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: #fff transparent transparent transparent;
+  border-color: #CC1417 transparent transparent transparent;
 }
 .lds-ring div:nth-child(1) {
   animation-delay: -0.45s;

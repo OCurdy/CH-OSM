@@ -10,7 +10,7 @@
 
     "panel.attributes":"Attributs",
     
-    "panel.explanationtitle":"Select, Zoom & Click",
+    "panel.explanationtitle":"Par où débuter?",
     "panel.explanation": "Sélectionnez une ou plusieurs couches de données dans le menu de droite, zoomez sur une zone puis cliquez sur un objet pour obtenir des information!",
     "panel.visibiltylayertitle": "Couche non visible à cette résolution",
     "panel.visibiltylayer": " La couche n'est pas visible à cette résolution",
@@ -62,6 +62,7 @@
     "magosm:telecom_exchange_point":"Noeuds de raccordement",
     "magosm:telecom_fibre_connection_point":"Points de mutualisation Fibre",
     "magosm:telecom_copper_connection_point":"Sous-répartiteurs cuivre",
+    "magosm:vineyards_grapes_polygon": "Vignoble",
    
     "myLayers":"Mes Couches",
   

@@ -1,18 +1,116 @@
   #headingMapController{
     font-size: 1rem;
-  }
+  }/*
   .layerbar-nav {
     list-style: none;
     margin: 0;
     padding: 0;
-  }
+  }*/
 
-  .layerbar-nav li {
+  .layerbar-nav li.card-header {
+    padding: 0.5rem !important;  /* Ceci réduira le padding à la moitié de p-2 */
+}
+
+  .layerbar-nav {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    width: auto;
+    min-width: 275px;
+    max-width: none;
+    text-align: left;
+}
+
+.layerbar-nav li {
     line-height: 50px;
-    text-indent: 20px;
-  }
+    padding-right: 20px;
+}
 
-  ul{
+/* Cible les images à l'intérieur des étiquettes de boutons radio cochés */
+.radio-option input[type="radio"]:checked + label img {
+  border: 3px solid #CC1517;  /* Vous pouvez ajuster l'épaisseur et la couleur de la bordure selon vos préférences */
+  border-radius: 5px;      /* Bordures arrondies pour un joli design */
+}
+
+/* Ajoute un peu d'espace autour de l'image pour éviter que le texte et l'image ne soient trop proches */
+.radio-option label img {
+  margin-right: 10px;      /* Ajustez cette valeur selon vos préférences */
+}
+
+
+/* Cache les boutons radio tout en les gardant fonctionnels */
+.radio-option input[type="radio"] {
+  display: none;
+}
+
+/* Images non sélectionnées (peut-être les rendre un peu transparentes ou en niveaux de gris pour indiquer qu'elles ne sont pas actives) */
+.radio-option label img {
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+/* Images sélectionnées (rendre l'image claire et ajouter une bordure pour indiquer qu'elle est active) */
+.radio-option input[type="radio"]:checked + label img {
+  border: 3px solid #CC1517;
+  border-radius: 5px;
+  opacity: 1;
+}
+
+
+/*Checkbox communes cantons */
+input[type="checkbox"] {
+  height: 20px; /* Ajuster selon la taille réelle désirée */
+  width: 20px; /* Ajoutez une largeur si nécessaire pour la symétrie */
+  margin: 0; /* Retirez les marges par défaut si nécessaire */
+  vertical-align: middle; /* Ceci peut aider pour un alignement fin */
+}
+
+.checkbox-container {
+  margin-bottom: 10px; 
+  line-height: normal; 
+  display: flex;
+  justify-content: center;
+}
+
+.checkbox-option label {
+  margin-left: 0.5rem;
+  display: flex;
+  align-items: center; /* Ceci s'assure que le texte est centré verticalement avec la checkbox */
+  transform: translateY(3px); /* Ajustez ce nombre au besoin pour aligner parfaitement */
+}
+
+.checkbox-row {
+  display: flex;
+  margin-top: 15px;
+  justify-content: space-between; /* Ceci répartit les éléments également dans l'espace disponible */
+}
+
+.checkbox-row-left-align {
+  display: flex;
+  flex-direction: column; /* Les éléments s'alignent verticalement */
+  align-items: flex-start; /* Aligner les enfants à gauche */
+}
+
+.checkbox-left-align {
+  margin-top: 5px; /* Marge réduite entre les cases à cocher */
+  margin-left: 0; /* Aligner à gauche avec la première case à cocher */
+}
+
+.checkbox-option {
+  flex: 1; /* Ceci permet aux options de checkbox de prendre la même quantité d'espace */
+  padding-right: 0px; /* Ajoutez un peu d'espace entre les checkboxes */
+  display: flex;
+  justify-content: center; /* centre horizontalement les enfants de .checkbox-option */
+  align-items: center; /* centre verticalement les enfants si nécessaire */
+  
+}
+
+ul{
     padding-left:0px;
   }
 
@@ -27,10 +125,35 @@
 See styles.css for more information*/
 
 input[type=range] {
-  width:75%; 
-  padding: 0px 0px 0px 0px;
+  padding: 10px 10px 10px 10px;
 }
 
+.range-container {
+   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 10px 10px;
+  left: 10px;
+}
+
+.range-label {
+  position: absolute;
+  top: 40%; /* Position below the slider */
+}
+
+.left {
+  left: 0;
+  color:#CC1517;
+  
+}
+
+.right {
+  right: 0;
+  text-align: right;
+  color:#CC1517
+}
 /* Partie sur le menu des couches */
 
 h4 {

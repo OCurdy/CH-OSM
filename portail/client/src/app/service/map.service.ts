@@ -10,10 +10,7 @@ import { Color } from 'app/model/ChangesClasses/Color';
 import { environment } from '../../environments/environment';
 import { LayerAndCategory } from 'app/model/LayerAndCategory';
 import { Layer } from 'app/model/Layer';
-import { saveAs } from 'file-saver';
-import { ajaxGetJSON } from 'rxjs/internal-compatibility';
-import { JsonPipe } from '@angular/common';
-import { getUrlScheme } from '@angular/compiler';
+import { Polygon } from 'openlayers';
 
 declare var ol: any;
 declare var _paq: any;
@@ -28,7 +25,7 @@ export class MapService {
 
   public map: any;
   public ol: any;
-  public layers: Object = {};
+  public layers: Object = {}; 
 
   private selectedFeatureSource: any;
   private selectedFeatureStyle: any;
@@ -38,10 +35,14 @@ export class MapService {
 
   loadingCounter = 0;
   //fonds de carte
-  private OSMLayer: any;
+  //private OSMLayer: any;
+  private jawgLayer: any;
+  private swisstopoLayer: any;
+  private swissimageLayer: any;
   private baseLayer: any;
   private baseLayerName: string;
-  private opacityRange = 30;
+  public activeBaseLayer: string;
+  private opacityRange = 60;
 
   //Suivi de changements
   public changesStyles = new Map();
@@ -89,16 +90,71 @@ export class MapService {
     this.wmtsResult = wmtsResult
   }
 
+  initializeSwisstopoLayer() {
+    this.swisstopoLayer = new ol.layer.Tile({
+      visible: false,
+      zIndex: 0,
+      source: new ol.source.TileWMS({
+        url: 'https://wms.geo.admin.ch/',
+        attributions: '<a href="https://www.swisstopo.admin.ch" target="_blank">© swisstopo</a>',
+        params: {
+          'LAYERS': 'ch.swisstopo.pixelkarte-farbe',
+          'TILED': true
+        },
+        serverType: 'geoserver',
+      }),
+      isBaseLayer: true
+    }); 
+  }
+  initializeSwissimageLayer() {
+    this.swissimageLayer = new ol.layer.Tile({
+      visible: false,
+      zIndex: 0,
+      source: new ol.source.TileWMS({
+        url: 'https://wms.geo.admin.ch/',
+        attributions: '<a href="https://www.swisstopo.admin.ch" target="_blank">© swisstopo</a>',
+        params: {
+          'LAYERS': 'ch.swisstopo.swissimage',
+          'TILED': true
+        },
+        serverType: 'geoserver',
+      }),
+      isBaseLayer: true
+    });
+  }
+
+
   setBaseLayers() {
     //initialisation des sources et des layers de fond de carte OSM
+    /*
     this.OSMLayer = new ol.layer.Tile({
       title: 'OSM',
       source: new ol.source.OSM(),
       visible: true,
       zIndex: 0
     });
-    this.baseLayer = this.OSMLayer;
-    this.map.addLayer(this.OSMLayer);
+*/
+    // Création de la source de tuiles Jawg
+    const jawgSource = new ol.source.XYZ({
+      url: 'https://tile.jawg.io/81517e9c-ab54-41ec-bc94-d3715eef40fd/{z}/{x}/{y}.png?access-token=EM344nctCsmQkQoad4IaudRbsGhrP94g1FMZkWyB6hMZWMR70mFYyaQjjQlMC9MX',
+      attributions: '&#160&#160&#160<a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap</a> contributors'+
+      '&#160&#160&#160<a href="https://www.jawg.io/en/terms/" target="_blank">© JawgMaps</a>&#160&#160&#160',
+    })
+    this.jawgLayer = new ol.layer.Tile({
+      title: 'Jawg',
+      source: jawgSource,
+      visible: true,
+    });
+
+    this.map 
+    this.initializeSwisstopoLayer();
+    this.initializeSwissimageLayer();
+    this.baseLayer = this.jawgLayer;
+    //this.baseLayer = this.OSMLayer;
+    this.map.addLayer(this.jawgLayer);
+    //this.map.addLayer(this.OSMLayer);
+    this.map.addLayer(this.swisstopoLayer);
+    this.map.addLayer(this.swissimageLayer);
   };
 
   getCategorieAndLayerByStringAttribute(attributeName: string, attributeValue: String):LayerAndCategory {
@@ -135,19 +191,44 @@ export class MapService {
     return this.announceOpacityChangeEvent;
   }
 
+  toggleOverlayLayer(layerName: string, isChecked: boolean) {
+    let targetLayer = this.getLayersById(layerName);
+
+    if (targetLayer) {
+        targetLayer.setVisible(isChecked);
+    } else {
+        console.error(`Layer with ID "${layerName}" not found.`);
+    }
+  }
+
   changeBaseLayer(baseLayerName) {
     this.baseLayerName = baseLayerName;
     this.baseLayer.setVisible(false);
+/*
     if (baseLayerName === 'OSM') {
       this.baseLayer = this.OSMLayer;
+    }
+    */
+    if (baseLayerName === 'OSM') {
+      this.baseLayer = this.jawgLayer;
+    }   
+    else if (baseLayerName === 'swisstopo'){
+      this.baseLayer = this.swisstopoLayer;
+    }
+    else if (baseLayerName === 'swissimage') {
+      this.baseLayer = this.swissimageLayer;
     }
     else {
       this.baseLayer = this.getLayersById(baseLayerName)
     }
     this.baseLayer.setOpacity(this.opacityRange / 100);
     this.baseLayer.setVisible(true);
-    this.baseLayer.setVisible(true);
   }
+
+  get currentBaseLayerName() {
+    return this.baseLayerName;
+  }
+  
 
   setLegendAttributes(key, value) {
     if (key = "legendUrls") {
@@ -205,7 +286,7 @@ export class MapService {
     let id = layerconfig.layername;
     let lshow = show;
     let lconfig = layerconfig;
-    let matrixSet = "EPSG:3857";
+    let matrixSet = "EPSG:2056";
 
     if (this.layers[id] == null) {
       var options = ol.source.WMTS.optionsFromCapabilities(this.wmtsResult, {
@@ -215,7 +296,7 @@ export class MapService {
       });
       options.attributions = [new ol.Attribution({
         html: '' +
-          '<a href="https://ch-osm.geodatasolutions.ch/#about">© GeoDataSolutions for the WMS/WFS </a>'
+          '<a href="https://ch-osm.geodatasolutions.ch/#about" target="_blank">© GeoDataSolutions for the WMS/WFS </a>'
       })
       ];
       var wmts = new ol.source.WMTS(options);
@@ -253,7 +334,7 @@ export class MapService {
     this.loadingCounter--;
     e.target.loadingCounter--;
   }
-  addWMSLayer(layerconfig: any, show: boolean = false) {
+/*   addWMSLayer(layerconfig: any, show: boolean = false) {
     let id = layerconfig.layername;
     console.log("addwmslayer: "+id) ;
     let layername = layerconfig.layername;
@@ -265,10 +346,29 @@ export class MapService {
         params: { 'LAYERS': layername },
         attributions: [new ol.Attribution({
           html: '' +
-          '<a href="https://ch-osm.geodatasolutions.ch/#about">© GeoDataSolutions for the WMS/WFS </a>'
+          '<a href="https://ch-osm.geodatasolutions.ch/#about" target="_blank">© GeoDataSolutions for the WMS/WFS </a>'
         })
         ]
-      }));
+      })); */
+    addWMSLayer(layerconfig: any, show: boolean = false) {
+    let id = layerconfig.layername;
+    console.log("addwmslayer: " + id);
+    let layername = layerconfig.layername;
+    let filter = layerconfig.filter || ''; // Récupérer le filtre de la configuration, s'il existe
+    if (this.layers[id] == null) {
+      var wmsParams = {
+        'LAYERS': layername,
+        'CQL_FILTER': filter // Utiliser le filtre de la configuration
+      };
+
+      var layerSource = new ol.source.TileWMS({
+        url: environment.geoserver_baseurl + '/wms?',
+        crossOrigin: 'anonymous',
+        params: wmsParams,
+        attributions: [new ol.Attribution({
+          html: '<a href="https://ch-osm.geodatasolutions.ch/#about" target="_blank">© GeoDataSolutions for the WMS/WFS </a>'
+        })],
+      });
 
       this.addLoadingListener(layerSource);
       var maxResolution = undefined;
@@ -311,7 +411,7 @@ export class MapService {
     let id = layerconfig.layername;
     let lshow = show;
     let lconfig = layerconfig;
-    let matrixSet = "EPSG:3857";
+    let matrixSet = "EPSG:4326";
 
     if (this.layers[id] == null) {
       // first, set WMTS options from capabilities
@@ -369,7 +469,7 @@ export class MapService {
       return;
     }*/
 
-    let url = environment.geoserver_baseurl + "/wms?service=wms&request=GetMap&version=1.1.1&format=application/vnd.google-earth.kml+xml&layers=" + layer.layername /*+ "&styles=" + layer.selectedStyle.style*/ + "&height=2048&width=2048&transparent=false&srs=EPSG:3857&format_options=AUTOFIT:true;KMATTR:true;KMPLACEMARK:false;KMSCORE:40;MODE:download;SUPEROVERLAY:false&bbox=" + bbox;
+    let url = environment.geoserver_baseurl + "/wms?service=wms&request=GetMap&version=1.1.1&format=application/vnd.google-earth.kml+xml&layers=" + layer.layername /*+ "&styles=" + layer.selectedStyle.style*/ + "&height=2048&width=2048&transparent=false&srs=EPSG:2056&format_options=AUTOFIT:true;KMATTR:true;KMPLACEMARK:false;KMSCORE:40;MODE:download;SUPEROVERLAY:false&bbox=" + bbox;
     //let url = environment.geoserver_baseurl + "/wfs?request=GetFeature&version=2.0.0&count=50000&outputFormat=application%2Fvnd.google-earth.kml%2Bxml&typeName="+layer.layername;
     //let url = environment.geoserver_baseurl + "/wms/kml?layers="+layer.layername;
 
@@ -398,7 +498,7 @@ export class MapService {
     }*/
 
     //let url = environment.geoserver_baseurl + "/wms?service=wms&request=GetMap&version=1.1.1&format=application/vnd.google-earth.kml+xml&layers=" + layer.layername /*+ "&styles=" + layer.selectedStyle.style*/ + "&height=2048&width=2048&transparent=false&srs=EPSG:3857&format_options=AUTOFIT:true;KMATTR:true;KMPLACEMARK:false;KMSCORE:40;MODE:download;SUPEROVERLAY:false&bbox=" + bbox;
-    let url = environment.geoserver_baseurl + "/wfs?request=GetFeature&version=2.0.0&count=500000&outputFormat=shape-zip&typeName=" + layer.layername + "&srsName=EPSG:3857&bbox=" + bbox;
+    let url = environment.geoserver_baseurl + "/wfs?request=GetFeature&version=2.0.0&count=500000&outputFormat=shape-zip&typeName=" + layer.layername + "&srsName=EPSG:2056&bbox=" + bbox;
     //let url = environment.geoserver_baseurl + "/wms/kml?layers="+layer.layername;
 
     //piwik
@@ -424,7 +524,7 @@ export class MapService {
 
     //let url = environment.geoserver_baseurl + "/wms?service=wms&request=GetMap&version=1.1.1&format=application/vnd.google-earth.kml+xml&layers=" + layer.layername /*+ "&styles=" + layer.selectedStyle.style*/ + "&height=2048&width=2048&transparent=false&srs=EPSG:3857&format_options=AUTOFIT:true;KMATTR:true;KMPLACEMARK:false;KMSCORE:40;MODE:download;SUPEROVERLAY:false&bbox=" + bbox;
     //let url = environment.geoserver_baseurl + "/wfs?request=GetFeature&version=2.0.0&count=500000&outputFormat=gpkg&typeName=" + layer.layername + "&srsName=EPSG:3857&bbox=" + bbox;
-    let url = environment.geoserver_baseurl + "/wfs?request=GetFeature&version=2.0.0&count=500000&outputFormat=csv&format_options=csvseparator:semicolon&typeName=" + layer.layername + "&srsName=EPSG:3857&bbox=" + bbox;
+    let url = environment.geoserver_baseurl + "/wfs?request=GetFeature&version=2.0.0&count=500000&outputFormat=csv&format_options=csvseparator:semicolon&typeName=" + layer.layername + "&srsName=EPSG:2056&bbox=" + bbox;
     //let url = environment.geoserver_baseurl + "/wms/kml?layers="+layer.layername;
 
     //piwik
@@ -450,7 +550,7 @@ export class MapService {
     var filename=layer.layername;
     //let url = environment.geoserver_baseurl + "/wms?service=wms&request=GetMap&version=1.1.1&format=application/vnd.google-earth.kml+xml&layers=" + layer.layername /*+ "&styles=" + layer.selectedStyle.style*/ + "&height=2048&width=2048&transparent=false&srs=EPSG:3857&format_options=AUTOFIT:true;KMATTR:true;KMPLACEMARK:false;KMSCORE:40;MODE:download;SUPEROVERLAY:false&bbox=" + bbox;
     //let url = environment.geoserver_baseurl + "/wfs?request=GetFeature&version=2.0.0&count=500000&outputFormat=gpkg&typeName=" + layer.layername + "&srsName=EPSG:3857&bbox=" + bbox;
-    var url = environment.geoserver_baseurl + "/wfs?request=GetFeature&version=2.0.0&count=500000&outputFormat=geopkg&typeName=" + layer.layername + "&srsName=EPSG:3857&bbox=" + bbox;
+    var url = environment.geoserver_baseurl + "/wfs?request=GetFeature&version=2.0.0&count=500000&outputFormat=geopkg&typeName=" + layer.layername + "&srsName=EPSG:2056&bbox=" + bbox;
     //let url = environment.geoserver_baseurl + "/wms/kml?layers="+layer.layername;
     
     //piwik
@@ -475,7 +575,7 @@ export class MapService {
     var filename=layer.layername;
     //let url = environment.geoserver_baseurl + "/wms?service=wms&request=GetMap&version=1.1.1&format=application/vnd.google-earth.kml+xml&layers=" + layer.layername /*+ "&styles=" + layer.selectedStyle.style*/ + "&height=2048&width=2048&transparent=false&srs=EPSG:3857&format_options=AUTOFIT:true;KMATTR:true;KMPLACEMARK:false;KMSCORE:40;MODE:download;SUPEROVERLAY:false&bbox=" + bbox;
     //let url = environment.geoserver_baseurl + "/wfs?request=GetFeature&version=2.0.0&count=500000&outputFormat=gpkg&typeName=" + layer.layername + "&srsName=EPSG:3857&bbox=" + bbox;
-    var url = environment.geoserver_baseurl + "/wfs?request=GetFeature&version=2.0.0&count=500000&outputFormat=application/json&typeName=" + layer.layername + "&srsName=EPSG:3857&bbox=" + bbox;
+    var url = environment.geoserver_baseurl + "/wfs?request=GetFeature&version=2.0.0&count=500000&outputFormat=application/json&typeName=" + layer.layername + "&srsName=EPSG:2056&bbox=" + bbox;
     //let url = environment.geoserver_baseurl + "/wms/kml?layers="+layer.layername;
     
     //piwik
@@ -519,7 +619,7 @@ export class MapService {
 
     for (var i = 0; i < layers.length; i++) {
       var layer = layers[i];
-      if (layer instanceof ol.layer.Tile && layer.getSource() instanceof ol.source.TileWMS && layer.getVisible()) {
+      if (layer instanceof ol.layer.Tile && layer.getSource() instanceof ol.source.TileWMS && layer.getVisible() &&!layer.get('isBaseLayer')) {
 
         id_layers += separator + (layer.getSource()).getParams()['LAYERS'] + '';//<ol.source.TileWMS>
         separator = ",";
@@ -592,7 +692,7 @@ export class MapService {
     return false;
 
   }
-  addLayer(id: string, url: string, show: boolean = false) {
+  addLayer(id: string, url: string, show: boolean = false, style = null) {
     if (this.layers[id] == null) {
       var vectorSource = new ol.source.Vector({
         //projection : 'EPSG:3857',
@@ -603,8 +703,11 @@ export class MapService {
         }),
         url: url
       });
+      // Création de la couche vectorielle
       this.layers[id] = new ol.layer.Vector({
-        source: vectorSource
+        source: vectorSource,
+        // Appliquer le style ici si fourni
+        style: style ? style : undefined
       });
 
       var listenerKey = vectorSource.on('change', (function (e) {
@@ -982,14 +1085,14 @@ export class MapService {
     if (geom && geom.length > 2 ) {
       geom.forEach((element, index) => {
         if (index % 2 == 0){            
-          polygone.push( ol.proj.transform([geom[index], geom[index+1]], 'EPSG:3857', config.PROJECTION_CODE));
+          polygone.push( ol.proj.transform([geom[index], geom[index+1]], 'EPSG:2056', config.PROJECTION_CODE));
         }
       });
       let polygon = new ol.geom.Polygon([polygone]);
       this.map.getView().fit(polygon, {});
       this.map.getView().setZoom(19);
   } else {
-    alert("Cet objet ne contient pas de géométrie permettant le centrage sur la carte.");
+    alert("This object does not contain any geometry enabling it to be centred on the map.");
   }
 }
 }

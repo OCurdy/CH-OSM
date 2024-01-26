@@ -41,7 +41,7 @@
 
     "magosm:motorways_line":"Autostrade",
     "magosm:highways_line":"Rete stradale",
-    "magosm:highways_line_recently_modified":"rotte modificate (g-7)",
+    "magosm:highways_line_recently_modified":"Rotte modificate (g-7)",
     "magosm:hiking_foot_routes_line":"Percorsi escursionistici",
     "magosm:bicycle_mtb_routes_line":"Itinerario in bicicletta",
     "magosm:cycleways_line":"Piste ciclabili",
@@ -64,8 +64,9 @@
     "magosm:telecom_exchange_point":"Snodo di raccordo",
     "magosm:telecom_fibre_connection_point":"Punti di distribuzione Fibra",
     "magosm:telecom_copper_connection_point":"Armadio di distribuzione rame",
+    "magosm:vineyards_grapes_polygon": "Vigneto",
    
-    "myLayers":"Miei Livelli",
+    "myLayers":"Miei Layers",
 
     "communes": "Comuni",
     "cantons": "Cantoni",

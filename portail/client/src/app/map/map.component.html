@@ -12,6 +12,10 @@
     <div id="loading-counter">{{mapService.loadingCounter}}</div>
     <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
   </div>
+  <div id="popup" class="ol-popup">
+    <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+    <div id="popup-content"></div>
+  </div>  
   <app-feature-panel
     *ngIf="selectedFeature"
     [selectedLayer]="selectedLayer"

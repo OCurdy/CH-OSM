@@ -1,7 +1,6 @@
-import { Component, ViewChild, OnInit, Input, Output, ChangeDetectorRef, OnDestroy} from '@angular/core';
+import { Component, HostListener, ElementRef, ViewChild, OnInit, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { MapService } from '../service/map.service';
 import { Router } from '@angular/router';
-import { LayerTreeComponent } from '../map-panel-switcher-components/layer-tree/layer-tree.component';
 import { UserContext } from '../model/UserContext';
 import {TranslateService} from '@ngx-translate/core';
 
@@ -15,6 +14,10 @@ declare var _paq: any;
   styleUrls: ['./map-panel-switcher.component.css']
 })
 export class MapPanelSwitcherComponent implements OnInit {
+  public isPanelOpen: boolean = false;
+  public isCollapseOpen: boolean = false;
+  public isMapControllerCollapsed: boolean = true;
+  isLegendCollapsed = true;
 
   
   public panelToShow = 'layerTree';                       //par défaut on charge le panel Menu
@@ -34,7 +37,8 @@ export class MapPanelSwitcherComponent implements OnInit {
     private translate:TranslateService,
     public router: Router, 
     public mapService: MapService,
-    public cdr: ChangeDetectorRef
+    public cdr: ChangeDetectorRef,
+    private cdRef: ChangeDetectorRef
   ) { 
   }
   //use language selected
@@ -68,30 +72,33 @@ export class MapPanelSwitcherComponent implements OnInit {
     
   }
 
+  isLegendPanelOpen: boolean = false;
 
-  setPanelToShow(newPanelToShow){
-
-   
+  setPanelToShow(newPanelToShow) {
+    if (newPanelToShow === 'legende') {
+      if (this.panelToShow === 'legende') {
+        this.panelToShow = 'layerTree';
+      } else {
+        this.panelToShow = 'legende';
+      }
+    } else {
       let oldPanel = this.panelToShow;
-      let newPanel = newPanelToShow;
-      this.panelToShow = newPanelToShow;//mise à jour du panelToShow
-
-      //gestion de l'ouverture/fermeture du panneau sur le bon composant
-      if(!$(".panel-switcher-opts").hasClass("active")){//si le panneau est fermé, on l'ouvre
+      this.panelToShow = newPanelToShow;
+      if (!$(".panel-switcher-opts").hasClass("active")) {
+        this.isPanelOpen = true;
         $("#panel-switcher-wrapper").toggleClass("active");
         $(".panel-switcher-opts").toggleClass("active");
-        //console.log('this.panelToShow : '+panelToShow)
-        _paq.push(['trackEvent', 'panel_open' , newPanelToShow])
-      } else {//si le panneau est déjà ouvert
-        if((oldPanel == newPanel)){//si on clique sur l'option actuellement visible : on ferme le panneau
+        _paq.push(['trackEvent', 'panel_open', newPanelToShow]);
+      } else {
+        if (oldPanel == newPanelToShow) {
+          this.isPanelOpen = false;
           this.closePanel();
         }
-        
       }
-    
-
-  
+    }
   }
+  
+  
 
   closePanel(){
     $(".panel-switcher-opts").toggleClass("active");
@@ -99,5 +106,30 @@ export class MapPanelSwitcherComponent implements OnInit {
   }
 
 
+  toggleCollapse(event: Event): void {
+    event.stopPropagation();
+    this.isMapControllerCollapsed = !this.isMapControllerCollapsed;
+    this.cdRef.detectChanges(); 
+  }
   
-}
+  @ViewChild('mapControllerCollapse') mapControllerCollapseRef: ElementRef;
+  @ViewChild('toggleButton') toggleCollapseRef: ElementRef;
+  @ViewChild('dropdownButton') dropdownButtonRef: ElementRef;
+
+  
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void {
+    const targetElement = event.target as HTMLElement;
+    const insideToggleButton = this.toggleCollapseRef.nativeElement.contains(targetElement);
+    const insideDropdownButton = this.dropdownButtonRef.nativeElement.contains(targetElement);
+    const insideCollapse = this.mapControllerCollapseRef.nativeElement.contains(targetElement);
+    // Assurez-vous que le clic n'est ni sur le bouton ni dans le collapse
+    if (!insideToggleButton && !insideDropdownButton && !insideCollapse) {
+      this.isMapControllerCollapsed = true;
+      console.log('isMapControllerCollapsed:', this.isMapControllerCollapsed);
+      this.cdRef.detectChanges();
+    }
+
+    }
+  }
+

@@ -28,8 +28,26 @@ export class MapControllerComponent implements AfterViewInit {
   
   ngOnInit() {
     //récupère le baseLayer du userContext
+    this.mapService.changeBaseLayer('OSM');
     $('option[value='+this.userContext.bLay+']').attr('selected', 'selected');
     this.baseLayerOpacityRange = this.userContext.tr;
+    this.setActiveBaseLayer(this.mapService.currentBaseLayerName);
+    }
+
+    setActiveBaseLayer(layer: string) {
+        switch (layer) {
+            case 'OSM':
+                $('#osmRadio').prop('checked', true);
+                break;
+            case 'swisstopo':
+                $('#swisstopoRadio').prop('checked', true);
+                break;
+            case 'swissimage':
+                $('#swissimageRadio').prop('checked', true);
+                break;
+            default:
+                console.error('Unknown base layer:', layer);
+        }
   }
 
   ngAfterViewInit() {
@@ -44,9 +62,18 @@ export class MapControllerComponent implements AfterViewInit {
     (<HTMLElement>document.getElementById('layer-selector')).style.height= inputRangeHeightRef+'px';
   }
 
-  changeBaseLayer(newBaseLayer){
-    this.mapService.changeBaseLayer(newBaseLayer);
-  }
+  toggleLayer(event: any) {
+    const layerName = event.target.value;
+    const isChecked = event.target.checked;
+
+    this.mapService.toggleOverlayLayer(layerName, isChecked);
+}
+
+
+changeBaseLayer(event, newBaseLayer) {
+  event.stopPropagation();
+  this.mapService.changeBaseLayer(newBaseLayer);
+}
 
   changeOpacity(newValue){
     this.mapService.changeOpacity(newValue);
