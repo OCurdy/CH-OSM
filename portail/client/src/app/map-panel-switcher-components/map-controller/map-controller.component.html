@@ -1,36 +1,25 @@
-<div id="layerbar-nav" class="layerbar-nav" (click)="$event.stopPropagation()">  
-  <div class="card-header p-2 text-center" role="tab" c>
-    <b>{{ 'panel.basemap' | translate }}</b>
+<div id="layerbar-nav" class="layerbar-nav">  
+  <div class="card-header p-2 text-center" role="tab" id="headingMapController">
+    <b>{{ 'panel.parameters' | translate }}</b>
   </div>
   <ul style="list-style: none;">
-  <span id="layer-selector">
+    <span id="layer-selector">
+    <li class="card-header p-2"><h4>{{ 'panel.basemap' | translate }}</h4></li>
     <li>
-      <div class="checkbox-row checkbox-row-left-align">
-        <div class="checkbox-option checkbox-container">
-          <input type="checkbox" id="cantonsCheckbox" name="overlayLayer" value="cantons" (change)="toggleLayer($event)">
-          <label for="cantonsCheckbox">
-            {{ 'cantons' | translate }}
-          </label>
-        </div>
-        <div class="checkbox-option checkbox-container">
-          <input type="checkbox" id="communesCheckbox" name="overlayLayer" value="communes" (change)="toggleLayer($event)">
-          <label for="communesCheckbox">
-            {{ 'communes' | translate }}
-          </label>
-        </div>  
-        <div class="checkbox-option checkbox-container">
-          <input type="checkbox" id="gdgeCheckbox" name="overlayLayer" value="grandgeneve" (change)="toggleLayer($event)">
-          <label for="gdgeCheckbox"> 
-            Grand Genève
-          </label>
-        </div>
+      <div class="checkbox-option">
+        <input type="checkbox" id="cantonsCheckbox" name="overlayLayer" value="cantons" (change)="toggleLayer($event)">
+        <label for="cantonsCheckbox">
+          {{ 'cantons' | translate }}
+        </label>
       </div>
-      <div>
-        --------------------------------------------
-      </div>
-         
+      <div class="checkbox-option">
+        <input type="checkbox" id="communesCheckbox" name="overlayLayer" value="communes" (change)="toggleLayer($event)">
+        <label for="communesCheckbox">
+          {{ 'communes' | translate }}
+        </label>
+      </div>   
       <div class="radio-option">
-        <input type="radio" id="osmRadio" name="baseLayer" value="OSM" checked (change)="changeBaseLayer($event, 'OSM')">
+        <input type="radio" id="osmRadio" name="baseLayer" value="OSM" checked (change)="changeBaseLayer($event.target.value)">
         <label for="osmRadio">
             <img src="\assets\images\osm-thumbnail.png" alt="OSM" width="50" height="50">
             OpenStreetMap
@@ -38,7 +27,7 @@
     </div>
     
     <div class="radio-option">
-        <input type="radio" id="swisstopoRadio" name="baseLayer" value="swisstopo" (change)="changeBaseLayer($event, 'swisstopo')">
+        <input type="radio" id="swisstopoRadio" name="baseLayer" value="swisstopo" (change)="changeBaseLayer($event.target.value)">
         <label for="swisstopoRadio">
             <img src="\assets\images\swisstopo-thumbnail.png" alt="Swisstopo" width="50" height="50">
             Swisstopo
@@ -46,33 +35,22 @@
     </div>
     
     <div class="radio-option">
-        <input type="radio" id="swissimageRadio" name="baseLayer" value="swissimage" (change)="changeBaseLayer($event, 'swissimage')">
+        <input type="radio" id="swissimageRadio" name="baseLayer" value="swissimage" (change)="changeBaseLayer($event.target.value)">
         <label for="swissimageRadio">
             <img src="\assets\images\swissimage-thumbnail.png" alt="Swissimage" width="50" height="50">
             Orthophoto
         </label>
     </div> 
     </li>
-    </span>
-  </ul>
-  <ul style="list-style: none;">  
-    <span id="layer-selector">    
-      <div class="card-header p-2 text-center" role="tab" c>
-        <b>{{ 'panel.transparency' | translate }}</b>
-      </div>
-      <li id="input-range">
-        <div class="range-container">
-          <input class="input-range" 
-            #ref type="range" min="0" max="100" step="2.5" 
-            value="{{baseLayerOpacityRange}}" 
-            (change)="changeOpacity(ref.value)"
-          />
-          <div class="input-range">
-            <div class="range-label left"><b>0%</b></div>
-            <div class="range-label right"><b>100%</b></div>
-          </div> 
-        </div>       
-      </li>
-    </span>
+    </span>  
+    
+    <li id="input-range-height-ref" class="card-header p-2"><h4>{{ 'panel.transparency' | translate }}</h4></li>
+    <li id="input-range">
+        <input class="input-range" 
+          #ref type="range" min="0" max="100" step="2.5" 
+          value="{{baseLayerOpacityRange}}" 
+          (change)="changeOpacity(ref.value)"
+        />
+    </li>
   </ul>
 </div>

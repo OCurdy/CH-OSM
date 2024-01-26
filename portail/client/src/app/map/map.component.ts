@@ -118,14 +118,14 @@ export class MapComponent implements OnInit {
 
   initMap() {
     //proj4.defs(MainmapComponent.PROJECTION_CODE, "+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m   +no_defs");
-    proj4.defs(config.PROJECTION_CODE, "+proj=somerc +lat_0=46.95240555555556 +lon_0=7.439583333333333 +k_0=1 +x_0=2600000 +y_0=1200000 +ellps=bessel +towgs84=674.374,15.056,405.346,0,0,0,0 +units=m +no_defs");
+    proj4.defs("EPSG:2056", "+proj=somerc +lat_0=46.95240555555556 +lon_0=7.439583333333333 +k_0=1 +x_0=2600000 +y_0=1200000 +ellps=bessel +towgs84=674.374,15.056,405.346,0,0,0,0 +units=m +no_defs");
 
 
    this.mousePositionControl = new ol.control.MousePosition({
       coordinateFormat: function (coords) {
-        return 'E: ' + formatSwissNumber(coords[0])+ ' / ' + ' N: ' + formatSwissNumber(coords[1]);      
+        return 'E: ' + formatSwissNumber(coords[0]) + ' N: ' + formatSwissNumber(coords[1]);      
       },
-      projection: config.PROJECTION_CODE,
+      projection: 'EPSG:2056',
       className: 'custom-mouse-position',
       target: document.getElementById('mouse-position'),
       undefinedHTML: '&nbsp;'
@@ -161,29 +161,8 @@ export class MapComponent implements OnInit {
     this.map.on('click', this.onClick.bind(this));
     this.map.on('moveend', this.onZoom.bind(this)); 
 
-    var cantonStyle = new ol.style.Style({
-      stroke: new ol.style.Stroke({
-        color: '#cc1517',
-        backgroundcolor: '#cc1517',
-        width: 2       
-      })
-    });
-    var communeStyle = new ol.style.Style({
-      stroke: new ol.style.Stroke({
-        color: '#cc1517',
-        width: 1
-      })
-    });
-    var gdgeStyle = new ol.style.Style({
-      stroke: new ol.style.Stroke({
-        color: '#00000',
-        width: 1
-      })
-    });
-
-    this.mapService.addLayer('communes', 'assets/data/communes.geojson', false, communeStyle);
-    this.mapService.addLayer('grandgeneve', 'assets/data/grand_geneve.geojson', false, gdgeStyle);
-    this.mapService.addLayer('cantons', 'assets/data/cantons.geojson', false, cantonStyle);
+    this.mapService.addLayer('cantons', 'assets/data/cantons.geojson', false);
+    this.mapService.addLayer('communes', 'assets/data/communes.geojson', false);
 
     var parser = new ol.format.WMTSCapabilities();
     let self = this;

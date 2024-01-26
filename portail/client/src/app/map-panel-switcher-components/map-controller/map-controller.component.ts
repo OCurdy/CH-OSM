@@ -28,7 +28,6 @@ export class MapControllerComponent implements AfterViewInit {
   
   ngOnInit() {
     //récupère le baseLayer du userContext
-    this.mapService.changeBaseLayer('OSM');
     $('option[value='+this.userContext.bLay+']').attr('selected', 'selected');
     this.baseLayerOpacityRange = this.userContext.tr;
     this.setActiveBaseLayer(this.mapService.currentBaseLayerName);
@@ -70,10 +69,9 @@ export class MapControllerComponent implements AfterViewInit {
 }
 
 
-changeBaseLayer(event, newBaseLayer) {
-  event.stopPropagation();
-  this.mapService.changeBaseLayer(newBaseLayer);
-}
+  changeBaseLayer(newBaseLayer){
+    this.mapService.changeBaseLayer(newBaseLayer);
+  }
 
   changeOpacity(newValue){
     this.mapService.changeOpacity(newValue);
