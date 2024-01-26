@@ -126,7 +126,7 @@ export class MapPanelSwitcherComponent implements OnInit {
     // Assurez-vous que le clic n'est ni sur le bouton ni dans le collapse
     if (!insideToggleButton && !insideDropdownButton && !insideCollapse) {
       this.isMapControllerCollapsed = true;
-      console.log('isMapControllerCollapsed:', this.isMapControllerCollapsed);
+      //console.log('isMapControllerCollapsed:', this.isMapControllerCollapsed);
       this.cdRef.detectChanges();
     }
 

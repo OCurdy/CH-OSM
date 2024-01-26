@@ -181,9 +181,9 @@ export class MapComponent implements OnInit {
       })
     });
 
-    this.mapService.addLayer('communes', 'assets/data/communes.geojson', false, communeStyle);
-    this.mapService.addLayer('grandgeneve', 'assets/data/grand_geneve.geojson', false, gdgeStyle);
-    this.mapService.addLayer('cantons', 'assets/data/cantons.geojson', false, cantonStyle);
+    this.mapService.addLayer('communes', 'assets/data/communes_epsg_3857.geojson', false, communeStyle);
+    this.mapService.addLayer('grandgeneve', 'assets/data/grand_geneve_epsg_3857.geojson', false, gdgeStyle);
+    this.mapService.addLayer('cantons', 'assets/data/cantons_epsg_3857.geojson', false, cantonStyle);
 
     var parser = new ol.format.WMTSCapabilities();
     let self = this;
