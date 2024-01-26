@@ -338,7 +338,7 @@ export class MapComponent implements OnInit {
       crossOrigin: 'anonymous',
       params: ({ 'LAYERS': id_layers })
     })).getGetFeatureInfoUrl(
-      event.coordinate, viewResolution, 'EPSG:2056',
+      event.coordinate, viewResolution, 'EPSG:3857',
       { 'INFO_FORMAT': 'text/xml', 'QUERY_LAYERS': id_layers, 'BUFFER': '10', 'FEATURE_COUNT': '10' }
       );
 
