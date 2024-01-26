@@ -112,3 +112,14 @@ app-apiadresse{
 label  {
 	margin-bottom: 0;
 }
+
+
+#map-scale {
+    background-color: #CC1517; /* changez ceci à la couleur de votre choix */
+    color: #ffffff; /* couleur du texte de l'échelle */
+}
+
+#mouse-position {
+    background-color: #CC1517; /* changez ceci à la couleur de votre choix */
+    color: #ffffff; /* couleur du texte de l'échelle */
+}
