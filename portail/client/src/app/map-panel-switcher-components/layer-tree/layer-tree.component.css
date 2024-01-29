@@ -38,6 +38,26 @@
   padding-left: 10px;
 }
 
+.card-header:hover {
+  cursor: pointer;
+}
+
+.layer-entry:hover {
+  cursor: pointer;
+}
+
+/* Ajoutez ces styles CSS pour définir la couleur de fond rouge */
+.layer-entry .selected {
+  background-color: red;
+}
+
+/* Pour supprimer les cases à cocher */
+.layer-entry .form-check-label {
+  cursor: pointer;
+  padding-left: 10px;
+}
+
+
 h4 {
   font-size: 0.7em;
   font-weight: bold;
@@ -114,6 +134,20 @@ h4 {
   background: #dae2ec;
 }
 
+.circle-icon {
+  margin-left: 2px;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  line-height: 16px;
+  float: right;
+}
+
+
 /* Slider cursor; see styles.css for more details */
 input[type=range] {
   width: 60px; 
@@ -129,6 +163,6 @@ input[type=range] {
 }  
 :host >div > div > div > div > div > a > div > a { text-decoration:none; }
 
-:host >div > div > div > div > div > a > div > a > i.img-expandable { margin-left : 3px; margin-top : -1px; width: 13px; height: 15px;  transform: rotate(90deg); transition: transform 0.2s linear;  }
+:host >div > div > div > div > div > a > div > a > i.img-expandable { margin-left : 3px; margin-top : -1px; width: 13px; height: 15px;  transform: rotate(45deg); transition: transform 0.2s linear;  }
 
 :host >div > div > div > div > div > a > div > a.collapsed > i.img-expandable { margin-left : 3px; margin-top : -1px; width: 13px; height: 15px; transform: rotate(0deg); transition: transform 0.2s linear; }

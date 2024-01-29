@@ -9,7 +9,7 @@
 </div>
 <div role="tablist" aria-multiselectable="true">
     <div *ngFor="let categorie of layervariables" class="card">
-        <div class="card-header" role="tab" id="categorie{{categorie.id_categorie}}" (click)="toggleIcon(categorie.id_categorie)">
+        <div class="card-header" role="tab" id="categorie{{categorie.id_categorie}}" (click)="toggleCardBody(feature)" style="cursor: pointer;">
             <h5 class="mb-0">
                 <a class="categorie-title collapsed" data-toggle="collapse" data-parent="#menuaccordion" [attr.href]="'#collapse'+categorie.id_categorie"
                     [title]="categorie.help || categorie.categorie"
@@ -33,14 +33,13 @@
                             <label class="form-check-label">
                                 <input type="checkbox" class="form-check-input position-static"
                                 [checked]="categorie.id_categorie === 4 || (userContext.vLay.indexOf(feature.layername.replace(myRegex, '')) >= 0)"
-                                (click)="onSelect($event,feature)">
+                                (click)="onSelect($event,feature); toggleCardBody(feature)">
                             
                                 {{ feature.layername | translate }} 
-
                             </label>
                             
                             
-                            <div (click)="onInfo(feature)" class="metadata-circle" [title]="feature.md_url ? 'Metadata' : 'N/A'"><b>?</b></div>
+                            <div (click)="onInfo(feature)" class="fa fa-question-circle" style="color: #cc1417" [title]="feature.md_url ? 'Metadata' : 'N/A'"></div>
                             
                             <span *ngIf="mapService.isInRange(feature.layername)==false" 
                                 style="cursor:pointer;margin: 3px;vertical-align: middle;"
@@ -57,13 +56,13 @@
                             </span>
 
                             <a class="layer-entry collapsed" data-toggle="collapse" href="#{{feature.nom_court_trim}}Collapse" role="button" aria-expanded="false">
-                                <i class="fa fa-chevron-right img-expandable" aria-hidden="true"></i>
-
+                                <i class="fa img-expandable circle-icon" [ngClass]="{'fa-plus-circle': isCollapsed, 'fa-times-circle': !isCollapsed}" style="color: #cc1417" aria-hidden="true"></i>
+                            
                                 <span class="loading-panel" *ngIf="getState(feature)>0">
                                     <div class="loading-counter">{{getState(feature)}}</div>
                                     <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
                                 </span>
-                            </a>
+                            </a>                            
                            
                             <div class="collapse" id="{{feature.nom_court_trim}}Collapse" style="align-items: center;">
                                 <div class="card card-body">                                                            
