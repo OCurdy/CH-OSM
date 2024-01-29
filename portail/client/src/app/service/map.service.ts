@@ -11,6 +11,7 @@ import { environment } from '../../environments/environment';
 import { LayerAndCategory } from 'app/model/LayerAndCategory';
 import { Layer } from 'app/model/Layer';
 
+declare var proj4: any;
 declare var ol: any;
 declare var _paq: any;
 declare var window: any;
@@ -285,7 +286,7 @@ export class MapService {
     let id = layerconfig.layername;
     let lshow = show;
     let lconfig = layerconfig;
-    let matrixSet = "EPSG:3857";
+    let matrixSet = "EPSG:2056";
 
     if (this.layers[id] == null) {
       var options = ol.source.WMTS.optionsFromCapabilities(this.wmtsResult, {
@@ -391,7 +392,7 @@ export class MapService {
     let id = layerconfig.layername;
     let lshow = show;
     let lconfig = layerconfig;
-    let matrixSet = "EPSG:3857";
+    let matrixSet = "EPSG:2056";
 
     if (this.layers[id] == null) {
       // first, set WMTS options from capabilities
@@ -449,7 +450,7 @@ export class MapService {
       return;
     }*/
 
-    let url = environment.geoserver_baseurl + "/wms?service=wms&request=GetMap&version=1.1.1&format=application/vnd.google-earth.kml+xml&layers=" + layer.layername /*+ "&styles=" + layer.selectedStyle.style*/ + "&height=2048&width=2048&transparent=false&srs=EPSG:3857&format_options=AUTOFIT:true;KMATTR:true;KMPLACEMARK:false;KMSCORE:40;MODE:download;SUPEROVERLAY:false&bbox=" + bbox;
+    let url = environment.geoserver_baseurl + "/wms?service=wms&request=GetMap&version=1.1.1&format=application/vnd.google-earth.kml+xml&layers=" + layer.layername /*+ "&styles=" + layer.selectedStyle.style*/ + "&height=2048&width=2048&transparent=false&srs=EPSG:2056&format_options=AUTOFIT:true;KMATTR:true;KMPLACEMARK:false;KMSCORE:40;MODE:download;SUPEROVERLAY:false&bbox=" + bbox;
     //let url = environment.geoserver_baseurl + "/wfs?request=GetFeature&version=2.0.0&count=50000&outputFormat=application%2Fvnd.google-earth.kml%2Bxml&typeName="+layer.layername;
     //let url = environment.geoserver_baseurl + "/wms/kml?layers="+layer.layername;
 
@@ -479,7 +480,7 @@ export class MapService {
     }*/
 
     //let url = environment.geoserver_baseurl + "/wms?service=wms&request=GetMap&version=1.1.1&format=application/vnd.google-earth.kml+xml&layers=" + layer.layername /*+ "&styles=" + layer.selectedStyle.style*/ + "&height=2048&width=2048&transparent=false&srs=EPSG:3857&format_options=AUTOFIT:true;KMATTR:true;KMPLACEMARK:false;KMSCORE:40;MODE:download;SUPEROVERLAY:false&bbox=" + bbox;
-    let url = environment.geoserver_baseurl + "/wfs?request=GetFeature&version=2.0.0&count=500000&outputFormat=shape-zip&typeName=" + layer.layername + "&srsName=EPSG:3857&bbox=" + bbox;
+    let url = environment.geoserver_baseurl + "/wfs?request=GetFeature&version=2.0.0&count=500000&outputFormat=shape-zip&typeName=" + layer.layername + "&srsName=EPSG:2056&bbox=" + bbox;
     //let url = environment.geoserver_baseurl + "/wms/kml?layers="+layer.layername;
 
     //piwik
@@ -505,7 +506,7 @@ export class MapService {
 
     //let url = environment.geoserver_baseurl + "/wms?service=wms&request=GetMap&version=1.1.1&format=application/vnd.google-earth.kml+xml&layers=" + layer.layername /*+ "&styles=" + layer.selectedStyle.style*/ + "&height=2048&width=2048&transparent=false&srs=EPSG:3857&format_options=AUTOFIT:true;KMATTR:true;KMPLACEMARK:false;KMSCORE:40;MODE:download;SUPEROVERLAY:false&bbox=" + bbox;
     //let url = environment.geoserver_baseurl + "/wfs?request=GetFeature&version=2.0.0&count=500000&outputFormat=gpkg&typeName=" + layer.layername + "&srsName=EPSG:3857&bbox=" + bbox;
-    let url = environment.geoserver_baseurl + "/wfs?request=GetFeature&version=2.0.0&count=500000&outputFormat=csv&format_options=csvseparator:semicolon&typeName=" + layer.layername + "&srsName=EPSG:3857&bbox=" + bbox;
+    let url = environment.geoserver_baseurl + "/wfs?request=GetFeature&version=2.0.0&count=500000&outputFormat=csv&format_options=csvseparator:semicolon&typeName=" + layer.layername + "&srsName=EPSG:2056&bbox=" + bbox;
     //let url = environment.geoserver_baseurl + "/wms/kml?layers="+layer.layername;
 
     //piwik
@@ -556,7 +557,7 @@ export class MapService {
     var filename=layer.layername;
     //let url = environment.geoserver_baseurl + "/wms?service=wms&request=GetMap&version=1.1.1&format=application/vnd.google-earth.kml+xml&layers=" + layer.layername /*+ "&styles=" + layer.selectedStyle.style*/ + "&height=2048&width=2048&transparent=false&srs=EPSG:3857&format_options=AUTOFIT:true;KMATTR:true;KMPLACEMARK:false;KMSCORE:40;MODE:download;SUPEROVERLAY:false&bbox=" + bbox;
     //let url = environment.geoserver_baseurl + "/wfs?request=GetFeature&version=2.0.0&count=500000&outputFormat=gpkg&typeName=" + layer.layername + "&srsName=EPSG:3857&bbox=" + bbox;
-    var url = environment.geoserver_baseurl + "/wfs?request=GetFeature&version=2.0.0&count=500000&outputFormat=application/json&typeName=" + layer.layername + "&srsName=EPSG:3857&bbox=" + bbox;
+    var url = environment.geoserver_baseurl + "/wfs?request=GetFeature&version=2.0.0&count=500000&outputFormat=application/json&typeName=" + layer.layername + "&srsName=EPSG:2056&bbox=" + bbox;
     //let url = environment.geoserver_baseurl + "/wms/kml?layers="+layer.layername;
     
     //piwik
@@ -707,11 +708,39 @@ export class MapService {
 
   }
 
+  convertCoordinatesFrom2056To3857(coordinates: number[][]): number[][] {
+    proj4.defs('EPSG:2056', '+proj=somerc +lat_0=46.95240555555556 +lon_0=7.439583333333333 +x_0=2600000 +y_0=1200000 +ellps=bessel +towgs84=674.374,15.056,405.346,0,0,0,0 +units=m +no_defs');
+    proj4.defs('EPSG:3857', '+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs');
+  
+    const fromProjection = 'EPSG:2056';
+    const toProjection = 'EPSG:3857';
+  
+    // Convertir chaque point individuellement
+    return coordinates.map(point => proj4(fromProjection, toProjection, point));
+  }
+
   addShapefileLayer(id: string, bufferOrUrl: ArrayBuffer | string, show: boolean = true) {
     if (this.layers[id] == null) {
       return shapefile.read(bufferOrUrl).then(collection => {
+        // Convertissez les coordonnées de l'EPSG:2056 à l'EPSG:3857 ici
+        const convertedFeatures = collection.features.map(feature => {
+          const geometry = feature.geometry;
+          if (geometry) {
+            if (geometry.type === 'Point') {
+              geometry.coordinates = this.convertCoordinatesFrom2056To3857([geometry.coordinates])[0];
+            } else if (geometry.type === 'LineString' || geometry.type === 'Polygon') {
+              // Convertir chaque point dans la ligne ou le polygone
+              geometry.coordinates = this.convertCoordinatesFrom2056To3857(geometry.coordinates);
+            }
+          }
+          return feature;
+        });
+  
         const vectorSource = new ol.source.Vector({
-          features: (new ol.format.GeoJSON()).readFeatures(collection)
+          features: (new ol.format.GeoJSON()).readFeatures({
+            type: 'FeatureCollection',
+            features: convertedFeatures
+          })
         });
         this.layers[id] = new ol.layer.Vector({
           source: vectorSource

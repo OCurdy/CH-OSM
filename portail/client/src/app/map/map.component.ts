@@ -462,7 +462,7 @@ export class MapComponent implements OnInit {
     event.preventDefault();
     const url = getUrlFromDataTransfer(event.dataTransfer)
     if (url !== undefined) {
-      const id = `shapefile:url:[${url}]`;
+      const id = `shp:url:[${url}]`;
       this.mapService.addShapefileLayer(id, url)
       .then(() => {
         this.addShapefileLayerInConfig({
@@ -482,8 +482,8 @@ export class MapComponent implements OnInit {
         // TODO id collision if several shapefiles have the same name. Use a hash
         // on the arraybuffer? For now, only use a random number to mitigeate
         // collision.
-        const pseudoUniqueId = Math.floor(Math.random()*1000000000000);
-        const id = `shapefile:buffer:${file.name}:${pseudoUniqueId}`;
+        const pseudoUniqueId = Math.floor(Math.random()*100000000);
+        const id = `buffer_${file.name}_${pseudoUniqueId}`;
         this.mapService.addShapefileLayer(id, buffer)
         .then(() => {
           this.addShapefileLayerInConfig({

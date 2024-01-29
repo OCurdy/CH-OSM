@@ -64,8 +64,8 @@ export class ChangesMapComponent implements OnInit {
       center = [this.userContext.lon, this.userContext.lat];
     }
     this.view = new ol.View({
-      projection: 'EPSG:3857',
-      center: center?ol.proj.transform(center, 'EPSG:4326', 'EPSG:3857'):null,
+      projection: 'EPSG:2056',
+      center: center?ol.proj.transform(center, 'EPSG:4326', 'EPSG:2056'):null,
       zoom: this.userContext.z,
       //minZoom: 6,
     })
