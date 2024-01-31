@@ -493,7 +493,7 @@ export class MapComponent implements OnInit {
           });
           _paq.push(['trackEvent', `layer_list`, 'add_local_shapefile', file.size])
         }).catch(error => {
-          alert("Le fichier ne semble pas être au format ShapeFile.");
+          alert("The file does not appear to be in ShapeFile format. Note that CH-OSM does not accept multipolygon geometries with EPSG:2056 system!");
         });
       }
       reader.readAsArrayBuffer(file);  

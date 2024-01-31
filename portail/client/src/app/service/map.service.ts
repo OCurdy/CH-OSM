@@ -759,8 +759,15 @@ export class MapService {
           geometry.coordinates.forEach((ring, i) => {
             geometry.coordinates[i] = this.convertCoordinatesFrom2056To3857(ring);
           });
+            } /* else if (geometry.type === 'MultiPolygon') {
+                const polygons = this.convertMultiPolygonsToPolygons(geometry.coordinates);
+                geometry.coordinates = polygons.map(polygon => {
+                    return polygon.map(ring => {
+                        return this.convertCoordinatesFrom2056To3857(ring);
+                    });
+                });
+            }  */
         }
-      }
       return feature;
     });
   }
