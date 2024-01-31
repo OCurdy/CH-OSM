@@ -18,6 +18,7 @@
                         <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
                     </svg>
                       {{ categorie.categorie | translate }}
+                      <span *ngIf="categorie.categorie === 'myLayers'" style="font-size: x-small;">(CH1903+/LV95)</span>
                 </a>
             </h5>
         </div>
