@@ -708,7 +708,7 @@ export class MapService {
 
   }
 
-  convertCoordinatesFrom2056To3857(coordinates: number[][]): number[][] {
+   convertCoordinatesFrom2056To3857(coordinates: number[][]): number[][] {
     proj4.defs('EPSG:2056', '+proj=somerc +lat_0=46.95240555555556 +lon_0=7.439583333333333 +x_0=2600000 +y_0=1200000 +ellps=bessel +towgs84=674.374,15.056,405.346,0,0,0,0 +units=m +no_defs');
     proj4.defs('EPSG:3857', '+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs');
   
@@ -719,46 +719,50 @@ export class MapService {
     return coordinates.map(point => proj4(fromProjection, toProjection, point));
   }
 
-  addShapefileLayer(id: string, bufferOrUrl: ArrayBuffer | string, show: boolean = true) {
-    if (this.layers[id] == null) {
-      return shapefile.read(bufferOrUrl).then(collection => {
-        // Convertissez les coordonnées de l'EPSG:2056 à l'EPSG:3857 ici
-        const convertedFeatures = collection.features.map(feature => {
-          const geometry = feature.geometry;
-          if (geometry) {
-            if (geometry.type === 'Point') {
-              geometry.coordinates = this.convertCoordinatesFrom2056To3857([geometry.coordinates])[0];
-            } else if (geometry.type === 'LineString' || geometry.type === 'Polygon') {
-              // Convertir chaque point dans la ligne ou le polygone
-              geometry.coordinates = this.convertCoordinatesFrom2056To3857(geometry.coordinates);
-            }
-          }
-          return feature;
-        });
-  
-        const vectorSource = new ol.source.Vector({
-          features: (new ol.format.GeoJSON()).readFeatures({
-            type: 'FeatureCollection',
-            features: convertedFeatures
-          })
-        });
-        this.layers[id] = new ol.layer.Vector({
-          source: vectorSource
-        });
+addShapefileLayer(id: string, bufferOrUrl: ArrayBuffer | string, show: boolean = true, isEPSG2056: boolean = false) {
+  if (this.layers[id] == null) {
+    return shapefile.read(bufferOrUrl).then(collection => {
+      const vectorSource = new ol.source.Vector({
+        features: (new ol.format.GeoJSON()).readFeatures({
+          type: 'FeatureCollection',
+          features: isEPSG2056 ? collection.features : this.convertFeaturesToEPSG3857(collection.features)
+        })
+      });
+      this.layers[id] = new ol.layer.Vector({
+        source: vectorSource
+      });
 
-        const listenerKey = vectorSource.on('change', (function (e) {
-          if (vectorSource.getState() == 'ready') {
-            ol.Observable.unByKey(listenerKey);
-            this.layers[id].setVisible(show);
-          }
-        }).bind(this));
-        this.map.addLayer(this.layers[id]);
-      })
-    } else {
-      this.layers[id].setVisible(show);
-      return Promise.resolve();
-    }
+      const listenerKey = vectorSource.on('change', (function (e) {
+        if (vectorSource.getState() == 'ready') {
+          ol.Observable.unByKey(listenerKey);
+          this.layers[id].setVisible(show);
+        }
+      }).bind(this));
+      this.map.addLayer(this.layers[id]);
+    });
+  } else {
+    this.layers[id].setVisible(show);
+    return Promise.resolve();
   }
+}
+
+convertFeaturesToEPSG3857(features) {
+  return features.map(feature => {
+    const geometry = feature.geometry;
+    if (geometry) {
+      if (geometry.type === 'Point') {
+        geometry.coordinates = this.convertCoordinatesFrom2056To3857([geometry.coordinates])[0];
+      } else if (geometry.type === 'LineString') {
+        geometry.coordinates = this.convertCoordinatesFrom2056To3857(geometry.coordinates);
+      } else if (geometry.type === 'Polygon') {
+        geometry.coordinates.forEach((ring, i) => {
+          geometry.coordinates[i] = this.convertCoordinatesFrom2056To3857(ring);
+        });
+      }
+    }
+    return feature;
+  });
+}
 
   public getBaseLayerName() {
     return this.baseLayerName;
