@@ -21,7 +21,7 @@
             {
                 "layername": "magosm:hospitals_point",
                 "nom_court": "Spitals · Hôpitaux · Ospedali · Hospitals",
-                "md_url":"https://wiki.openstreetmap.org/wiki/Tag:amenity%3Dhospital",
+                "md_url":"geocaturl:hospital",
                 "sld_path":"/styles/france_hospitals_point.sld",
                 "type":"WMS",
                 "download_gpkg":true,
@@ -59,7 +59,7 @@
             {
                 "layername": "magosm:clinics_point",
                 "nom_court": "Klinischen · Cliniques · Clinici · Clinics",
-                "md_url":"https://wiki.openstreetmap.org/wiki/Tag:amenity%3Dclinic",
+                "md_url":"geocaturl:clinics",
                 "sld_path":"/styles/france_clinics_point.sld",
                 "type":"WMS",
                 "download_gpkg":true,
@@ -101,7 +101,7 @@
             {
                 "layername": "magosm:pharmacies_point",
                 "nom_court": "Apotheken · Pharmacies · Farmacie · Pharmacies",
-                "md_url":"https://wiki.openstreetmap.org/wiki/Tag:amenity%3Dpharmacy",
+                "md_url":"geocaturl:pharmacies",
                 "sld_path":"/styles/france_pharmacies_point.sld",
                 "type":"WMS",
                 "download_gpkg":true,
@@ -143,7 +143,7 @@
             {
                 "layername": "magosm:social_facility_point",
                 "nom_court": "Sozialeinrichtung · Structures sociales · Strutture sociali · Social facilities",
-                "md_url":"https://wiki.openstreetmap.org/wiki/Key:social_facility",
+                "md_url":"geocaturl:social_facility",
                 "sld_path":"/styles/france_social_facility_point_cluster.sld",
                 "type":"WMS",
                 "download_gpkg":true,
@@ -186,7 +186,7 @@
             {
                 "layername": "magosm:schools_point",
                 "nom_court": "Schulen · Écoles · Scuole · Schools",
-                "md_url":"https://wiki.openstreetmap.org/wiki/Tag:amenity%3Dschool",
+                "md_url":"geocaturl:schools",
                 "sld_path":"/styles/france_schools_point.sld",
                 "type":"WMS",
                 "download_gpkg":true,
@@ -223,7 +223,7 @@
             {
                 "layername": "magosm:police_point",
                 "nom_court": "Polizei · Police · Polizia · Police",
-                "md_url":"https://wiki.openstreetmap.org/wiki/Tag:amenity%3Dpolice",
+                "md_url":"geocaturl:police",
                 "sld_path":"/styles/france_police_point.sld",
                 "type":"WMS",
                 "download_gpkg":true,
@@ -265,7 +265,7 @@
             {
                 "layername": "magosm:shops_point",
                 "nom_court": "Geschäfte · Magasins · Negozi · Shops",
-                "md_url":"https://wiki.openstreetmap.org/wiki/Key:shop",
+                "md_url":"geocaturl:shops",
                 "sld_path":"/styles/france_shops_point.sld",
                 "type":"WMS",
                 "download_gpkg":true,
@@ -315,7 +315,7 @@
             {
                 "layername": "magosm:motorways_line",
                 "nom_court": "Autobahnen · Autoroutes · Autostrade · Highways",
-                "md_url":"https://wiki.openstreetmap.org/wiki/Tag:highway%3Dmotorway",
+                "md_url":"geocaturl:motorways",
                 "sld_path":"/styles/france_motorways_line.sld",
                 "type":"WMS",
                 "download_gpkg":true,
@@ -352,7 +352,7 @@
             {
                 "layername": "magosm:highways_line",
                 "nom_court": "Straßennetz · Réseau routier · Rete stradale · Highway network",
-                "md_url":"https://wiki.openstreetmap.org/wiki/Highways",
+                "md_url":"geocaturl:highways",
                 "sld_path":"/styles/france_highways_line.sld",
                 "type":"WMTS",
                 "download_gpkg":true,
@@ -389,7 +389,7 @@
             {
                 "layername": "magosm:highways_line_recently_modified",
                 "nom_court": "Straßennetz (letzte Woche) · Réseau routier (dernière semaine) · Rete stradale (Ultima settimana)· Highway network (Last week)",
-                "md_url":"https://wiki.openstreetmap.org/wiki/Highways",
+                "md_url":"geocaturl:highways_recently_modified",
                 "sld_path":"/styles/france_highways_line.sld",
                 "type":"WMS",
                 "download_gpkg":true,
@@ -426,7 +426,7 @@
             {
                 "layername": "magosm:hiking_foot_routes_line",
                 "nom_court": "Wanderrouten · Itinéraires de randonnée · Percorsi escursionistici · Hiking routes",
-                "md_url":"https://wiki.openstreetmap.org/wiki/Tag:route%3Dfoot",
+                "md_url":"geocaturl:hiking_foot_routes",
                 "sld_path":"/styles/france_hiking_foot_routes_line.sld",
                 "type":"WMTS",
                 "download_gpkg":true,
@@ -464,7 +464,7 @@
             {
                 "layername": "magosm:bicycle_mtb_routes_line",
                 "nom_court": "Radwege · Itinéraires cyclables · piste ciclabili · Bicycle routes",
-                "md_url":"https://wiki.openstreetmap.org/wiki/Cycle_routes",
+                "md_url":"geocaturl:bicycle_mtb_routes",
                 "sld_path":"/styles/france_bicycle_mtb_routes_line.sld",
                 "type":"WMTS",
                 "download_gpkg":true,
@@ -499,7 +499,7 @@
             {
                 "layername": "magosm:cycleways_line",
                 "nom_court": "Radwege · Pistes cyclables · Piste ciclabili · Cycleways",
-                "md_url":"https://wiki.openstreetmap.org/wiki/Tag:highway%3Dcycleway",
+                "md_url":"geocaturl:cycleways",
                 "sld_path":"/styles/france_cycleways_line.sld",
                 "type":"WMTS",
                 "maxScaleDenominator":300000,
@@ -522,7 +522,7 @@
 
                 "layername": "magosm:bus_routes_line",
                 "nom_court": "Buslinien · Lignes de bus · Linee di autobus · Bus routes",
-                "md_url":"https://wiki.openstreetmap.org/wiki/Tag:route%3Dbus",
+                "md_url":"geocaturl:bus_routes",
                 "sld_path":"/styles/france_bus_routes_line.sld",
                 "type":"WMS",
                 "download_gpkg":true,
@@ -563,7 +563,7 @@
             {
                 "layername": "magosm:tram_ltr_routes_line",
                 "nom_court": "Straßenbahnlinien · Lignes de tramways · Linee di tram · Tram routes",
-                "md_url":"https://wiki.openstreetmap.org/wiki/Tag:route%3Dtram",
+                "md_url":"geocaturl:tram_ltr_routes",
                 "sld_path":"/styles/france_tram_ltr_routes_line.sld",
                 "type":"WMS",
                 "download_gpkg":true,
@@ -604,7 +604,7 @@
             {
                 "layername": "magosm:subway_routes_line",
                 "nom_court": "U-Bahnlinien · Lignes de métro · Linee della metropolitana · Underground routes",
-                "md_url":"https://wiki.openstreetmap.org/wiki/Tag:route%3Dsubway",
+                "md_url":"geocaturl:subway_routes",
                 "sld_path":"/styles/france_subway_routes_line.sld",
                 "type":"WMS",
                 "download_gpkg":true,
@@ -645,7 +645,7 @@
             {
                 "layername": "magosm:train_routes_line",
                 "nom_court": "Bahnlinien · Lignes ferroviaires · Linee ferroviarie · Train routes",
-                "md_url":"https://wiki.openstreetmap.org/wiki/Tag:route%3Dtrain",
+                "md_url":"geocaturl:train_routes",
                 "sld_path":"/styles/france_train_routes_line.sld",
                 "type":"WMS",
                 "download_gpkg":true,
@@ -685,7 +685,7 @@
             {
                 "layername": "magosm:railways_line",
                 "nom_court": "Eisenbahnen · Voies ferrées · Ferrovie · Railways",
-                "md_url":"https://wiki.openstreetmap.org/wiki/Railways",
+                "md_url":"geocaturl:railways",
                 "sld_path":"/styles/france_railway_line.sld",
                 "type":"WMTS",
                 "maxScaleDenominator":1000000,
@@ -729,7 +729,7 @@
             {
                 "layername": "magosm:buildings_polygon",
                 "nom_court": "Gebäude · Bâtiments · Edifici · Buildings",
-                "md_url":"https://wiki.openstreetmap.org/wiki/Buildings",
+                "md_url":"geocaturl:buildings",
                 "sld_path":"/styles/france_buildings.sld",
                 "type":"WMTS",
                 "maxScaleDenominator":250000,
@@ -775,7 +775,7 @@
             {
                 "layername": "magosm:proposed",
                 "nom_court": "Konstruktionsvorschlag · Propositions de constructions · Proposte di costruzione · Construction proposals",
-                "md_url":"",
+                "md_url":"geocaturl:proposed",
                 "sld_path":"/styles/france_proposed.sld",
                 "type":"WMTS",
                 "download_gpkg":true,
@@ -813,7 +813,7 @@
             {
                 "layername": "magosm:constructions",
                 "nom_court": "Anlagen im Bau · Constructions en cours · Costruzioni in corso · Constructions in progress",
-                "md_url":"https://wiki.openstreetmap.org/wiki/Tag:building%3Dconstruction",
+                "md_url":"geocaturl:constructions",
                 "sld_path":"/styles/france_constructions.sld",
                 "type":"WMTS",
                 "download_gpkg":true,
@@ -852,7 +852,7 @@
                 "layername": "magosm:landuses_naturals_polygon",
                 "nom_court": "Bodenbedeckung · Occupation du sol · Occupazione del suolo · Landuses",
                 "maxScaleDenominator":1000000,
-                "md_url":"https://wiki.openstreetmap.org/wiki/Key:landuse",
+                "md_url":"geocaturl:landuses_naturals",
                 "sld_path":"/styles/france_landuses_naturals.sld",
                 "type":"WMTS",
                 "download_gpkg":true,
@@ -892,7 +892,7 @@
             {
                 "layername": "magosm:pnr_polygon",
                 "nom_court": "Regionalen Naturparks · Parcs Naturels Régionaux · Parchi Naturali Regionali · Regional Nature Parks",
-                "md_url": "https://wiki.openstreetmap.org/wiki/Tag:boundary%3Dprotected_area",
+                "md_url": "geocaturl:pnr",
                 "sld_path":"/styles/france_pnr_polygon.sld",
                 "type":"WMTS",
                 "download_gpkg":true,
@@ -926,7 +926,7 @@
             {
                 "layername": "magosm:vineyards_grapes_polygon",
                 "nom_court": "Weinberg · Vignoble · Vigneto · Vineyards",
-                "md_url": "https://wiki.openstreetmap.org/wiki/Tag:landuse%3Dvineyard",
+                "md_url": "geocaturl:vineyards_grapes",
                 "sld_path":"/styles/france_vineyards_grapes_polygon.sld",
                 "type":"WMTS",
                 "download_gpkg":true,

@@ -7,6 +7,7 @@ import { UserContext } from '../../model/UserContext';
 import { environment } from '../../../environments/environment';
 import { LayerAndCategory } from 'app/model/LayerAndCategory';
 import { LayerAttributeTableComponent } from 'app/layer-attribute-table/layer-attribute-table.component';
+import { TranslateService } from '@ngx-translate/core';
 
 
 
@@ -47,6 +48,7 @@ export class LayerTreeComponent implements OnInit {
 
   constructor(
     private mapService: MapService,
+    private translateService: TranslateService,
     public layerChangeService: LayerChangeService) {  
 }
   
@@ -70,6 +72,11 @@ export class LayerTreeComponent implements OnInit {
     setTimeout(() => this.loadVisibleLayersFromUserContext(), 1000);
     //this.loadVisibleLayersFromUserContext();
     $('[data-toggle="popover"]').popover();
+  }
+
+  getTranslatedUrl(key: string): string {
+    // Renvoie l'URL traduite
+    return this.translateService.instant(key);
   }
 
 
@@ -143,6 +150,8 @@ export class LayerTreeComponent implements OnInit {
     
   };
 
+
+
   changeOpacity(event, variable: Layer, value) {
     event.stopPropagation();
     this.mapService.getLayersById(variable.layername).setOpacity(value / 100);
@@ -153,11 +162,13 @@ export class LayerTreeComponent implements OnInit {
     return false;
   }
   onInfo(variable: Layer) {
-    if (variable.md_url) {
-      window.open(variable.md_url, "blank")
-      _paq.push(['trackEvent', 'layer_info', variable.layername])
+    const translatedUrl = this.translateService.instant(variable.md_url);
+    if (translatedUrl && translatedUrl !== 'N/A') {
+      window.open(translatedUrl, "_blank");
+      _paq.push(['trackEvent', 'layer_info', variable.layername]);
     }
   }
+  
 
   clicktitle(): void {
     let menu = document.getElementById("menuContainer");

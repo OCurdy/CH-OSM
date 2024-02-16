@@ -130,6 +130,6 @@ export class MapPanelSwitcherComponent implements OnInit {
       this.cdRef.detectChanges();
     }
 
-    }
   }
+}
 

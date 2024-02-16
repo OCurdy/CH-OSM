@@ -40,7 +40,7 @@
                             </label>
                             
                             
-                            <div (click)="onInfo(feature)" class="fa fa-question-circle" style="color: #cc1417" [title]="feature.md_url ? 'Metadata' : 'N/A'"></div>
+                            <div (click)="onInfo(feature)" class="fa fa-question-circle" style="color: #cc1417" [title]="getTranslatedUrl(feature.md_url) ? getTranslatedUrl(feature.md_url) : 'N/A'"></div>
                             
                             <span *ngIf="mapService.isInRange(feature.layername)==false" 
                                 style="cursor:pointer;margin: 3px;vertical-align: middle;"
@@ -56,7 +56,7 @@
                                 <i class="fa fa-eye-slash" aria-hidden="true" style="font-size: 18px;"></i>
                             </span>
 
-                            <a class="layer-entry collapsed" data-toggle="collapse" href="#{{feature.nom_court_trim}}Collapse" role="button" aria-expanded="false">
+                            <a class="layer-entry collapsed" data-toggle="collapse" href="#{{feature.nom_court_trim }}Collapse" role="button" aria-expanded="false">
                                 <i class="fa img-expandable circle-icon" [ngClass]="{'fa-plus-circle': isCollapsed, 'fa-times-circle': !isCollapsed}" style="color: #cc1417" aria-hidden="true"></i>
                             
                                 <span class="loading-panel" *ngIf="getState(feature)>0">
@@ -65,7 +65,7 @@
                                 </span>
                             </a>                            
                            
-                            <div class="collapse" id="{{feature.nom_court_trim}}Collapse" style="align-items: center;">
+                            <div class="collapse" id="{{feature.nom_court_trim }}Collapse" style="align-items: center;">
                                 <div class="card card-body">                                                            
                                     <input #ref
                                         type="range" min ="0" max="100" step ="2.5"

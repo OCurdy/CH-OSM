@@ -69,6 +69,38 @@
     "magosm:vineyards_grapes_polygon": "Vineyards",
 
     "myLayers":"My Layers",
+
+    "geocaturl:hospital":"https://www.geocat.ch/geonetwork/srv/eng/catalog.search#/metadata/69ee4b64-4e11-4729-8bd6-278a7e08071e",
+    "geocaturl:clinics":"https://www.geocat.ch/geonetwork/srv/eng/catalog.search#/metadata/06d0fe8c-0ec3-43ba-acbf-939869d86713",
+    "geocaturl:pharmacies":"https://www.geocat.ch/geonetwork/srv/eng/catalog.search#/metadata/5debe710-a205-4ddf-b998-3ca33da36042",
+    "geocaturl:social_facility":"https://www.geocat.ch/geonetwork/srv/eng/catalog.search#/metadata/445d3a63-fd84-491f-aa2a-ad1efc39bf8e",
+    "geocaturl:police":"https://www.geocat.ch/geonetwork/srv/eng/catalog.search#/metadata/e61082a5-6917-4826-938d-e79083817859",
+    "geocaturl:shops":"https://www.geocat.ch/geonetwork/srv/eng/catalog.search#/metadata/1c3962ec-fabc-4301-aa52-a8edc81d5163",
+    "geocaturl:schools":"https://www.geocat.ch/geonetwork/srv/eng/catalog.search#/metadata/0bdf8df3-9d13-499e-ab0b-aebf3fd217d9",
+
+    "geocaturl:motorways":"https://www.geocat.ch/geonetwork/srv/eng/catalog.search#/metadata/9761dba0-c250-4d8d-bd16-60bfcfce9886",
+    "geocaturl:highways":"https://www.geocat.ch/geonetwork/srv/eng/catalog.search#/metadata/b78b987f-ce6a-461c-af88-6cae0a37c9aa",
+    "geocaturl:highways_recently_modified":"https://www.geocat.ch/geonetwork/srv/eng/catalog.search#/metadata/b78b987f-ce6a-461c-af88-6cae0a37c9aa",
+    "geocaturl:hiking_foot_routes":"https://www.geocat.ch/geonetwork/srv/eng/catalog.search#/metadata/572df454-2d88-4cda-baa1-62cf83cd5d24",
+    "geocaturl:bicycle_mtb_routes":"https://www.geocat.ch/geonetwork/srv/eng/catalog.search#/metadata/19459e9e-53fa-4970-af2d-8571920d34ba",
+    "geocaturl:cycleways":"https://www.geocat.ch/geonetwork/srv/eng/catalog.search#/metadata/7c376405-cb03-40c3-8da2-9bce5df58667",
+    "geocaturl:bus_routes":"https://wiki.openstreetmap.org/wiki/Tag:route%3Dbus",
+
+
+    "geocaturl:tram_ltr_routes":"https://www.geocat.ch/geonetwork/srv/eng/catalog.search#/metadata/81c0d9e2-4c6b-4643-a743-47e4e6a6d0f6",
+    "geocaturl:subway_routes":"https://wiki.openstreetmap.org/wiki/Tag:route%3Dsubway",
+    "geocaturl:train_routes":"https://wiki.openstreetmap.org/wiki/Tag:route%3Dtrain",
+    "geocaturl:railways":"https://www.geocat.ch/geonetwork/srv/eng/catalog.search#/metadata/99734714-d49e-4f38-8e05-e8e4a529fd5a",
+
+
+    "geocaturl:buildings":"https://www.geocat.ch/geonetwork/srv/eng/catalog.search#/metadata/4153ac4b-d8a9-4df3-a390-e766ed49a5bd",
+    "geocaturl:proposed":"https://www.geocat.ch/geonetwork/srv/eng/catalog.search#/metadata/caa3cd7a-5923-4351-a65c-fd2fed4763b9",
+    "geocaturl:constructions":"https://www.geocat.ch/geonetwork/srv/eng/catalog.search#/metadata/0526622f-98e1-480f-a9eb-91aa78ab58ec",
+    "geocaturl:landuses_naturals":"https://www.geocat.ch/geonetwork/srv/eng/catalog.search#/metadata/urn:isogeo:metadata:uuid:6ffd6759-eddd-4077-87c4-be65f55d754d",
+    "geocaturl:pnr":"https://www.geocat.ch/geonetwork/srv/eng/catalog.search#/metadata/urn:isogeo:metadata:uuid:31d848b5-6900-4e36-85c9-a4f2b4990b16",
+
+
+    "geocaturl:vineyards_grapes":"https://wiki.openstreetmap.org/wiki/Tag:landuse%3Dvineyard",
    
     "communes": "Municipalities",
     "cantons": "Cantons",

@@ -123,7 +123,7 @@ export class MapComponent implements OnInit {
 
    this.mousePositionControl = new ol.control.MousePosition({
       coordinateFormat: function (coords) {
-        return 'E: ' + formatSwissNumber(coords[0]) + ' N: ' + formatSwissNumber(coords[1]);      
+        return 'E: ' + formatSwissNumber(coords[0]) + ' N: ' + formatSwissNumber(coords[1]) + ' (CH1903+/LV95)';      
       },
       projection: 'EPSG:2056',
       className: 'custom-mouse-position',
