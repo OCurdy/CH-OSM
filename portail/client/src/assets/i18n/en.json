@@ -84,7 +84,7 @@
     "geocaturl:hiking_foot_routes":"https://www.geocat.ch/geonetwork/srv/eng/catalog.search#/metadata/572df454-2d88-4cda-baa1-62cf83cd5d24",
     "geocaturl:bicycle_mtb_routes":"https://www.geocat.ch/geonetwork/srv/eng/catalog.search#/metadata/19459e9e-53fa-4970-af2d-8571920d34ba",
     "geocaturl:cycleways":"https://www.geocat.ch/geonetwork/srv/eng/catalog.search#/metadata/7c376405-cb03-40c3-8da2-9bce5df58667",
-    "geocaturl:bus_routes":"https://wiki.openstreetmap.org/wiki/Tag:route%3Dbus",
+    "geocaturl:bus_routes":"https://www.geocat.ch/geonetwork/srv/eng/catalog.search#/metadata/f72e7450-202a-4509-9377-fc40bc73af61",
 
 
     "geocaturl:tram_ltr_routes":"https://www.geocat.ch/geonetwork/srv/eng/catalog.search#/metadata/81c0d9e2-4c6b-4643-a743-47e4e6a6d0f6",
