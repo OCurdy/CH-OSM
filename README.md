@@ -1,30 +1,31 @@
-# magOSM
+# CH-OSM
 
-Toutes les informations utiles sur le projet sont accessibles directement sur le site de magOSM  : https://magosm.magellium.com/
+All relevant information about the project can be found directly on the CH-OSM website: https://ch-osm.geodatasolutions.com/
 
-## Contribuer
+## Contribute
 
-### Améliorer la carte
+### Improve the map
 
-Les données diffusées par le projet magOSM sont toutes issues de la base de données géographique OpenStreetMap (OSM).<br>
-OpenStreetMap est un projet de cartographie qui a pour but de constituer une base de données géographiques libre du monde.
-Le projet est souvent désigné comme "le Wikipédia de la cartographie".<br>
-Tout le monde peut participer à améliorer la carte en ajoutant ou en mettant à jour des données ! Plus d'informations ici :
+The data released by the CH-OSM project are all from the OpenStreetMap (OSM) geographic database.<br>
+OpenStreetMap is a mapping project that aims to build a free geographic database of the world.
+The project is often referred to as the "Wikipedia of cartography".<br>
+Everyone can help improve the map by adding or updating data! More information here:
 
-* [Se créer un compte](https://www.openstreetmap.org/user/new)
+* [Create an account](https://www.openstreetmap.org/user/new)
 * [LearnOSM](https://learnosm.org/fr/)
-* [Association OpenStreetMap France](https://www.openstreetmap.fr/)
+* [OpenStreetMap Switzerland](https://www.openstreetmap.ch/)
 
-### Remonter une anomalie ou proposer une amélioration
+### Report an anomaly or propose an improvement
 
-Si vous voulez rapporter une anomalie sur le portail magOSM, ou bien proposer une amélioration, vous pouvez [ouvrir une issue](https://github.com/magellium/magosm/issues/new). Pour une anomalie, merci de fournir autant de détails que possible (copies d'écran, étapes pour reproduire etc.).
+If you want to report an anomaly on the CH-OSM Portal, or propose an improvement, you can [open an issue] (https://gitlab.com/OKurdi/ch-osm/issues/new). For an anomaly, please provide as many details as possible (screenshots, steps to reproduce etc.).
 
-### Proposer une nouvelle couche thématique
+### Propose a new thematic layer
 
-Un guide est disponible ici : [Contribution.md](Contribution.md) !
+A guide is available here: [Contribution.md](Contribution.md) !
 
-## Organisation du projet
+## Project Organization
 
-* `./portail/` : frontend et backend du [Portail magOSM](http://magosm.magellium.com/portail/)
-* `./styles/` : fichiers de style SLD définissant les styles par défaut pour les flux WMS
-* [magosm_db](https://github.com/Magellium/magosm_db) : dépôt de code relatif à la base de données magOSM
+* `./portail/` : frontend and backend of [Portail CH-OSM](http://ch-osm.geodatasolutions.ch/portail/)
+
+* `./styles/` : SLD style files defining default styles for WMS flows.
+
