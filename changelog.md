@@ -43,6 +43,6 @@ All notable changes to this project will be documented in this file.
 - Access to the Copper Sub-distributors layer (lack of data).
 
 
-###Fixed
+### Fixed
 
-###Security
+### Security
