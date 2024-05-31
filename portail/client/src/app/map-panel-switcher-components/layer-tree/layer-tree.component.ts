@@ -1,11 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { MapComponent } from '../../map/map.component';
 import { Layer } from '../../model/Layer';
 import { MapService } from '../../service/map.service';
 import { LayerChangeService } from '../../service/layer-change.service';
 import { UserContext } from '../../model/UserContext';
 import { environment } from '../../../environments/environment';
-import { LayerAndCategory } from 'app/model/LayerAndCategory';
 import { LayerAttributeTableComponent } from 'app/layer-attribute-table/layer-attribute-table.component';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -46,20 +44,20 @@ export class LayerTreeComponent implements OnInit {
 
   public myRegex = new RegExp('magosm:', 'g');
 
+  collapseStates: { [key: string]: boolean } = {};
+
   constructor(
     private mapService: MapService,
     private translateService: TranslateService,
     public layerChangeService: LayerChangeService) {  
 }
   
-  
-
-  
   ngOnInit() {
     let self= this;
     this.layervariables.forEach(categorie => {
       categorie.features.forEach(feature => {
         feature.nom_court_trim = feature.nom_court.replaceAll(' ', '').replaceAll('(', '').replaceAll(')', '');
+        this.collapseStates[feature.nom_court_trim] = true;
       }); 
     }); 
    
@@ -128,7 +126,7 @@ export class LayerTreeComponent implements OnInit {
       return lay.getSource().loadingCounter;
     return 0;
   }
-  //Selection d'une couche
+
   onSelect(event, variable: Layer): void {
     console.log(variable.layername);
 
@@ -144,13 +142,8 @@ export class LayerTreeComponent implements OnInit {
     console.log(variable);
     if(this.mapService.getLayersById(variable.layername).getVisible()){
       _paq.push(['trackEvent', 'layer_visu', variable.layername]);
-    }
-      
-    
-    
+    }   
   };
-
-
 
   changeOpacity(event, variable: Layer, value) {
     event.stopPropagation();
@@ -169,7 +162,6 @@ export class LayerTreeComponent implements OnInit {
     }
   }
   
-
   clicktitle(): void {
     let menu = document.getElementById("menuContainer");
     let accordion = document.getElementById("menuaccordion");
@@ -184,13 +176,11 @@ export class LayerTreeComponent implements OnInit {
 
   }
   
-  // Evènement levé lors d'un click sur le bouton "grille" en face du nom d'une couche
-  // Cela provoque l'ouverture d'une fenêtre modale contenant les valeurs attributaires de la couche
   openAttributeTable($event : any, feature):void{
     this.featureAttributeTableComponent.setLayer(feature);
     _paq.push(['trackEvent', 'attribute_table', feature.layername])
   }
-
+/*
   toggleCardBody(feature): void {
       const collapseId = feature.nom_court_trim + 'Collapse';
       const collapseElement = document.getElementById(collapseId);
@@ -204,11 +194,12 @@ export class LayerTreeComponent implements OnInit {
           }
       }
   }
+*/  
+  toggleCardBody(feature): void {
+    const collapseId = feature.nom_court_trim + 'Collapse';
+    this.collapseStates[feature.nom_court_trim] = !this.collapseStates[feature.nom_court_trim];
+  }
 
-  isCollapsed: boolean = true; // Défaut à l'état fermé
+  isCollapsed: boolean = true;
   
-
- 
 }
-  
-
