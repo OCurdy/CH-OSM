@@ -21,7 +21,7 @@
             {
                 "layername": "magosm:hospitals_point",
                 "nom_court": "Spitals · Hôpitaux · Ospedali · Hospitals",
-                "md_url":"geocaturl:hospital",
+                "md_url":"https://www.geocat.ch/datahub/dataset/69ee4b64-4e11-4729-8bd6-278a7e08071e",
                 "sld_path":"/styles/france_hospitals_point.sld",
                 "type":"WMS",
                 "download_gpkg":true,
@@ -59,7 +59,7 @@
             {
                 "layername": "magosm:clinics_point",
                 "nom_court": "Klinischen · Cliniques · Clinici · Clinics",
-                "md_url":"geocaturl:clinics",
+                "md_url":"https://www.geocat.ch/datahub/dataset/06d0fe8c-0ec3-43ba-acbf-939869d86713",
                 "sld_path":"/styles/france_clinics_point.sld",
                 "type":"WMS",
                 "download_gpkg":true,
@@ -101,7 +101,7 @@
             {
                 "layername": "magosm:pharmacies_point",
                 "nom_court": "Apotheken · Pharmacies · Farmacie · Pharmacies",
-                "md_url":"geocaturl:pharmacies",
+                "md_url":"https://www.geocat.ch/datahub/dataset/5debe710-a205-4ddf-b998-3ca33da36042",
                 "sld_path":"/styles/france_pharmacies_point.sld",
                 "type":"WMS",
                 "download_gpkg":true,
@@ -143,7 +143,7 @@
             {
                 "layername": "magosm:social_facility_point",
                 "nom_court": "Sozialeinrichtung · Structures sociales · Strutture sociali · Social facilities",
-                "md_url":"geocaturl:social_facility",
+                "md_url":"https://www.geocat.ch/datahub/dataset/445d3a63-fd84-491f-aa2a-ad1efc39bf8e",
                 "sld_path":"/styles/france_social_facility_point_cluster.sld",
                 "type":"WMS",
                 "download_gpkg":true,
@@ -186,7 +186,7 @@
             {
                 "layername": "magosm:schools_point",
                 "nom_court": "Schulen · Écoles · Scuole · Schools",
-                "md_url":"geocaturl:schools",
+                "md_url":"https://www.geocat.ch/datahub/dataset/0bdf8df3-9d13-499e-ab0b-aebf3fd217d9",
                 "sld_path":"/styles/france_schools_point.sld",
                 "type":"WMS",
                 "download_gpkg":true,
@@ -223,7 +223,7 @@
             {
                 "layername": "magosm:police_point",
                 "nom_court": "Polizei · Police · Polizia · Police",
-                "md_url":"geocaturl:police",
+                "md_url":"https://www.geocat.ch/datahub/dataset/e61082a5-6917-4826-938d-e79083817859",
                 "sld_path":"/styles/france_police_point.sld",
                 "type":"WMS",
                 "download_gpkg":true,
@@ -265,7 +265,7 @@
             {
                 "layername": "magosm:shops_point",
                 "nom_court": "Geschäfte · Magasins · Negozi · Shops",
-                "md_url":"geocaturl:shops",
+                "md_url":"https://www.geocat.ch/datahub/dataset/1c3962ec-fabc-4301-aa52-a8edc81d5163",
                 "sld_path":"/styles/france_shops_point.sld",
                 "type":"WMS",
                 "download_gpkg":true,
@@ -315,7 +315,7 @@
             {
                 "layername": "magosm:motorways_line",
                 "nom_court": "Autobahnen · Autoroutes · Autostrade · Highways",
-                "md_url":"geocaturl:motorways",
+                "md_url":"https://www.geocat.ch/datahub/dataset/9761dba0-c250-4d8d-bd16-60bfcfce9886",
                 "sld_path":"/styles/france_motorways_line.sld",
                 "type":"WMS",
                 "download_gpkg":true,
@@ -351,8 +351,8 @@
             },
             {
                 "layername": "magosm:highways_line",
-                "nom_court": "Straßennetz · Réseau routier · Rete stradale · Highway network",
-                "md_url":"geocaturl:highways",
+                "nom_court": "Strassennetz · Réseau routier · Rete stradale · Highway network",
+                "md_url":"https://www.geocat.ch/datahub/dataset/b78b987f-ce6a-461c-af88-6cae0a37c9aa",
                 "sld_path":"/styles/france_highways_line.sld",
                 "type":"WMTS",
                 "download_gpkg":true,
@@ -388,8 +388,8 @@
             },
             {
                 "layername": "magosm:highways_line_recently_modified",
-                "nom_court": "Straßennetz (letzte Woche) · Réseau routier (dernière semaine) · Rete stradale (Ultima settimana)· Highway network (Last week)",
-                "md_url":"geocaturl:highways_recently_modified",
+                "nom_court": "Strassennetz (letzte Woche) · Réseau routier (dernière semaine) · Rete stradale (Ultima settimana)· Highway network (Last week)",
+                "md_url":"https://www.geocat.ch/datahub/dataset/b78b987f-ce6a-461c-af88-6cae0a37c9aa",
                 "sld_path":"/styles/france_highways_line.sld",
                 "type":"WMS",
                 "download_gpkg":true,
@@ -426,7 +426,7 @@
             {
                 "layername": "magosm:hiking_foot_routes_line",
                 "nom_court": "Wanderrouten · Itinéraires de randonnée · Percorsi escursionistici · Hiking routes",
-                "md_url":"geocaturl:hiking_foot_routes",
+                "md_url":"https://www.geocat.ch/datahub/dataset/572df454-2d88-4cda-baa1-62cf83cd5d24",
                 "sld_path":"/styles/france_hiking_foot_routes_line.sld",
                 "type":"WMTS",
                 "download_gpkg":true,
@@ -464,7 +464,7 @@
             {
                 "layername": "magosm:bicycle_mtb_routes_line",
                 "nom_court": "Radwege · Itinéraires cyclables · piste ciclabili · Bicycle routes",
-                "md_url":"geocaturl:bicycle_mtb_routes",
+                "md_url":"https://www.geocat.ch/datahub/dataset/19459e9e-53fa-4970-af2d-8571920d34ba",
                 "sld_path":"/styles/france_bicycle_mtb_routes_line.sld",
                 "type":"WMTS",
                 "download_gpkg":true,
@@ -499,7 +499,7 @@
             {
                 "layername": "magosm:cycleways_line",
                 "nom_court": "Radwege · Pistes cyclables · Piste ciclabili · Cycleways",
-                "md_url":"geocaturl:cycleways",
+                "md_url":"https://www.geocat.ch/datahub/dataset/7c376405-cb03-40c3-8da2-9bce5df58667",
                 "sld_path":"/styles/france_cycleways_line.sld",
                 "type":"WMTS",
                 "maxScaleDenominator":300000,
@@ -522,7 +522,7 @@
 
                 "layername": "magosm:bus_routes_line",
                 "nom_court": "Buslinien · Lignes de bus · Linee di autobus · Bus routes",
-                "md_url":"geocaturl:bus_routes",
+                "md_url":"https://www.geocat.ch/datahub/dataset/f72e7450-202a-4509-9377-fc40bc73af61",
                 "sld_path":"/styles/france_bus_routes_line.sld",
                 "type":"WMS",
                 "download_gpkg":true,
@@ -562,8 +562,8 @@
             },
             {
                 "layername": "magosm:tram_ltr_routes_line",
-                "nom_court": "Straßenbahnlinien · Lignes de tramways · Linee di tram · Tram routes",
-                "md_url":"geocaturl:tram_ltr_routes",
+                "nom_court": "Strassenbahnlinien · Lignes de tramways · Linee di tram · Tram routes",
+                "md_url":"https://www.geocat.ch/datahub/dataset/81c0d9e2-4c6b-4643-a743-47e4e6a6d0f6",
                 "sld_path":"/styles/france_tram_ltr_routes_line.sld",
                 "type":"WMS",
                 "download_gpkg":true,
@@ -685,7 +685,7 @@
             {
                 "layername": "magosm:railways_line",
                 "nom_court": "Eisenbahnen · Voies ferrées · Ferrovie · Railways",
-                "md_url":"geocaturl:railways",
+                "md_url":"https://www.geocat.ch/datahub/dataset/99734714-d49e-4f38-8e05-e8e4a529fd5a",
                 "sld_path":"/styles/france_railway_line.sld",
                 "type":"WMTS",
                 "maxScaleDenominator":1000000,
@@ -729,7 +729,7 @@
             {
                 "layername": "magosm:buildings_polygon",
                 "nom_court": "Gebäude · Bâtiments · Edifici · Buildings",
-                "md_url":"geocaturl:buildings",
+                "md_url":"https://www.geocat.ch/datahub/dataset/4153ac4b-d8a9-4df3-a390-e766ed49a5bd",
                 "sld_path":"/styles/france_buildings.sld",
                 "type":"WMTS",
                 "maxScaleDenominator":250000,
@@ -775,7 +775,7 @@
             {
                 "layername": "magosm:proposed",
                 "nom_court": "Konstruktionsvorschlag · Propositions de constructions · Proposte di costruzione · Construction proposals",
-                "md_url":"geocaturl:proposed",
+                "md_url":"https://www.geocat.ch/datahub/dataset/caa3cd7a-5923-4351-a65c-fd2fed4763b9",
                 "sld_path":"/styles/france_proposed.sld",
                 "type":"WMTS",
                 "download_gpkg":true,
@@ -813,7 +813,7 @@
             {
                 "layername": "magosm:constructions",
                 "nom_court": "Anlagen im Bau · Constructions en cours · Costruzioni in corso · Constructions in progress",
-                "md_url":"geocaturl:constructions",
+                "md_url":"https://www.geocat.ch/datahub/dataset/0526622f-98e1-480f-a9eb-91aa78ab58ec",
                 "sld_path":"/styles/france_constructions.sld",
                 "type":"WMTS",
                 "download_gpkg":true,
@@ -852,7 +852,7 @@
                 "layername": "magosm:landuses_naturals_polygon",
                 "nom_court": "Bodenbedeckung · Occupation du sol · Occupazione del suolo · Landuses",
                 "maxScaleDenominator":1000000,
-                "md_url":"geocaturl:landuses_naturals",
+                "md_url":"https://www.geocat.ch/datahub/dataset/urn:isogeo:metadata:uuid:eb3299b7-5b0b-4308-87e1-35512bdb87a3",
                 "sld_path":"/styles/france_landuses_naturals.sld",
                 "type":"WMTS",
                 "download_gpkg":true,
@@ -892,7 +892,7 @@
             {
                 "layername": "magosm:pnr_polygon",
                 "nom_court": "Regionalen Naturparks · Parcs Naturels Régionaux · Parchi Naturali Regionali · Regional Nature Parks",
-                "md_url": "geocaturl:pnr",
+                "md_url": "https://www.geocat.ch/datahub/dataset/urn:isogeo:metadata:uuid:31d848b5-6900-4e36-85c9-a4f2b4990b16",
                 "sld_path":"/styles/france_pnr_polygon.sld",
                 "type":"WMTS",
                 "download_gpkg":true,
@@ -926,7 +926,7 @@
             {
                 "layername": "magosm:vineyards_grapes_polygon",
                 "nom_court": "Weinberg · Vignoble · Vigneto · Vineyards",
-                "md_url": "geocaturl:vineyards_grapes",
+                "md_url": "https://www.geocat.ch/datahub/dataset/8bf9b5db-6c7b-4563-ba64-8c9377c3070a",
                 "sld_path":"/styles/france_vineyards_grapes_polygon.sld",
                 "type":"WMTS",
                 "download_gpkg":true,
