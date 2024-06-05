@@ -1,11 +1,6 @@
   #headingMapController{
     font-size: 1rem;
-  }/*
-  .layerbar-nav {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }*/
+  }
 
   .layerbar-nav li.card-header {
     padding: 0.5rem !important;  /* Ceci réduira le padding à la moitié de p-2 */
@@ -31,43 +26,55 @@
     padding-right: 20px;
 }
 
-/* Cible les images à l'intérieur des étiquettes de boutons radio cochés */
 .radio-option input[type="radio"]:checked + label img {
-  border: 3px solid #CC1517;  /* Vous pouvez ajuster l'épaisseur et la couleur de la bordure selon vos préférences */
-  border-radius: 5px;      /* Bordures arrondies pour un joli design */
+  border: 3px solid #CC1517;
+  border-radius: 5px;
 }
 
-/* Ajoute un peu d'espace autour de l'image pour éviter que le texte et l'image ne soient trop proches */
+
 .radio-option label img {
-  margin-right: 10px;      /* Ajustez cette valeur selon vos préférences */
+  margin-right: 10px;
 }
 
-
-/* Cache les boutons radio tout en les gardant fonctionnels */
 .radio-option input[type="radio"] {
   display: none;
 }
 
-/* Images non sélectionnées (peut-être les rendre un peu transparentes ou en niveaux de gris pour indiquer qu'elles ne sont pas actives) */
 .radio-option label img {
   opacity: 0.6;
   transition: opacity 0.3s;
 }
 
-/* Images sélectionnées (rendre l'image claire et ajouter une bordure pour indiquer qu'elle est active) */
 .radio-option input[type="radio"]:checked + label img {
   border: 3px solid #CC1517;
   border-radius: 5px;
   opacity: 1;
 }
 
-
-/*Checkbox communes cantons */
 input[type="checkbox"] {
-  height: 20px; /* Ajuster selon la taille réelle désirée */
-  width: 20px; /* Ajoutez une largeur si nécessaire pour la symétrie */
-  margin: 0; /* Retirez les marges par défaut si nécessaire */
-  vertical-align: middle; /* Ceci peut aider pour un alignement fin */
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #CC1517;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #CC1517;
+}
+
+input[type="checkbox"]:checked::after {
+  content: 'X';
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .checkbox-container {
@@ -80,33 +87,33 @@ input[type="checkbox"] {
 .checkbox-option label {
   margin-left: 0.5rem;
   display: flex;
-  align-items: center; /* Ceci s'assure que le texte est centré verticalement avec la checkbox */
-  transform: translateY(3px); /* Ajustez ce nombre au besoin pour aligner parfaitement */
+  align-items: center;
+  transform: translateY(3px);
 }
 
 .checkbox-row {
   display: flex;
   margin-top: 15px;
-  justify-content: space-between; /* Ceci répartit les éléments également dans l'espace disponible */
+  justify-content: space-between;
 }
 
 .checkbox-row-left-align {
   display: flex;
-  flex-direction: column; /* Les éléments s'alignent verticalement */
-  align-items: flex-start; /* Aligner les enfants à gauche */
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .checkbox-left-align {
-  margin-top: 5px; /* Marge réduite entre les cases à cocher */
-  margin-left: 0; /* Aligner à gauche avec la première case à cocher */
+  margin-top: 5px;
+  margin-left: 0;
 }
 
 .checkbox-option {
-  flex: 1; /* Ceci permet aux options de checkbox de prendre la même quantité d'espace */
-  padding-right: 0px; /* Ajoutez un peu d'espace entre les checkboxes */
+  flex: 1;
+  padding-right: 0px;
   display: flex;
-  justify-content: center; /* centre horizontalement les enfants de .checkbox-option */
-  align-items: center; /* centre verticalement les enfants si nécessaire */
+  justify-content: center;
+  align-items: center;
   
 }
 
@@ -121,10 +128,8 @@ ul{
   font-size: 12px;
 }
 
-/*Opacity slider 
-See styles.css for more information*/
-
 input[type=range] {
+  appearance: none; /* Pour désactiver le style par défaut */
   padding: 10px 10px 10px 10px;
 }
 
@@ -140,7 +145,7 @@ input[type=range] {
 
 .range-label {
   position: absolute;
-  top: 40%; /* Position below the slider */
+  top: 40%;
 }
 
 .left {
@@ -154,7 +159,6 @@ input[type=range] {
   text-align: right;
   color:#CC1517
 }
-/* Partie sur le menu des couches */
 
 h4 {
     font-size: 14px;

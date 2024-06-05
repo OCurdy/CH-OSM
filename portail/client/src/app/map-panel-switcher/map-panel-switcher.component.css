@@ -1,7 +1,6 @@
 app-map-controller {
-  display: block; /* ou autre selon le rendu désiré */
-  max-width: 100%; /* pour s'assurer qu'il ne dépasse pas du menu */
-  /* autres styles si nécessaire */
+  display: block;
+  max-width: 100%;
 }
 
 .btn {
@@ -9,9 +8,9 @@ app-map-controller {
 }
 
 .btn-group {
-  display: flex; /* Utilise flexbox */
-  flex-direction: row; /* Organise les éléments horizontalement */
-  align-items: flex-start; /* Alignement vertical en haut */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
 }
 
 .btn-feature {
@@ -30,30 +29,29 @@ app-map-controller {
 #mapControllerCollapse {
   position: absolute;
   flex: auto; 
-  top: 0; /* Aligner en haut par rapport au parent '.btn-group' */
-  left: 100%; /* Décaler vers la gauche à la largeur du bouton */
-  transform: translateX(-115%); /* Décaler vers la gauche à la largeur de lui-même */
+  top: 0;
+  left: 100%;
+  transform: translateX(-115%);
   width: 300px;
 
 }
 
 #mapControllerCollapse {
-  /* Vos styles existants */
-  display: none; /* Cache le collapse par défaut */
+  display: none;
 }
 
 #mapControllerCollapse.show {
-  display: block; /* Affiche le collapse lorsque la classe 'show' est ajoutée */
+  display: block;
 }
 
 
 #legendCollapse {
   position: absolute;
   flex: auto; 
-  top: 0; /* Aligner en haut par rapport au parent '.btn-group' */
-  left: 100%; /* Décaler vers la gauche à la largeur du bouton */
-  transform: translateX(-150%); /* Décaler vers la gauche à la largeur de lui-même */
-  width: 300px; /* ou la largeur que vous voulez */
+  top: 0;
+  left: 100%;
+  transform: translateX(-150%);
+  width: 300px;
 }
 
 
@@ -135,6 +133,11 @@ app-map-controller {
   overflow-y: hidden;
   white-space: nowrap;
   margin-right: 12px;
+}
+
+
+.dropdown-item:hover, .dropdown-item:focus {
+  background-color: rgba(255, 0, 0, 0.1);
 }
 
 .panel-switcher-nav li {
