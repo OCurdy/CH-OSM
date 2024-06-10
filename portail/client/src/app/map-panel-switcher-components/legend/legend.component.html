@@ -8,7 +8,7 @@
   <div id="legendContainer" style="width:100%;height:auto;">
     <div *ngIf="legendUrls" id="legend" class="legend">
       <ng-container *ngFor="let legendUrl of legendUrls; let i = index">
-        <div *ngIf="legendSubTitles">{{legendSubTitles[i]}}</div>
+        <div *ngIf="legendSubTitles">{{legendSubTitles[i] | translate}}</div>
             <img  src="{{legendUrls[i]}}" class="img-fluid" />
       </ng-container>
     </div>

@@ -433,7 +433,6 @@ export class MapService {
   }
 
 
-
   kmlExport(layer) {
     var size = /** @type {ol.Size} */ (this.map.getSize());
     var extent = this.map.getView().calculateExtent(size);
