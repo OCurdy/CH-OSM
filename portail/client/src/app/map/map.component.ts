@@ -294,7 +294,7 @@ export class MapComponent implements OnInit {
 
 
     try {
-      this.mapService.legendTitle = newSelectedLayer.nom_court;
+      this.mapService.legendTitle = newSelectedLayer.layername;
 
       this.computeSingleLegend();
 
@@ -409,7 +409,7 @@ export class MapComponent implements OnInit {
      
       if(this.mapService.isInRange(ids[i])){
         let _layerAndCategory: LayerAndCategory = this.mapService.getCategorieAndLayerByStringAttribute("layername", ids[i]);
-        this.mapService.legendSubTitles.push(_layerAndCategory.layer.nom_court);
+        this.mapService.legendSubTitles.push(_layerAndCategory.layer.layername);
         this.mapService.legendUrls.push(this.geoserver_baseurl + '/wms?LAYER=' + ids[i] + '&SERVICE=WMS&VERSION=1.3.0&STRICT=false&REQUEST=GetLegendGraphic&FORMAT=image%2Fpng&TRANSPARENT=true&SCALE=' + this.currentScale);
       }
        }

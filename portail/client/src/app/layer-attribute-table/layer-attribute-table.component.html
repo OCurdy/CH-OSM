@@ -9,7 +9,7 @@
 
       <div class="modal-header layerAttributeTableHeader">
         <h5 class="modal-title" id="layerAttributeTableModalLabel">
-            <label *ngIf="currentLayer">{{currentLayer.nom_court | translate}}</label> 
+            <label *ngIf="currentLayer">{{currentLayer.layername | translate}}</label> 
         </h5>
         <!-- <button class="reloadButton" > -->
           <img class="reloadImage" src="./assets/images/reload.png" title="Recharger les valeurs valeurs"  (click)="setLayer(null)"/>

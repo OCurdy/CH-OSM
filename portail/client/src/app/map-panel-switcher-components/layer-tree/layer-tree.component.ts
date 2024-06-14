@@ -180,21 +180,7 @@ export class LayerTreeComponent implements OnInit {
     this.featureAttributeTableComponent.setLayer(feature);
     _paq.push(['trackEvent', 'attribute_table', feature.layername])
   }
-/*
-  toggleCardBody(feature): void {
-      const collapseId = feature.nom_court_trim + 'Collapse';
-      const collapseElement = document.getElementById(collapseId);
-      if (collapseElement) {
-          if (collapseElement.classList.contains('show')) {
-              collapseElement.classList.remove('show');
-              this.isCollapsed = true; // Mettez à jour l'état comme fermé
-          } else {
-              collapseElement.classList.add('show');
-              this.isCollapsed = false; // Mettez à jour l'état comme ouvert
-          }
-      }
-  }
-*/  
+ 
   toggleCardBody(feature): void {
     const collapseId = feature.nom_court_trim + 'Collapse';
     this.collapseStates[feature.nom_court_trim] = !this.collapseStates[feature.nom_court_trim];
