@@ -187,6 +187,21 @@ app-map-controller {
   right:15px;
 }
 
+.transparent-dropdown {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.transparent-dropdown .dropdown-item {
+  cursor: pointer;
+}
+
+.transparent-dropdown .dropdown-item.active {
+  font-weight: bold;
+  background-color: #CC1517;
+  color: white; 
+}
+
+
 /* Rules if the width of the screen is under a limit : the 3 options are moving down */
 @media all and (max-width: 470px)
 {

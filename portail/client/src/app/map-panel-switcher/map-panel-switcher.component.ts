@@ -18,7 +18,7 @@ export class MapPanelSwitcherComponent implements OnInit {
   public isMapControllerCollapsed: boolean = true;
   public isLegendCollapsed = true;
 
-  public panelToShow = 'layerTree'; // par défaut on charge le panel Menu
+  public panelToShow = 'layerTree';
 
   @Input('userContext') public userContext: UserContext;
 
@@ -28,6 +28,7 @@ export class MapPanelSwitcherComponent implements OnInit {
   @ViewChild('toggleButton') toggleCollapseRef: ElementRef;
   @ViewChild('dropdownButton') dropdownButtonRef: ElementRef;
   @ViewChild('dropdownMenu') dropdownMenuRef: ElementRef;
+  @ViewChild('appMapController') appMapController: ElementRef;
 
   constructor(
     private translate: TranslateService,
@@ -59,6 +60,13 @@ export class MapPanelSwitcherComponent implements OnInit {
 
   useLanguage(language: string) {
     this.translate.use(language);
+    const dropdownItems = this.dropdownMenuRef.nativeElement.querySelectorAll('.dropdown-item');
+    dropdownItems.forEach(item => item.classList.remove('active'));
+
+    const selectedItem = this.dropdownMenuRef.nativeElement.querySelector(`button[data-lang='${language}']`);
+    if (selectedItem) {
+      selectedItem.classList.add('active');
+    }
   }
 
   setPanelToShow(newPanelToShow) {
@@ -93,14 +101,11 @@ export class MapPanelSwitcherComponent implements OnInit {
   toggleCollapse(event: Event): void {
     event.stopPropagation();
     this.isMapControllerCollapsed = !this.isMapControllerCollapsed;
-    if (!this.isMapControllerCollapsed) {
-      this.closeDropdownMenu();
-    }
     this.cdRef.detectChanges();
-  }
-
-  closeDropdownMenu() {
-    $(this.dropdownMenuRef.nativeElement).removeClass('show');
+    const dropdownMenu = this.dropdownMenuRef.nativeElement;
+    if (dropdownMenu.classList.contains('show')) {
+      dropdownMenu.classList.remove('show');
+    }
   }
 
   closeMapControllerCollapse() {
@@ -114,21 +119,8 @@ export class MapPanelSwitcherComponent implements OnInit {
     const insideToggleButton = this.toggleCollapseRef.nativeElement.contains(targetElement);
     const insideDropdownButton = this.dropdownButtonRef.nativeElement.contains(targetElement);
     const insideCollapse = this.mapControllerCollapseRef.nativeElement.contains(targetElement);
-    const insideDropdownMenu = this.dropdownMenuRef.nativeElement.contains(targetElement);
 
-    if (!insideToggleButton && !insideDropdownButton && !insideCollapse && !insideDropdownMenu) {
-      this.closeMapControllerCollapse();
-      this.closeDropdownMenu();
-    }
-  }
-
-  toggleDropdown(event: Event): void {
-    event.stopPropagation();
-    const dropdownMenu = $(this.dropdownMenuRef.nativeElement);
-    if (dropdownMenu.hasClass('show')) {
-      dropdownMenu.removeClass('show');
-    } else {
-      dropdownMenu.addClass('show');
+    if (!insideToggleButton && !insideDropdownButton && !insideCollapse) {
       this.closeMapControllerCollapse();
     }
   }
