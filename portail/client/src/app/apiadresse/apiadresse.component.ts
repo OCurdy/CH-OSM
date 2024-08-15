@@ -1,9 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 import { Observable } from 'rxjs';
-import {  URLSearchParams, Response } from '@angular/http';
 import { HttpClient,HttpParams } from '@angular/common/http';
-import { Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/observable/of';
 import { map } from 'rxjs/operators';
 

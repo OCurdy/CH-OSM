@@ -3,6 +3,6 @@ export const environment = {
   integration: false,
   dev: false,
   geoserver_baseurl: "https://ch-osm-services.geodatasolutions.ch/geoserver",
-  services_baseurl: "https://ch-osm-services.geodatasolutions.ch/services-webapp-magosm/",
+  services_baseurl: "https://ch-osm-services.geodatasolutions.ch/services-webapp/",
   searchChangesTimeoutValue: 30000
 };

@@ -3,7 +3,7 @@ import { ApiRequestService } from 'app/service/api-request.service';
 import { MapService } from 'app/service/map.service';
 import { SliderService } from 'app/service/slider.service';
 import { FeatureChangesRequest } from 'app/model/ChangesClasses/FeatureChangesRequest';
-import { RequestOptions, RequestMethod, Headers} from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Change } from 'app/model/ChangesClasses/Change';
 import { ChangeType } from 'app/model/ChangesClasses/ChangeType';
 import { Tag } from 'app/model/ChangesClasses/Tag';
@@ -58,7 +58,8 @@ export class ChangeDetailsComponent implements OnInit, OnChanges {
     public apiRequestService : ApiRequestService,
     public mapService : MapService,
     public sliderService : SliderService,
-    private sanitizer : DomSanitizer
+    private sanitizer : DomSanitizer,
+    private http: HttpClient
   ) { }
 
   ngOnInit() {
@@ -109,19 +110,16 @@ export class ChangeDetailsComponent implements OnInit, OnChanges {
 
   public getFeatureChanges(){
     this.displayLoadSpinner=true;
-    var headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    headers.append('Accept', 'application/json');
-    let options = new RequestOptions({
-      method: RequestMethod.Post,
-      headers : headers
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
     });
-    var data = JSON.stringify(this.featureChangesRequest);
+    const data = JSON.stringify(this.featureChangesRequest);
     console.log(data);
-    this.apiRequestService.searchFeatureChanges(data, options)
+    this.apiRequestService.searchFeatureChanges(data, { headers })
       .subscribe(
         (res) => {
-          this.featureChangesList = JSON.parse(res['_body']);
+          this.featureChangesList = res;
           console.log(this.featureChangesList);
           this.numberOfChangesToDisplay = this.featureChangesList.length;
           this.mainChange = this.mapService.getChangesMergeForOneFeature(JSON.parse(JSON.stringify(this.featureChangesList)));

@@ -48,6 +48,7 @@
     "proj4": "^2.4.3",
     "rxjs": "^6.6.7",
     "rxjs-compat": "^6.3.2",
+    "sass": "^1.77.8",
     "shapefile": "^0.6.6",
     "tether": "^1.4.0",
     "ts-helpers": "^1.1.1",

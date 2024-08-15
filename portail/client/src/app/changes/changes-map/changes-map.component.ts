@@ -1,11 +1,11 @@
-import { Input, Component, OnInit} from '@angular/core';
+import { Input, Component, OnInit } from '@angular/core';
 import { UserContext } from '../../model/UserContext';
 import { UserContextService } from '../../service/user-context.service';
 import { MapService } from '../../service/map.service';
 import { ConfigService } from 'app/service/config.service';
 import { ApiRequestService } from 'app/service/api-request.service';
 import { ChangeType } from 'app/model/ChangesClasses/ChangeType';
-import { Change } from 'app/model/ChangesClasses/Change';
+import { HttpClient } from '@angular/common/http';
 
 declare var ol: any;
 declare var $: any;
@@ -21,31 +21,31 @@ export class ChangesMapComponent implements OnInit {
   @Input() public change : any;
   @Input('userContext') userContext: UserContext;
 
-  constructor(
-    public mapService: MapService,
-    public userContextService : UserContextService,
-    public configService : ConfigService,
-    public apiRequestService : ApiRequestService
-) {   
-  $("#selectAll").click(function(){
-    $("input[type=checkbox]").prop('checked', $(this).prop('checked'));
-  }); 
-}
-
-  // map parameters
   private view: any;
   public map: any;
   public layersArray : any;
   public layerswitcherdisplay : boolean = true;
-
-  //
   private changeTypesList : Array<ChangeType>;
   public selectedFeatures : Array<any>;
-
   private mapFeatureSelectedInteractionOnClick : any;
 
+  constructor(
+    public http: HttpClient,
+    public mapService: MapService,
+    public userContextService : UserContextService,
+    public configService : ConfigService,
+    public apiRequestService : ApiRequestService
+  ) {   
+    $("#selectAll").click(function(){
+      $("input[type=checkbox]").prop('checked', $(this).prop('checked'));
+    }); 
+  }
+
+  // map parameters
+
+
   ngOnInit() {
-    console.log("Init Map !")
+    console.log("Init Map!");
     this.initMap();
   }
 
@@ -59,14 +59,14 @@ export class ChangesMapComponent implements OnInit {
       target: document.getElementById('mouse-position-2'),
       undefinedHTML: '&nbsp;'
     });
-    let center: number[]
-    if(this.userContext){  
-      center = [this.userContext.lon, this.userContext.lat];
-    }
+
+    let center: number[] = this.userContext ? [this.userContext.lon - 1, this.userContext.lat] : [0, 0];
+
     this.view = new ol.View({
-      projection: 'EPSG:2056',
-      center: center?ol.proj.transform(center, 'EPSG:4326', 'EPSG:2056'):null,
+      projection: config.PROJECTION_CODE,
+      center: ol.proj.transform(center, 'EPSG:4326', config.PROJECTION_CODE),
       zoom: this.userContext.z,
+      minZoom: 3,
       //minZoom: 6,
     })
     
@@ -86,16 +86,20 @@ export class ChangesMapComponent implements OnInit {
 
     this.mapService.setMap(this.map, this.userContext);
 
-    this.apiRequestService.searchChangeTypes().subscribe(data => {
-      let array = JSON.parse(data['_body']) as any[];
-      this.changeTypesList = array.map(element => new ChangeType(element));
-      this.changeTypesList.sort((a,b) => a.id - b.id);
-      console.log(this.changeTypesList);
-      this.mapService.initLayers(this.changeTypesList);
-      this.mapService.initHeatMap();
-      this.mapService.initInteractions();
-      this.layersArray = this.mapService.changesLayersArray;
-    });
+    this.apiRequestService.searchChangeTypes().subscribe(
+      data => {
+        this.changeTypesList = data.map(element => new ChangeType(element));
+        this.changeTypesList.sort((a, b) => a.id - b.id);
+        console.log(this.changeTypesList);
+        this.mapService.initLayers(this.changeTypesList);
+        this.mapService.initHeatMap();
+        this.mapService.initInteractions();
+        this.layersArray = this.mapService.changesLayersArray;
+      },
+      error => {
+        console.error('Error fetching change types', error);
+      }
+    );
 
 
     //// Pour ajouter de la surbrillance au passage de la souris et au clic sur un objet
@@ -117,15 +121,13 @@ export class ChangesMapComponent implements OnInit {
       
   }
 
-
-  public onPointerMove(e){
-    if (e.dragging) return; // si il y a déplacement de la carte, on arrête
+  public onPointerMove(e) {
+    if (e.dragging) return;
        
-      var pixel = this.map.getEventPixel(e.originalEvent);
-      var hit = this.map.hasFeatureAtPixel(pixel, {hitTolerance:2, layerFilter: this.mapService.heatMapFilter}); // on vérifie si il y a un objet à l'endroit de l'événement
+    var pixel = this.map.getEventPixel(e.originalEvent);
+    var hit = this.map.hasFeatureAtPixel(pixel, { hitTolerance: 2, layerFilter: this.mapService.heatMapFilter });
        
-      this.map.getTargetElement().style.cursor = hit ? 'pointer' : ''; // si besoin, on change le curseur
-
+    this.map.getTargetElement().style.cursor = hit ? 'pointer' : '';
   }
 
   public onClick(event){

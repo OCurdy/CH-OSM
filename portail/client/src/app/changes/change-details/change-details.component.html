@@ -96,7 +96,7 @@
                             <td>
                                 <a>{{lastChangeset}}</a>
                                 <a class="logo" (click)="onExternalOSMToolSelected('osmDotOrg_chset')" title="Voir le changeset sur openstreetmap.org" target="_blank" href="https://www.openstreetmap.org/changeset/{{lastChangeset}}"><img src="assets/images/osm_logo_25px.png"></a>
-                                <a class="logo" (click)="onExternalOSMToolSelected('osmCha')" title="Analyse du changeset sur OSMCha" target="_blank" href="https://osmcha.mapbox.com/changesets/{{lastChangeset}}/"><img src="https://osmcha.mapbox.com/favicon.ico" style="height:25px;width:25px;"></a>
+                                <a class="logo" (click)="onExternalOSMToolSelected('osmCha')" title="Analyse du changeset sur OSMCha" target="_blank" href="https://osmcha.mapbox.com/changesets/{{lastChangeset}}/"><img src="assets/images/osmcha_logo.jpg" style="height:25px;width:25px;"></a>
                             </td>
                         </tr>
                         <tr *ngIf="transitionalChangesetMap && transitionalChangesetMap.size > 0">
@@ -107,7 +107,7 @@
                                 <div *ngFor="let changeset of transitionalChangesetMap | keyvalue ">
                                     <a>v{{changeset.key}} : {{changeset.value}}</a>
                                     <a class="logo" (click)="onExternalOSMToolSelected('osmDotOrg_chset')" title="Voir le changeset sur openstreetmap.org" target="_blank" href="https://www.openstreetmap.org/changeset/{{changeset.value}}"><img src="assets/images/osm_logo_25px.png"></a>
-                                    <a class="logo" (click)="onExternalOSMToolSelected('osmCha')" title="Analyse du changeset sur OSMCha" target="_blank" href="https://osmcha.mapbox.com/changesets/{{changeset.value}}/"><img src="https://osmcha.mapbox.com/favicon.ico" style="height:25px;width:25px;"></a>
+                                    <a class="logo" (click)="onExternalOSMToolSelected('osmCha')" title="Analyse du changeset sur OSMCha" target="_blank" href="https://osmcha.mapbox.com/changesets/{{changeset.value}}/"><img src="assets/images/osmcha_logo.jpg" style="height:25px;width:25px;"></a>
                                 </div>
                             </td>
                         </tr>

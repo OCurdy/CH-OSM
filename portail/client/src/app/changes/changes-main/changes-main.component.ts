@@ -23,11 +23,11 @@ export class ChangesMainComponent implements OnInit {
     public configService: ConfigService,
     public userContextService: UserContextService
   ) {
-    this.loadConfigAndUserContext();
+//    this.loadConfigAndUserContext();
   }
 
   ngOnInit() {
-    //this.loadConfigAndUserContext();
+    this.loadConfigAndUserContext();
   }
 
   public loadConfigAndUserContext() {
