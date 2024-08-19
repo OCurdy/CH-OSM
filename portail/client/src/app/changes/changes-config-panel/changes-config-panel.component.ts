@@ -10,6 +10,7 @@ import { IMyDrpOptions, IMyDateRange } from 'mydaterangepicker';
 import { ChangeType } from 'app/model/ChangesClasses/ChangeType';
 import { timeout } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
+import { TranslateService } from '@ngx-translate/core';
 
 declare var $: any;
 declare var config: any;
@@ -47,11 +48,10 @@ export class ChangesConfigPanelComponent implements OnInit, AfterViewInit {
   public reportInfos: Map<ChangeType, number> = new Map();
 
   lastChange;
-  constructor(public http: HttpClient, public mapService: MapService, public apiRequestService: ApiRequestService) { }
+  constructor(public http: HttpClient, public mapService: MapService, public apiRequestService: ApiRequestService, private translate: TranslateService) { }
 
   ngOnInit() {
     this.apiRequestService.getLastChange().subscribe(data => {
-      // Si vous utilisez HttpClient, vous n'avez pas besoin de JSON.parse
       this.lastChange = new Date(data.timestamp);
     });
 
@@ -179,40 +179,42 @@ export class ChangesConfigPanelComponent implements OnInit, AfterViewInit {
     var disableUntil: Date = new Date(new Date().setDate(today.getDate() - 1 - config.DAYS_INTERVAL_FOR_CHANGES_MONITORING));
     var twoWeeksBefore: Date = new Date(new Date().setDate(today.getDate() - 14));
 
-    this.myDateRangePickerOptions = {
-      dayLabels: { su: "Dim", mo: "Lun", tu: "Mar", we: "Mer", th: "Jeu", fr: "Ven", sa: "Sam" },
-      monthLabels: { 1: "Jan", 2: "Fév", 3: "Mar", 4: "Avr", 5: "Mai", 6: "Juin", 7: "Juil", 8: "Aoû", 9: "Sep", 10: "Oct", 11: "Nov", 12: "Déc" },
-      disableSince: {
+    this.translate.get(['days', 'months']).subscribe(translations => {
+      this.myDateRangePickerOptions = {
+        dayLabels: translations['days'],
+        monthLabels: translations['months'],
+        disableSince: {
+          year: today.getFullYear(),
+          month: today.getMonth() + 1,
+          day: today.getDate() + 1
+        },
+        disableUntil: {
+          year: disableUntil.getFullYear(),
+          month: disableUntil.getMonth() + 1,
+          day: disableUntil.getDate()
+        },
+        dateFormat: "dd/mm/yyyy",
+        selectBeginDateTxt: this.translate.instant('selectBeginDateTxt'),
+        selectEndDateTxt: this.translate.instant('selectEndDateTxt'),
+        editableDateRangeField: false,
+        openSelectorOnInputClick: true,
+        width: '100%',
+      };
+
+      var td = {
         year: today.getFullYear(),
         month: today.getMonth() + 1,
-        day: today.getDate() + 1
-      },
-      disableUntil: {
-        year: disableUntil.getFullYear(),
-        month: disableUntil.getMonth() + 1,
-        day: disableUntil.getDate()
-      },
-      dateFormat: "dd/mm/yyyy",
-      selectBeginDateTxt: "Choisir la date de début",
-      selectEndDateTxt: "Choisir la date de fin",
-      editableDateRangeField: false,
-      openSelectorOnInputClick: true,
-      width: '100%',
-    };
-
-    var td = {
-      year: today.getFullYear(),
-      month: today.getMonth() + 1,
-      day: today.getDate(),
-    };
-
-    var twoWksBefore = {
-      year: twoWeeksBefore.getFullYear(),
-      month: twoWeeksBefore.getMonth() + 1,
-      day: twoWeeksBefore.getDate(),
-    };
-
-    this.model = { endDate: td, beginDate: twoWksBefore };
+        day: today.getDate(),
+      };
+  
+      var twoWksBefore = {
+        year: twoWeeksBefore.getFullYear(),
+        month: twoWeeksBefore.getMonth() + 1,
+        day: twoWeeksBefore.getDate(),
+      };
+  
+      this.model = { endDate: td, beginDate: twoWksBefore };
+    });
   }
 
   initReport() {
@@ -233,5 +235,50 @@ export class ChangesConfigPanelComponent implements OnInit, AfterViewInit {
       return false;
     }
     return true;
+  }
+
+  getTranslatedUrl(key: string): string {
+    return this.translate.instant(key);
+  }
+  
+  getTranslationKeyForName(name: string): string {
+    const translationMap = {
+      'Itinéraires cyclables': 'layer.bicycle_routes',
+      'Bâtiments': 'layer.buildings',
+      'Itinéraires de bus': 'layer.bus_routes',
+      'Cliniques': 'layer.clinics',
+      'Réseau cyclable': 'layer.cycleways',
+      'Réseau routier': 'layer.highways',
+      'Itinéraires de randonnée': 'layer.hiking_routes',
+      'Hôpitaux': 'layer.hospitals',
+      'Occupation du sol': 'layer.landuses',
+      'Autoroutes': 'layer.motorways',
+      'Pharmacies': 'layer.pharmacies',
+      'Parcs Naturels Régionaux': 'layer.pnr',
+      'Polices et Gendarmeries': 'layer.police',
+      'Voies ferrées': 'layer.railways',
+      'Ecoles': 'layer.schools',
+      'Magasins': 'layer.shops',
+      'Itinéraires de métro': 'layer.subway_routes',
+      'Sous-répartiteurs cuivre': 'layer.telecom_copper',
+      'Noeuds de raccordement': 'layer.telecom_exlayer',
+      'Points de mutualisation fibre': 'layer.telecom_fibre',
+      'Itinéraires de tramway': 'layer.tram_routes',
+      'Itinéraires de train': 'layer.train_routes',
+      'Structures sociales': 'layer.social_amenities',
+      'Constructions en cours': 'layer.constructions',
+      'Propositions de constructions': 'layer.proposed'
+    };
+    return translationMap[name] || name;
+  }
+  getTranslationKeyForCategory (category: string): string {
+    const translationMap = {
+      'Bâti/Occupation du sol': 'landuse',
+      'Points d\'intérêt': 'pois',
+      'Routes/Itinéraires': 'routes',
+      'Télécommunications': 'telecom'
+
+    };
+    return translationMap[category] || category;
   }
 }

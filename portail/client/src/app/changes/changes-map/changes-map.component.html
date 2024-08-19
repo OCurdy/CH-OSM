@@ -23,7 +23,7 @@
             <tr *ngFor="let changetype of changeTypesList">
                 <td>
                     <input type="checkbox" id="{{changetype.id}}" name="layer" (click)="onSelect(changetype.id)" checked>
-                    <label class="panelSwitcherLayerName">{{changetype.short_name}}</label>
+                    <label class="panelSwitcherLayerName">{{ changetype.short_name | translate }}</label>
                 </td>
                 <td>
                     <a [routerLink]="['/changements-aide']" fragment="{{changetype.ref}}" target="_blank" style="cursor:pointer;"

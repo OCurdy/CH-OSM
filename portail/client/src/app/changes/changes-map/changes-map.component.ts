@@ -88,7 +88,14 @@ export class ChangesMapComponent implements OnInit {
 
     this.apiRequestService.searchChangeTypes().subscribe(
       data => {
-        this.changeTypesList = data.map(element => new ChangeType(element));
+        this.changeTypesList = data.map(element => {
+          const changeType = new ChangeType(element);
+          
+          // Mapping the short_name to a translation key
+          changeType.short_name = this.getTranslationKeyForChangeType(changeType.short_name);
+          
+          return changeType;
+        });
         this.changeTypesList.sort((a, b) => a.id - b.id);
         console.log(this.changeTypesList);
         this.mapService.initLayers(this.changeTypesList);
@@ -192,5 +199,21 @@ export class ChangesMapComponent implements OnInit {
     this.map.getView().setCenter(ol.proj.transform(location, 'EPSG:4326', config.PROJECTION_CODE), 16);
     this.map.getView().setZoom(zoomlevel);
   }
+
+  getTranslationKeyForChangeType(shortName: string): string {
+    const translationMap = {
+      'Création': 'change_config.create',
+      'Ajout': 'change_config.add',
+      'Modif. de tag(s) uniq.': 'change_config.modif_tag',
+      'Modif. de géométrie uniq.': 'change_config.modif_geo',
+      'Modif. de tag(s) et de géométrie': 'change_config.tagandgeo',
+      'Retrait': 'change_config.remove',
+      'Suppression': 'change_config.delete',
+      'Autre': 'change_config.other'
+    };
+  
+    return translationMap[shortName] || shortName;
+  }
+  
 
 }

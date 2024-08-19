@@ -1,7 +1,7 @@
 <div class="card row active" id="detailspanel">
     <div id="details-panel-nav" style="width:100%;">
         <a id="detailspanel-close" href="#/changements" class="btn btn-outline-secondary btn-sm toggle">
-            <b class="glyphicon glyphicon-remove">X</b>
+            <i class="fa fa-times" aria-hidden="true"></i>
         </a>
         <!-- Title -->
         <div class="card-header p-2 text-center" role="tab" id="headingDetailsPanel" style="word-wrap: break-word;">
@@ -59,7 +59,7 @@
                         {{ 'change.interval' | translate }}
                     </div>
                     <ng-template #badge>
-                        <h4><span class="badge badge-secondary" [ngStyle]="{'background-color': changeType.relatedColor.getRGBA()}">{{changeType.name}}</span></h4>
+                        <h4><span class="badge badge-secondary" [ngStyle]="{'background-color': changeType.relatedColor.getRGBA()}">{{ changeType.short_name | translate }}</span></h4>
                     </ng-template>
                 </div>
 
@@ -122,7 +122,7 @@
                 </colgroup>
                 <thead>
                     <tr style="text-align: center">
-                        <th>Version</th>
+                        <th>{{ 'change.version' | translate }}</th>
                         <th *ngIf="mainChange.versionOld">{{mainChange.versionOld}}</th>
                         <th *ngIf="mainChange.versionNew">{{mainChange.versionNew}}</th>
                     </tr>

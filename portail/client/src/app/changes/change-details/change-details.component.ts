@@ -10,6 +10,7 @@ import { Tag } from 'app/model/ChangesClasses/Tag';
 import { UserContext } from 'app/model/UserContext';
 import { Options, LabelType } from 'ng5-slider';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
+import { TranslateService } from '@ngx-translate/core';
 
 declare var $: any;
 declare var _paq : any;
@@ -59,7 +60,6 @@ export class ChangeDetailsComponent implements OnInit, OnChanges {
     public mapService : MapService,
     public sliderService : SliderService,
     private sanitizer : DomSanitizer,
-    private http: HttpClient
   ) { }
 
   ngOnInit() {
