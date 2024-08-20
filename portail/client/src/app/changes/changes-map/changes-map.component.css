@@ -18,6 +18,11 @@
 	font-size: 0.7em;
 }
 
+#mouse-position-2 {
+    background-color: #CC1517;
+    color: #ffffff;
+}
+
 #layerswitcher {
 	position:absolute;
 	right:5px;

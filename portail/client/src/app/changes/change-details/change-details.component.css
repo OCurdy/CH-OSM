@@ -26,6 +26,7 @@
 #detailspanel.active {
     right: 600px;
     width: 600px;
+    background-color: #ffff;
     transition: all 0.5s ease-out 0s;
     -webkit-transition: all 0.5s ease-out 0s;
     -moz-transition: all 0.5s ease-out 0s;

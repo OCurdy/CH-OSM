@@ -45,7 +45,7 @@
       {{ 'change_config.nochange' | translate }}
     </div>
     <div *ngIf="changesList && changesList.length > 0 && !tooMuchResult" class="alert alert-success" role="alert">
-      {{ 'change_config.results' | translate: { count: changesList.length } }}
+      {{changesList.length}} {{ 'change_config.results' | translate }}
     </div>
     <div *ngIf="changesList && tooMuchResult" class="alert alert-warning">
       <i class='fa fa-warning' aria-hidden='true'></i>&nbsp;{{ 'change_config.size1' | translate }} ({{responseSizeInMo}} Mo) {{ 'change_config.size2' | translate }}<br>

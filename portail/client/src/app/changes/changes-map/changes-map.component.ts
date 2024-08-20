@@ -11,6 +11,12 @@ declare var ol: any;
 declare var $: any;
 declare var config: any;
 
+function formatSwissNumber(num: number): string {
+  const parts = num.toFixed(1).toString().split(".");
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, "'");
+  return parts.join(".");
+}
+
 @Component({
   selector: 'app-changes-map',
   templateUrl: './changes-map.component.html',
@@ -52,9 +58,9 @@ export class ChangesMapComponent implements OnInit {
   initMap(){
     var mousePositionControl = new ol.control.MousePosition({
       coordinateFormat: function (coords) {
-        return ol.coordinate.format(coords, 'Lat : {y}° Lon : {x}° (WGS84)', 4)
+        return 'E: ' + formatSwissNumber(coords[0]) + ' N: ' + formatSwissNumber(coords[1]) + ' (CH1903+/LV95)';      
       },
-      projection: 'EPSG:4326',
+      projection: 'EPSG:2056',
       className: 'custom-mouse-position-2',
       target: document.getElementById('mouse-position-2'),
       undefinedHTML: '&nbsp;'
