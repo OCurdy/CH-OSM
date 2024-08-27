@@ -2,7 +2,8 @@
   "apiaddress.location": "Search location...",
   "main": {
       "bug": "Report a bug",
-      "permalink": "Permalink"
+      "permalink": "Permalink",
+      "feedbackUrl":"https://ch-osm.geodatasolutions.ch/#feedback"
   },
   "button": {
       "topics": "Topics",
@@ -156,7 +157,7 @@
       "to": "to",
       "category": "Category",
       "number": "Number of Entities",
-      "url": "https://ch-osm.geodatasolutions.ch/changes-en",
+      "url": "https://ch-osm.geodatasolutions.ch/changes-en/",
       "help": "Show Help",
       "legende": "Legend",
       "select": "Select All (de)select",

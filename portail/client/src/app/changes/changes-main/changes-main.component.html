@@ -9,10 +9,10 @@
             <app-header></app-header>
             <app-changes-map [userContext]="userContext"></app-changes-map>
             <span id="help" class="d-none d-md-block">
-                    <a [routerLink]="['/changements-aide']" target="_blank">{{ 'change_config.help' | translate }}</a>
+                <a [href]="getTranslatedUrl('change_config.url')" target="_blank">{{ 'change_config.help' | translate }}</a>
             </span>
             <span id="report-bug" class="d-none d-md-block">-
-                <a href="https://gitlab.com/g2600/ch-osm" target="_blank">{{ 'main.bug' | translate }}</a>
+                <a [href]="getTranslatedUrl('main.feedbackUrl')" target="_blank">{{ 'main.bug' | translate }}</a>
             </span>
             
         </div>

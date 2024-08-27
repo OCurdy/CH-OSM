@@ -2,7 +2,8 @@
     "apiadresse.location": "Rechercher un lieu...",
     "main": {
         "bug": "Signaler une anomalie",
-        "permalink": "Permalien"
+        "permalink": "Permalien",
+        "feedbackUrl":"https://ch-osm.geodatasolutions.ch/fr/#feedback"
     },
     "button": {
         "topics": "Thématiques",
@@ -156,7 +157,7 @@
         "to": "au",
         "category": "Catégorie",
         "number": "Nombre d'entités",
-        "url": "https://ch-osm.geodatasolutions.ch/changes-fr",
+        "url": "https://ch-osm.geodatasolutions.ch/fr/changements/",
         "help": "Voir l'aide",
         "legende": "Légende",
         "select": "Tout (dé)selectionner",

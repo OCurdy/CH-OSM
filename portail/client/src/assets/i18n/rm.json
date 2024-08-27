@@ -2,7 +2,8 @@
     "apiadresse.location": "Chattar in lieu...",
     "main": {
         "bug": "Rapportar in problem",
-        "permalink": "Link permanen"
+        "permalink": "Link permanen",
+        "feedbackUrl":"https://ch-osm.geodatasolutions.ch/de/#feedback"
     },
     "button": {
         "topics": "Temas",
@@ -156,7 +157,7 @@
         "to": "fin",
         "category": "Categoria",
         "number": "Num per entitads",
-        "url": "https://ch-osm.geodatasolutions.ch/changes-fr",
+        "url": "https://ch-osm.geodatasolutions.ch/de/anderungen/",
         "help": "Vider l'agid",
         "legende": "Legenda",
         "select": "Tuts (de)seleger",

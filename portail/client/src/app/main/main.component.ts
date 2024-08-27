@@ -1,6 +1,6 @@
 import { Component, ViewChild, Output } from '@angular/core';
 import { MapComponent } from '../map/map.component';
-import { HostListener } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LayerChangeService} from '../service/layer-change.service';
 import { UserContextService } from '../service/user-context.service';
@@ -51,6 +51,7 @@ export class MainComponent {
     public layerChangeService: LayerChangeService,
     public userContextService: UserContextService,
     public configService: ConfigService,
+    private translate: TranslateService
 
 ) {
     this.loadConfigAndUserContext();
@@ -113,7 +114,11 @@ export class MainComponent {
   }
   onFeatureInfo(featureInfo){
     this.selectedFeature=featureInfo;
-  }  
+  }
+    
+  getTranslatedUrl(key: string): string {
+    return this.translate.instant(key);
+  }
  
 }
 

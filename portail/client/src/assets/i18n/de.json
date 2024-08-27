@@ -2,7 +2,8 @@
   "apiadresse.location": "Ort suchen...",
   "main": {
       "bug": "Fehler melden",
-      "permalink": "Permalink"
+      "permalink": "Permalink",
+      "feedbackUrl":"https://ch-osm.geodatasolutions.ch/de/#feedback"
   },
   "button": {
       "topics": "Themen",
@@ -156,7 +157,7 @@
       "to": "bis",
       "category": "Kategorie",
       "number": "Anzahl der Entitäten",
-      "url": "https://ch-osm.geodatasolutions.ch/changes-de",
+      "url": "https://ch-osm.geodatasolutions.ch/de/anderungen/",
       "help": "Hilfe anzeigen",
       "legende": "Legende",
       "select": "Alle (de)selektieren",

@@ -5,6 +5,7 @@ import { ApiRequestService } from 'app/service/api-request.service';
 import { ConfigService } from 'app/service/config.service';
 import { UserContext } from 'app/model/UserContext';
 import { UserContextService } from 'app/service/user-context.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-changes-main',
@@ -21,7 +22,8 @@ export class ChangesMainComponent implements OnInit {
     public mapService: MapService,
     public apiRequestService: ApiRequestService,
     public configService: ConfigService,
-    public userContextService: UserContextService
+    public userContextService: UserContextService,
+    private translate: TranslateService
   ) {
 //    this.loadConfigAndUserContext();
   }
@@ -43,5 +45,9 @@ export class ChangesMainComponent implements OnInit {
           }
         })
       });
+  }
+  
+  getTranslatedUrl(key: string): string {
+    return this.translate.instant(key);
   }
 }

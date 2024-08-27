@@ -3,14 +3,13 @@ import { ApiRequestService } from 'app/service/api-request.service';
 import { MapService } from 'app/service/map.service';
 import { SliderService } from 'app/service/slider.service';
 import { FeatureChangesRequest } from 'app/model/ChangesClasses/FeatureChangesRequest';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { Change } from 'app/model/ChangesClasses/Change';
 import { ChangeType } from 'app/model/ChangesClasses/ChangeType';
 import { Tag } from 'app/model/ChangesClasses/Tag';
 import { UserContext } from 'app/model/UserContext';
 import { Options, LabelType } from 'ng5-slider';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
-import { TranslateService } from '@ngx-translate/core';
 
 declare var $: any;
 declare var _paq : any;
