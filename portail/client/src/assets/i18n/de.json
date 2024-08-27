@@ -110,7 +110,7 @@
       "shops": "Geschäfte",
       "subway_routes": "U-Bahn-Linien",
       "telecom_copper": "Kupfer-Nachverteilernetze",
-      "telecom_layer": "Verkabelungsknoten",
+      "telecom_exlayer": "Verkabelungsknoten",
       "telecom_fibre": "Fibre-Mutualisierungsstellen",
       "tram_routes": "Tramlinien",
       "train_routes": "Zuglinien",

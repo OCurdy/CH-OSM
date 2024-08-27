@@ -110,7 +110,7 @@
         "shops": "Negozis",
         "subway_routes": "Itineraris da metro",
         "telecom_copper": "Sub-repartidors copper",
-        "telecom_layer": "Nodes da raccordament",
+        "telecom_exlayer": "Nodes da raccordament",
         "telecom_fibre": "Punts da mutualisaziun fibra",
         "tram_routes": "Itineraris da tram",
         "train_routes": "Itineraris da tren",

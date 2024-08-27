@@ -110,7 +110,7 @@
         "shops": "Magasins",
         "subway_routes": "Itinéraires de métro",
         "telecom_copper": "Sous-répartiteurs cuivre",
-        "telecom_layer": "Noeuds de raccordement",
+        "telecom_exlayer": "Noeuds de raccordement",
         "telecom_fibre": "Points de mutualisation fibre",
         "tram_routes": "Itinéraires de tramway",
         "train_routes": "Itinéraires de train",

@@ -110,7 +110,7 @@
     "shops": "Negozi",
     "subway_routes": "Percorsi della metropolitana",
     "telecom_copper": "Sotto-repartitori in rame",
-    "telecom_layer": "Nodi di collegamento",
+    "telecom_exlayer": "Nodi di collegamento",
     "telecom_fibre": "Punti di mutualizzazione della fibra",
     "tram_routes": "Percorsi del tram",
     "train_routes": "Percorsi del treno",
